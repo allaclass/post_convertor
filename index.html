@@ -1,61 +1,68 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Upload 6</title>
     <!-- style import -->
-    <link rel="stylesheet" href="./css/alla-input-style.css">
-    <link rel="stylesheet" href="./css/alla-class-post-common-6.0.1.css">
+    <link rel="stylesheet" href="./css/alla-input-style.css" />
+    <link rel="stylesheet" href="./css/alla-class-post-common-6.0.1.css" />
     <!-- <link rel="shortcut icon" type="image/x-icon" href="https://raw.githubusercontent.com/knouclass/inputpost/master/icon_admin.png"> -->
-    <link rel="shortcut icon" type="image/x-icon" href="./img/icon_admin.png">
-</head>
-<body>
-
-    <div class="menu">
+    <link rel="shortcut icon" type="image/x-icon" href="./img/icon_admin.png" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="menu">
         <!-- textarea -->
-        <textarea id="txt_info" name="txt_info" placeholder="한번에 입력" onkeyup="info_input()"></textarea>
-        <textarea id="txt_title" name="txt_title" placeholder="타이틀" readonly></textarea>
-        <textarea id="txt_tag" name="txt_tag" placeholder="태그" readonly></textarea>
+        <textarea
+          id="txt_info"
+          name="txt_info"
+          placeholder="한번에 입력"
+          onkeyup="fnInputTxtInfoTyping()"
+        ></textarea>
+        <textarea
+          id="txt_title"
+          name="txt_title"
+          placeholder="타이틀"
+          readonly
+        ></textarea>
+        <textarea
+          id="txt_tag"
+          name="txt_tag"
+          placeholder="태그"
+          readonly
+        ></textarea>
         <!-- button -->
-        <button onclick="btn_lv1()" id="lv1">업로드용</button><br>
-        <!-- <button onclick="btn_lv2()" id="lv2">Lv.2</button> -->
-        <!-- textarea -->
-        <textarea id="txt_object" name="txt_object" placeholder="과목명" onkeyup="post_title()"></textarea>
-        <textarea id="txt_kind" name="txt_kind" placeholder="종류" onkeyup="post_title()"></textarea>
-        <textarea id="txt_year" name="txt_year" placeholder="연도" onkeyup="post_title()"></textarea>
-        <textarea id="txt_seme" name="txt_seme" placeholder="학기" onkeyup="post_title()"></textarea>
-        <textarea id="txt_grade" name="txt_grade" placeholder="학년" onkeyup="post_title()"></textarea>
-        <textarea id="txt_prof" name="txt_prof" placeholder="교수명"></textarea>
-        <textarea id="txt_range" name="txt_range" placeholder="시험범위"></textarea>
-        <textarea id="txt_snum" name="txt_snum" placeholder="시작번호" onkeyup="question_count()"></textarea>
-        <textarea id="txt_enum" name="txt_enum" placeholder="종료번호" onkeyup="question_count()"></textarea>
-        <textarea id="txt_count" name="txt_count" placeholder="문항수" readonly></textarea>
-        <textarea id="txt_thumb" name="txt_thumb" placeholder="썸네일 주소"></textarea>
-        <textarea id="txt_answer" name="txt_answer" placeholder="정답"></textarea><br>
-        <!-- span : tip -->
-        <span>사용방법</span><br>
-        <span>- &nbsp;&nbsp;일반문제) 1.</span><br>
-        <span>- &nbsp;&nbsp;그룹문제) /1/ (그룹문제 다음문제의 번호 기입)</span><br>
-        <span>- &nbsp;&nbsp;보기문) /보기문, /추가보기문, /보기그림, /추가보기그림 (보기그림의 이미지는 티스토리 이미지 명령어만 기입)</span><br>
-        <span>- &nbsp;&nbsp;보기문효과) /단락_ ~ /.단락 | /좌들_ ~ /.좌들 | /바_ ~ /.바 | /영소_ ~ /.영소 | /한글_ ~ /.한글 | /서클_ ~ /.서클 | /중앙_ ~ /.중앙 | /우측_ ~ /.우측</span><br>
-        <span>- &nbsp;&nbsp;보기문효과) /괄호한글_ ~ /.괄호한글 | /괄호자음_ ~ /.괄호자음 | /괄호영대_ ~ /.괄호영대 | /괄호영소_ ~ /.괄호영소</span><br>
-        <span>- &nbsp;&nbsp;보기문효과-설명) _ 표시는 spacebar 의미  | ex) /단락_ = /단락(한칸띄기)</span><br>
-        <span>- &nbsp;&nbsp;텍스트효과) /부정 ~ /.부정 | /밑줄 ~ /.밑줄 | /윗줄 ~ /.윗줄 | /굵게 ~ /.굵게 | /기움 ~ /.기움 | /줄 | /빈칸</span><br>
-        <span>- &nbsp;&nbsp;텍스트효과) /윗첨자 ~ /.윗첨자 | /아랫첨자~/.아랫첨자</span>
+        <button onclick="btn1()" id="lv1">업로드용</button>
+      </div>
+
+      <!-- final: 3. html conversion -> txtBoxOutputHtml -->
+      <!-- contents: 1. origin data -> txtBoxInputData -->
+      <!-- result: 2. array data -> txtBoxOutputData -->
+
+      <textarea
+        class="txtBoxOutputHTML"
+        id="txtBoxOutputHTML"
+        placeholder="txtBoxOutputHTML"
+      ></textarea>
+
+      <textarea
+        class="txtBoxInputData"
+        id="txtBoxInputData"
+        placeholder="txtBoxOutputHTML"
+      ></textarea>
+
+      <textarea
+        class="txtBoxOutputData"
+        id="txtBoxOutputData"
+        placeholder="txtBoxOutputData"
+      ></textarea>
+      <!-- <div id="postUpper"></div> -->
+      <div id="postView" class="postView"></div>
     </div>
-
-    <textarea class="final" id="final" placeholder="3. html conversion"></textarea>
-
-    <!-- result -->
-    <textarea class="contents" id="contents" placeholder="1. origin data"></textarea>
-    <textarea class="result" id="result" placeholder="2. array data"></textarea>
-    <!-- <div id="postUpper"></div> -->
-    <div id="postView" class="postView"></div>
-    
     <!-- script import -->
-    <script type="text/javascript" src="./js/alla-class-input-common-6.0.1.js"></script>
-    <!-- <script type="text/javascript" src="./js/alla-class-post-cookie-6.0.1.js"></script>
-    <script type="text/javascript" src="./js/alla-class-post-common-6.0.1.js"></script> -->
-
-</body>
+    <script
+      type="text/javascript"
+      src="./js/alla-class-input-common-6.0.1.js"
+    ></script>
+  </body>
 </html>
