@@ -1,6 +1,7 @@
-// 제    목 : alla-input-common-6.0.1.js
+// 제    목 : alla-input-common-5.5.1.js
 // 작 성 자 : 김현수
 // 작 성 일 : 2024.04.02
+// 코 맨 트 : 5.0.1 백업
 
 // 텍스트박스 주소값 지정
 let txt = document.getElementById('contents');
@@ -331,24 +332,7 @@ function array_lv1_input() {
             let answer_4 = other_giho_words(gihowords_ori);
             // letiable - result
             let result = number + '.\n' + question + '\n/보기문\n' + example_1 + '\n/추가보기문\n' + example_2 + '\n① ' + answer_1 + '\n② ' + answer_2 + '\n③ ' + answer_3 + '\n④ ' + answer_4 + '\n\n';
-            consolelog =
-              'number : ' +
-              number +
-              '\nquestion : ' +
-              question +
-              '\nexample_txt : ' +
-              example_1 +
-              '\nexample_txt_add : ' +
-              example_2 +
-              '\n① : ' +
-              answer_1 +
-              '\n② : ' +
-              answer_2 +
-              '\n③ : ' +
-              answer_3 +
-              '\n④ : ' +
-              answer_4 +
-              '\n\n';
+            consolelog = 'number : ' + number + '\nquestion : ' + question + '\nexample_txt : ' + example_1 + '\nexample_txt_add : ' + example_2 + '\n① : ' + answer_1 + '\n② : ' + answer_2 + '\n③ : ' + answer_3 + '\n④ : ' + answer_4 + '\n\n';
             // console test
             console.log('Group Prev Question / example_txt / example_txt_add');
             // console.log(result);
@@ -377,26 +361,8 @@ function array_lv1_input() {
             gihowords_ori = origin.substring(answer_4s + 1, answer_4e).replace(/(^\s*)|(\s*$)/gi, '');
             let answer_4 = other_giho_words(gihowords_ori);
             // letiable - result
-            let result =
-              number + '.\n' + question + '\n/보기문\n' + example_1 + '\n/추가보기그림\n' + example_2 + '\n① ' + answer_1 + '\n② ' + answer_2 + '\n③ ' + answer_3 + '\n④ ' + answer_4 + '\n\n';
-            consolelog =
-              'number : ' +
-              number +
-              '\nquestion : ' +
-              question +
-              '\nexample_txt : ' +
-              example_1 +
-              '\nexample_img_add : ' +
-              example_2 +
-              '\n① : ' +
-              answer_1 +
-              '\n② : ' +
-              answer_2 +
-              '\n③ : ' +
-              answer_3 +
-              '\n④ : ' +
-              answer_4 +
-              '\n\n';
+            let result = number + '.\n' + question + '\n/보기문\n' + example_1 + '\n/추가보기그림\n' + example_2 + '\n① ' + answer_1 + '\n② ' + answer_2 + '\n③ ' + answer_3 + '\n④ ' + answer_4 + '\n\n';
+            consolelog = 'number : ' + number + '\nquestion : ' + question + '\nexample_txt : ' + example_1 + '\nexample_img_add : ' + example_2 + '\n① : ' + answer_1 + '\n② : ' + answer_2 + '\n③ : ' + answer_3 + '\n④ : ' + answer_4 + '\n\n';
             // console test
             console.log('Group Prev Question / example_txt / example_img_add');
             // console.log(result);
@@ -424,8 +390,7 @@ function array_lv1_input() {
             let answer_4 = other_giho_words(gihowords_ori);
             // letiable - result
             let result = number + '.\n' + question + '\n/보기문\n' + example_1 + '\n① ' + answer_1 + '\n② ' + answer_2 + '\n③ ' + answer_3 + '\n④ ' + answer_4 + '\n\n';
-            consolelog =
-              'number : ' + number + '\nquestion : ' + question + '\nexample_txt : ' + example_1 + '\n① : ' + answer_1 + '\n② : ' + answer_2 + '\n③ : ' + answer_3 + '\n④ : ' + answer_4 + '\n\n';
+            consolelog = 'number : ' + number + '\nquestion : ' + question + '\nexample_txt : ' + example_1 + '\n① : ' + answer_1 + '\n② : ' + answer_2 + '\n③ : ' + answer_3 + '\n④ : ' + answer_4 + '\n\n';
             // console test
             console.log('Group Prev Question / example_txt');
             // console.log(result);
@@ -455,26 +420,8 @@ function array_lv1_input() {
             gihowords_ori = origin.substring(answer_4s + 1, answer_4e).replace(/(^\s*)|(\s*$)/gi, '');
             let answer_4 = other_giho_words(gihowords_ori);
             // letiable - result
-            let result =
-              number + '.\n' + question + '\n/보기그림\n' + example_1 + '\n/추가보기그림\n' + example_2 + '\n① ' + answer_1 + '\n② ' + answer_2 + '\n③ ' + answer_3 + '\n④ ' + answer_4 + '\n\n';
-            consolelog =
-              'number : ' +
-              number +
-              '\nquestion : ' +
-              question +
-              '\nexample_img : ' +
-              example_1 +
-              '\nexample_img_add : ' +
-              example_2 +
-              '\n① : ' +
-              answer_1 +
-              '\n② : ' +
-              answer_2 +
-              '\n③ : ' +
-              answer_3 +
-              '\n④ : ' +
-              answer_4 +
-              '\n\n';
+            let result = number + '.\n' + question + '\n/보기그림\n' + example_1 + '\n/추가보기그림\n' + example_2 + '\n① ' + answer_1 + '\n② ' + answer_2 + '\n③ ' + answer_3 + '\n④ ' + answer_4 + '\n\n';
+            consolelog = 'number : ' + number + '\nquestion : ' + question + '\nexample_img : ' + example_1 + '\nexample_img_add : ' + example_2 + '\n① : ' + answer_1 + '\n② : ' + answer_2 + '\n③ : ' + answer_3 + '\n④ : ' + answer_4 + '\n\n';
             // console test
             console.log('Group Prev Question / example_img / example_img_add');
             // console.log(result);
@@ -503,26 +450,8 @@ function array_lv1_input() {
             gihowords_ori = origin.substring(answer_4s + 1, answer_4e).replace(/(^\s*)|(\s*$)/gi, '');
             let answer_4 = other_giho_words(gihowords_ori);
             // letiable - result
-            let result =
-              number + '.\n' + question + '\n/보기그림\n' + example_1 + '\n/추가보기문\n' + example_2 + '\n① ' + answer_1 + '\n② ' + answer_2 + '\n③ ' + answer_3 + '\n④ ' + answer_4 + '\n\n';
-            consolelog =
-              'number : ' +
-              number +
-              '\nquestion : ' +
-              question +
-              '\nexample_img : ' +
-              example_1 +
-              '\nexample_txt_add : ' +
-              example_2 +
-              '\n① : ' +
-              answer_1 +
-              '\n② : ' +
-              answer_2 +
-              '\n③ : ' +
-              answer_3 +
-              '\n④ : ' +
-              answer_4 +
-              '\n\n';
+            let result = number + '.\n' + question + '\n/보기그림\n' + example_1 + '\n/추가보기문\n' + example_2 + '\n① ' + answer_1 + '\n② ' + answer_2 + '\n③ ' + answer_3 + '\n④ ' + answer_4 + '\n\n';
+            consolelog = 'number : ' + number + '\nquestion : ' + question + '\nexample_img : ' + example_1 + '\nexample_txt_add : ' + example_2 + '\n① : ' + answer_1 + '\n② : ' + answer_2 + '\n③ : ' + answer_3 + '\n④ : ' + answer_4 + '\n\n';
             // console test
             console.log('Group Prev Question / example_img / example_txt_add');
             // console.log(result);
@@ -549,8 +478,7 @@ function array_lv1_input() {
             let answer_4 = other_giho_words(gihowords_ori);
             // letiable - result
             let result = number + '.\n' + question + '\n/보기그림\n' + example_1 + '\n① ' + answer_1 + '\n② ' + answer_2 + '\n③ ' + answer_3 + '\n④ ' + answer_4 + '\n\n';
-            consolelog =
-              'number : ' + number + '\nquestion : ' + question + '\nexample_img : ' + example_1 + '\n① : ' + answer_1 + '\n② : ' + answer_2 + '\n③ : ' + answer_3 + '\n④ : ' + answer_4 + '\n\n';
+            consolelog = 'number : ' + number + '\nquestion : ' + question + '\nexample_img : ' + example_1 + '\n① : ' + answer_1 + '\n② : ' + answer_2 + '\n③ : ' + answer_3 + '\n④ : ' + answer_4 + '\n\n';
             // console test
             console.log('Group Prev Question / example_img');
             // console.log(result);
@@ -626,26 +554,8 @@ function array_lv1_input() {
               gihowords_ori = origin.substring(answer_4s + 1, answer_4e).replace(/(^\s*)|(\s*$)/gi, '');
               let answer_4 = other_giho_words(gihowords_ori);
               // letiable - result
-              let result =
-                number + '.\n' + question + '\n/보기문\n' + example_1 + '\n/추가보기문\n' + example_2 + '\n① ' + answer_1 + '\n② ' + answer_2 + '\n③ ' + answer_3 + '\n④ ' + answer_4 + '\n\n';
-              consolelog =
-                'number : ' +
-                number +
-                '\nquestion : ' +
-                question +
-                '\nexample_txt : ' +
-                example_1 +
-                '\nexample_txt_add : ' +
-                example_2 +
-                '\n① : ' +
-                answer_1 +
-                '\n② : ' +
-                answer_2 +
-                '\n③ : ' +
-                answer_3 +
-                '\n④ : ' +
-                answer_4 +
-                '\n\n';
+              let result = number + '.\n' + question + '\n/보기문\n' + example_1 + '\n/추가보기문\n' + example_2 + '\n① ' + answer_1 + '\n② ' + answer_2 + '\n③ ' + answer_3 + '\n④ ' + answer_4 + '\n\n';
+              consolelog = 'number : ' + number + '\nquestion : ' + question + '\nexample_txt : ' + example_1 + '\nexample_txt_add : ' + example_2 + '\n① : ' + answer_1 + '\n② : ' + answer_2 + '\n③ : ' + answer_3 + '\n④ : ' + answer_4 + '\n\n';
               // console test
               console.log('Final Question / example_txt / example_txt_add');
               // console.log(result);
@@ -674,26 +584,8 @@ function array_lv1_input() {
               gihowords_ori = origin.substring(answer_4s + 1, answer_4e).replace(/(^\s*)|(\s*$)/gi, '');
               let answer_4 = other_giho_words(gihowords_ori);
               // letiable - result
-              let result =
-                number + '.\n' + question + '\n/보기문\n' + example_1 + '\n/추가보기그림\n' + example_2 + '\n① ' + answer_1 + '\n② ' + answer_2 + '\n③ ' + answer_3 + '\n④ ' + answer_4 + '\n\n';
-              consolelog =
-                'number : ' +
-                number +
-                '\nquestion : ' +
-                question +
-                '\nexample_txt : ' +
-                example_1 +
-                '\nexample_img_add : ' +
-                example_2 +
-                '\n① : ' +
-                answer_1 +
-                '\n② : ' +
-                answer_2 +
-                '\n③ : ' +
-                answer_3 +
-                '\n④ : ' +
-                answer_4 +
-                '\n\n';
+              let result = number + '.\n' + question + '\n/보기문\n' + example_1 + '\n/추가보기그림\n' + example_2 + '\n① ' + answer_1 + '\n② ' + answer_2 + '\n③ ' + answer_3 + '\n④ ' + answer_4 + '\n\n';
+              consolelog = 'number : ' + number + '\nquestion : ' + question + '\nexample_txt : ' + example_1 + '\nexample_img_add : ' + example_2 + '\n① : ' + answer_1 + '\n② : ' + answer_2 + '\n③ : ' + answer_3 + '\n④ : ' + answer_4 + '\n\n';
               // console test
               console.log('Final Question / example_txt / example_img_add');
               // console.log(result);
@@ -721,8 +613,7 @@ function array_lv1_input() {
               let answer_4 = other_giho_words(gihowords_ori);
               // letiable - result
               let result = number + '.\n' + question + '\n/보기문\n' + example_1 + '\n① ' + answer_1 + '\n② ' + answer_2 + '\n③ ' + answer_3 + '\n④ ' + answer_4 + '\n\n';
-              consolelog =
-                'number : ' + number + '\nquestion : ' + question + '\nexample_txt : ' + example_1 + '\n① : ' + answer_1 + '\n② : ' + answer_2 + '\n③ : ' + answer_3 + '\n④ : ' + answer_4 + '\n\n';
+              consolelog = 'number : ' + number + '\nquestion : ' + question + '\nexample_txt : ' + example_1 + '\n① : ' + answer_1 + '\n② : ' + answer_2 + '\n③ : ' + answer_3 + '\n④ : ' + answer_4 + '\n\n';
               // console test
               console.log('Final Question / example_txt');
               // console.log(result);
@@ -752,26 +643,8 @@ function array_lv1_input() {
               gihowords_ori = origin.substring(answer_4s + 1, answer_4e).replace(/(^\s*)|(\s*$)/gi, '');
               let answer_4 = other_giho_words(gihowords_ori);
               // letiable - result
-              let result =
-                number + '.\n' + question + '\n/보기그림\n' + example_1 + '\n/추가보기그림\n' + example_2 + '\n① ' + answer_1 + '\n② ' + answer_2 + '\n③ ' + answer_3 + '\n④ ' + answer_4 + '\n\n';
-              consolelog =
-                'number : ' +
-                number +
-                '\nquestion : ' +
-                question +
-                '\nexample_img : ' +
-                example_1 +
-                '\nexample_img_add : ' +
-                example_2 +
-                '\n① : ' +
-                answer_1 +
-                '\n② : ' +
-                answer_2 +
-                '\n③ : ' +
-                answer_3 +
-                '\n④ : ' +
-                answer_4 +
-                '\n\n';
+              let result = number + '.\n' + question + '\n/보기그림\n' + example_1 + '\n/추가보기그림\n' + example_2 + '\n① ' + answer_1 + '\n② ' + answer_2 + '\n③ ' + answer_3 + '\n④ ' + answer_4 + '\n\n';
+              consolelog = 'number : ' + number + '\nquestion : ' + question + '\nexample_img : ' + example_1 + '\nexample_img_add : ' + example_2 + '\n① : ' + answer_1 + '\n② : ' + answer_2 + '\n③ : ' + answer_3 + '\n④ : ' + answer_4 + '\n\n';
               // console test
               console.log('Final Question / example_img / example_img_add');
               // console.log(result);
@@ -800,26 +673,8 @@ function array_lv1_input() {
               gihowords_ori = origin.substring(answer_4s + 1, answer_4e).replace(/(^\s*)|(\s*$)/gi, '');
               let answer_4 = other_giho_words(gihowords_ori);
               // letiable - result
-              let result =
-                number + '.\n' + question + '\n/보기그림\n' + example_1 + '\n/추가보기문\n' + example_2 + '\n① ' + answer_1 + '\n② ' + answer_2 + '\n③ ' + answer_3 + '\n④ ' + answer_4 + '\n\n';
-              consolelog =
-                'number : ' +
-                number +
-                '\nquestion : ' +
-                question +
-                '\nexample_img : ' +
-                example_1 +
-                '\nexample_txt_add : ' +
-                example_2 +
-                '\n① : ' +
-                answer_1 +
-                '\n② : ' +
-                answer_2 +
-                '\n③ : ' +
-                answer_3 +
-                '\n④ : ' +
-                answer_4 +
-                '\n\n';
+              let result = number + '.\n' + question + '\n/보기그림\n' + example_1 + '\n/추가보기문\n' + example_2 + '\n① ' + answer_1 + '\n② ' + answer_2 + '\n③ ' + answer_3 + '\n④ ' + answer_4 + '\n\n';
+              consolelog = 'number : ' + number + '\nquestion : ' + question + '\nexample_img : ' + example_1 + '\nexample_txt_add : ' + example_2 + '\n① : ' + answer_1 + '\n② : ' + answer_2 + '\n③ : ' + answer_3 + '\n④ : ' + answer_4 + '\n\n';
               // console test
               console.log('Final Question / example_img / example_txt_add');
               // console.log(result);
@@ -846,8 +701,7 @@ function array_lv1_input() {
               let answer_4 = other_giho_words(gihowords_ori);
               // letiable - result
               let result = number + '.\n' + question + '\n/보기그림\n' + example_1 + '\n① ' + answer_1 + '\n② ' + answer_2 + '\n③ ' + answer_3 + '\n④ ' + answer_4 + '\n\n';
-              consolelog =
-                'number : ' + number + '\nquestion : ' + question + '\nexample_img : ' + example_1 + '\n① : ' + answer_1 + '\n② : ' + answer_2 + '\n③ : ' + answer_3 + '\n④ : ' + answer_4 + '\n\n';
+              consolelog = 'number : ' + number + '\nquestion : ' + question + '\nexample_img : ' + example_1 + '\n① : ' + answer_1 + '\n② : ' + answer_2 + '\n③ : ' + answer_3 + '\n④ : ' + answer_4 + '\n\n';
               // console test
               console.log('Final Question / example_img');
               // console.log(result);
@@ -924,26 +778,8 @@ function array_lv1_input() {
               gihowords_ori = origin.substring(answer_4s + 1, answer_4e).replace(/(^\s*)|(\s*$)/gi, '');
               let answer_4 = other_giho_words(gihowords_ori);
               // letiable - result
-              let result =
-                number + '.\n' + question + '\n/보기문\n' + example_1 + '\n/추가보기문\n' + example_2 + '\n① ' + answer_1 + '\n② ' + answer_2 + '\n③ ' + answer_3 + '\n④ ' + answer_4 + '\n\n';
-              consolelog =
-                'number : ' +
-                number +
-                '\nquestion : ' +
-                question +
-                '\nexample_txt : ' +
-                example_1 +
-                '\nexample_txt_add : ' +
-                example_2 +
-                '\n① : ' +
-                answer_1 +
-                '\n② : ' +
-                answer_2 +
-                '\n③ : ' +
-                answer_3 +
-                '\n④ : ' +
-                answer_4 +
-                '\n\n';
+              let result = number + '.\n' + question + '\n/보기문\n' + example_1 + '\n/추가보기문\n' + example_2 + '\n① ' + answer_1 + '\n② ' + answer_2 + '\n③ ' + answer_3 + '\n④ ' + answer_4 + '\n\n';
+              consolelog = 'number : ' + number + '\nquestion : ' + question + '\nexample_txt : ' + example_1 + '\nexample_txt_add : ' + example_2 + '\n① : ' + answer_1 + '\n② : ' + answer_2 + '\n③ : ' + answer_3 + '\n④ : ' + answer_4 + '\n\n';
               // console test
               console.log('Normal Question / example_txt / example_txt_add');
               // console.log(result);
@@ -972,26 +808,8 @@ function array_lv1_input() {
               gihowords_ori = origin.substring(answer_4s + 1, answer_4e).replace(/(^\s*)|(\s*$)/gi, '');
               let answer_4 = other_giho_words(gihowords_ori);
               // letiable - result
-              let result =
-                number + '.\n' + question + '\n/보기문\n' + example_1 + '\n/추가보기그림\n' + example_2 + '\n① ' + answer_1 + '\n② ' + answer_2 + '\n③ ' + answer_3 + '\n④ ' + answer_4 + '\n\n';
-              consolelog =
-                'number : ' +
-                number +
-                '\nquestion : ' +
-                question +
-                '\nexample_txt : ' +
-                example_1 +
-                '\nexample_img_add : ' +
-                example_2 +
-                '\n① : ' +
-                answer_1 +
-                '\n② : ' +
-                answer_2 +
-                '\n③ : ' +
-                answer_3 +
-                '\n④ : ' +
-                answer_4 +
-                '\n\n';
+              let result = number + '.\n' + question + '\n/보기문\n' + example_1 + '\n/추가보기그림\n' + example_2 + '\n① ' + answer_1 + '\n② ' + answer_2 + '\n③ ' + answer_3 + '\n④ ' + answer_4 + '\n\n';
+              consolelog = 'number : ' + number + '\nquestion : ' + question + '\nexample_txt : ' + example_1 + '\nexample_img_add : ' + example_2 + '\n① : ' + answer_1 + '\n② : ' + answer_2 + '\n③ : ' + answer_3 + '\n④ : ' + answer_4 + '\n\n';
               // console test
               console.log('Normal Question / example_txt / example_img_add');
               // console.log(result);
@@ -1019,8 +837,7 @@ function array_lv1_input() {
               let answer_4 = other_giho_words(gihowords_ori);
               // letiable - result
               let result = number + '.\n' + question + '\n/보기문\n' + example_1 + '\n① ' + answer_1 + '\n② ' + answer_2 + '\n③ ' + answer_3 + '\n④ ' + answer_4 + '\n\n';
-              consolelog =
-                'number : ' + number + '\nquestion : ' + question + '\nexample_txt : ' + example_1 + '\n① : ' + answer_1 + '\n② : ' + answer_2 + '\n③ : ' + answer_3 + '\n④ : ' + answer_4 + '\n\n';
+              consolelog = 'number : ' + number + '\nquestion : ' + question + '\nexample_txt : ' + example_1 + '\n① : ' + answer_1 + '\n② : ' + answer_2 + '\n③ : ' + answer_3 + '\n④ : ' + answer_4 + '\n\n';
               // console test
               console.log('Normal Question / example_txt');
               // console.log(result);
@@ -1050,26 +867,8 @@ function array_lv1_input() {
               gihowords_ori = origin.substring(answer_4s + 1, answer_4e).replace(/(^\s*)|(\s*$)/gi, '');
               let answer_4 = other_giho_words(gihowords_ori);
               // letiable - result
-              let result =
-                number + '.\n' + question + '\n/보기그림\n' + example_1 + '\n/추가보기그림\n' + example_2 + '\n① ' + answer_1 + '\n② ' + answer_2 + '\n③ ' + answer_3 + '\n④ ' + answer_4 + '\n\n';
-              consolelog =
-                'number : ' +
-                number +
-                '\nquestion : ' +
-                question +
-                '\nexample_img : ' +
-                example_1 +
-                '\nexample_img_add : ' +
-                example_2 +
-                '\n① : ' +
-                answer_1 +
-                '\n② : ' +
-                answer_2 +
-                '\n③ : ' +
-                answer_3 +
-                '\n④ : ' +
-                answer_4 +
-                '\n\n';
+              let result = number + '.\n' + question + '\n/보기그림\n' + example_1 + '\n/추가보기그림\n' + example_2 + '\n① ' + answer_1 + '\n② ' + answer_2 + '\n③ ' + answer_3 + '\n④ ' + answer_4 + '\n\n';
+              consolelog = 'number : ' + number + '\nquestion : ' + question + '\nexample_img : ' + example_1 + '\nexample_img_add : ' + example_2 + '\n① : ' + answer_1 + '\n② : ' + answer_2 + '\n③ : ' + answer_3 + '\n④ : ' + answer_4 + '\n\n';
               // console test
               console.log('Normal Question / example_img / example_img_add');
               // console.log(result);
@@ -1098,26 +897,8 @@ function array_lv1_input() {
               gihowords_ori = origin.substring(answer_4s + 1, answer_4e).replace(/(^\s*)|(\s*$)/gi, '');
               let answer_4 = other_giho_words(gihowords_ori);
               // letiable - result
-              let result =
-                number + '.\n' + question + '\n/보기그림\n' + example_1 + '\n/추가보기문\n' + example_2 + '\n① ' + answer_1 + '\n② ' + answer_2 + '\n③ ' + answer_3 + '\n④ ' + answer_4 + '\n\n';
-              consolelog =
-                'number : ' +
-                number +
-                '\nquestion : ' +
-                question +
-                '\nexample_img : ' +
-                example_1 +
-                '\nexample_txt_add : ' +
-                example_2 +
-                '\n① : ' +
-                answer_1 +
-                '\n② : ' +
-                answer_2 +
-                '\n③ : ' +
-                answer_3 +
-                '\n④ : ' +
-                answer_4 +
-                '\n\n';
+              let result = number + '.\n' + question + '\n/보기그림\n' + example_1 + '\n/추가보기문\n' + example_2 + '\n① ' + answer_1 + '\n② ' + answer_2 + '\n③ ' + answer_3 + '\n④ ' + answer_4 + '\n\n';
+              consolelog = 'number : ' + number + '\nquestion : ' + question + '\nexample_img : ' + example_1 + '\nexample_txt_add : ' + example_2 + '\n① : ' + answer_1 + '\n② : ' + answer_2 + '\n③ : ' + answer_3 + '\n④ : ' + answer_4 + '\n\n';
               // console test
               console.log('Normal Question / example_img / example_txt_add');
               // console.log(result);
@@ -1144,8 +925,7 @@ function array_lv1_input() {
               let answer_4 = other_giho_words(gihowords_ori);
               // letiable - result
               let result = number + '.\n' + question + '\n/보기그림\n' + example_1 + '\n① ' + answer_1 + '\n② ' + answer_2 + '\n③ ' + answer_3 + '\n④ ' + answer_4 + '\n\n';
-              consolelog =
-                'number : ' + number + '\nquestion : ' + question + '\nexample_img : ' + example_1 + '\n① : ' + answer_1 + '\n② : ' + answer_2 + '\n③ : ' + answer_3 + '\n④ : ' + answer_4 + '\n\n';
+              consolelog = 'number : ' + number + '\nquestion : ' + question + '\nexample_img : ' + example_1 + '\n① : ' + answer_1 + '\n② : ' + answer_2 + '\n③ : ' + answer_3 + '\n④ : ' + answer_4 + '\n\n';
               // console test
               console.log('Normal Question / example_img');
               // console.log(result);
@@ -1238,8 +1018,7 @@ function btn_lv2() {
 
 // auto post_title
 function post_title() {
-  txt_title.value =
-    '방송대 방통대 ' + txt_object.value + ' ' + txt_kind.value + '시험 20' + txt_year.value + '년도 ' + txt_seme.value + '학기 ' + txt_grade.value + '학년 / 올에이클래스 기출문제 모의고사';
+  txt_title.value = '방송대 방통대 ' + txt_object.value + ' ' + txt_kind.value + '시험 20' + txt_year.value + '년도 ' + txt_seme.value + '학기 ' + txt_grade.value + '학년 / 올에이클래스 기출문제 모의고사';
 }
 
 // auto post_tag

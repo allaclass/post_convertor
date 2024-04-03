@@ -1,6 +1,6 @@
-// 제    목 : alla-input-common-6.0.1.js
+// 제    목 : alla-input-common-5.0.2.js
 // 작 성 자 : 김현수
-// 작 성 일 : 2024.04.02
+// 작 성 일 : 2022.01.15
 
 // around variable
 var txt = document.getElementById('contents');
@@ -1603,5 +1603,5 @@ function post_view() {
 }
 
 /* -------------------------------------------- */
-/* 종  료 : alla-input-common-6.0.1.js          */
+/* 종  료 : alla-input-common-5.0.1.js          */
 /* -------------------------------------------- */

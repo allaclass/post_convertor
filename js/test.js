@@ -1,46 +1,3 @@
-let infoDataStartNum = 1;
-let infoDataEndNum = 3;
-// const input = `
-// /#/ 첫번째 그룹 문제 지문
-// /보기문
-// 첫번째 그룹문제 보기문 내용
-
-// 1. 1번 문제 지문
-// ① ⓐ
-// ② ⓑ
-// ③ ⓒ
-// ④ ⓓ
-// /해설
-// 1번 문제에 대한 답은 이래서 이렇다
-
-// 2. 2번 문제 지문
-// /보기문
-// 2번 첫번째 보기문 내용
-// /보기문
-// 2번 두번째 보기문 내용
-// ① ㉠
-// ② ㉡
-// ③ ㉢
-// ④ ㉣
-// /해설
-// 2번 문제에 대한 답은 이래서 이렇다
-
-// /#/ 두번째 그룹 문제 지문
-// /보기그림
-// https://static.vecteezy.com/system/resources/thumbnails/004/641/880/small/illustration-of-high-school-building-school-building-free-vector.jpg
-
-// 3. 3번 문제 지문
-// /보기그림
-// https://static.vecteezy.com/system/resources/thumbnails/004/641/880/small/illustration-of-high-school-building-school-building-free-vector.jpg
-// /보기문
-// 3번 두번째 보기문 내용
-// ① ㉠
-// ② ㉡
-// ③ ㉢
-// ④ ㉣
-// /해설
-// 3번 문제에 대한 답은 이래서 이렇다`;
-
 // const result = `
 // [
 //   {
@@ -123,85 +80,168 @@ let infoDataEndNum = 3;
 //   },
 // ]`
 
-const input = `/#/ 첫번째 그룹 문제 지문
-/보기문
-첫번째 그룹문제 보기문 내용
+// const input = `
+// ※. 첫번째 그룹 문제 지문
+// /보기문
+// 첫번째 그룹문제 보기문 내용
+
+// 1. 1번 문제 지문
+// ① ⓐ
+// ② ⓑ
+// ③ ⓒ
+// ④ ⓓ
+// /해설
+// 1번 문제에 대한 답은 이래서 이렇다
+
+// 2. 2번 문제 지문
+// /보기문
+// 2번 첫번째 보기문 내용
+// /보기문
+// 2번 두번째 보기문 내용
+// ① ㉠
+// ② ㉡
+// ③ ㉢
+// ④ ㉣
+// /해설
+// 2번 문제에 대한 답은 이래서 이렇다
+
+// ※. 두번째 그룹 문제 지문
+// /보기그림
+// https://static.vecteezy.com/system/resources/thumbnails/004/641/880/small/illustration-of-high-school-building-school-building-free-vector.jpg
+
+// 3. 3번 문제 지문
+// /보기그림
+// https://static.vecteezy.com/system/resources/thumbnails/004/641/880/small/illustration-of-high-school-building-school-building-free-vector.jpg
+// /보기문
+// 3번 두번째 보기문 내용
+// ① ㉠
+// ② ㉡
+// ③ ㉢
+// ④ ㉣
+// /해설
+// 3번 문제에 대한 답은 이래서 이렇다`;
+
+const txtBoxInputData = `
+
+2. 2번 문제 지문
+① ⓐ
+② ⓑ
+③ ⓒ
+④ ⓓ
+
+3. 3번 문제 지문
+① ⓐ
+② ⓑ
+③ ⓒ
+④ ⓓ
 `;
 
 let parseQuestions = (txtBoxInputData) => {
-  let inputData = txtBoxInputData.split('\n');
-  let startNumber = infoDataStartNum;
-  let endNumber = infoDataEndNum;
-  let arrQuestions = [];
+  const infoDataStartNum = 1;
+  const infoDataEndNum = 3;
+  let findStartNumberIndexText;
+  let findNextNumberIndexText;
+  const findGroupSimbolIndexText = `※.`;
 
-  let currentGroup = {};
-  let currentQuestion = {};
+  let fnTemp = (frontIndex, rearIndex) => {
+    return txtBoxInputData.substring(frontIndex, rearIndex).trim();
+  };
 
-  for (let i = 0; i < inputData.length; i++) {
-    let line = inputData[i].trim();
-    console.log(line);
-    // if (line.startsWith('/#/')) {
-    // let objQuestion = {};
-    // let objExample = {};
-    // objQuestion = {
-    //   kind: 'group',
-    //   question: line.substring(4).trim(),
-    //   example: [],
-    // };
-    // arrQuestions.push(objQuestion);
+  let fnFindGroupIndex = (temp) => {
+    return temp.indexOf(findGroupSimbolIndexText);
+  };
+
+  // ------------
+
+  let endIndex = txtBoxInputData.length;
+
+  findStartNumberIndexText = `${infoDataStartNum}.`;
+  findNextNumberIndexText = `${infoDataStartNum + 1}.`;
+  let startNumberIndex = txtBoxInputData.indexOf(findStartNumberIndexText);
+  let nextNumberIndex = txtBoxInputData.indexOf(findNextNumberIndexText);
+
+  let temp;
+  let questionBeforeGroupQuestionIndex;
+
+  temp = fnTemp(0, nextNumberIndex);
+  // temp = fnTemp(startNumberIndex, nextNumberIndex);
+  questionBeforeGroupQuestionIndex = fnFindGroupIndex(temp); // 그룹문제 기호 찾아
+
+  console.log(`
+  startNumberIndex: ${startNumberIndex}
+  nextNumberIndex: ${nextNumberIndex}
+  questionBeforeGroupQuestionIndex: ${questionBeforeGroupQuestionIndex}
+  `);
+
+  if (questionBeforeGroupQuestionIndex >= 0 && questionBeforeGroupQuestionIndex < startNumberIndex) {
+    // 첫번째 문제 앞 그룹문제 있을 경우
+    temp = fnTemp(questionBeforeGroupQuestionIndex, startNumberIndex);
+  } else if (startNumberIndex === 0) {
+    if (questionBeforeGroupQuestionIndex > startNumberIndex && questionBeforeGroupQuestionIndex < nextNumberIndex) {
+      temp = fnTemp(startNumberIndex, questionBeforeGroupQuestionIndex);
+    } else {
+      temp = fnTemp(startNumberIndex, nextNumberIndex);
+    }
+  } else {
+    // 그룹문제가 없을 경우
+    temp = fnTemp(startNumberIndex, nextNumberIndex);
   }
+
+  console.log(temp);
+
+  // ------------
+
+  // for (let i = 0; i < infoDataEndNum * 2; i++) {
+  //   let frontIndex;
+  //   let rearIndex;
+  //   let endIndex = txtBoxInputData.length;
+
+  //   findStartNumberIndexText = `${infoDataStartNum + i}.`;
+  //   findNextNumberIndexText = `${infoDataStartNum + 1 + i}.`;
+  //   let startNumberIndex = txtBoxInputData.indexOf(findStartNumberIndexText);
+  //   let nextNumberIndex = txtBoxInputData.indexOf(findNextNumberIndexText);
+
+  //   let temp;
+  //   let questionBeforeGroupQuestionIndex;
+
+  //   if (i === 0) {
+  //     temp = fnTemp(0, nextNumberIndex);
+  //     questionBeforeGroupQuestionIndex = fnFindGroupIndex(temp); // 그룹문제 기호 찾아
+
+  //     if (questionBeforeGroupQuestionIndex < startNumberIndex) {
+  //       // 첫번째 문제 앞 그룹문제 있을 경우
+  //       temp = fnTemp(questionBeforeGroupQuestionIndex, startNumberIndex);
+  //     } else if (startNumberIndex === 0) {
+  //       if (questionBeforeGroupQuestionIndex > startNumberIndex && questionBeforeGroupQuestionIndex < nextNumberIndex) {
+  //         temp = fnTemp(startNumberIndex, questionBeforeGroupQuestionIndex);
+  //       } else {
+  //         temp = fnTemp(startNumberIndex, nextNumberIndex);
+  //       }
+  //     } else {
+  //       // 그룹문제가 없을 경우
+  //       temp = fnTemp(startNumberIndex, nextNumberIndex);
+  //     }
+  //   } else {
+  //     temp = fnTemp(startNumberIndex, nextNumberIndex);
+  //     questionBeforeGroupQuestionIndex = fnFindGroupIndex(temp); // 그룹문제 기호 찾아
+
+  //     if (questionBeforeGroupQuestionIndex < startNumberIndex) {
+  //       // 첫번째 문제 앞 그룹문제 있을 경우
+  //       temp = fnTemp(questionBeforeGroupQuestionIndex, startNumberIndex);
+  //     } else if (startNumberIndex === 0) {
+  //       if (questionBeforeGroupQuestionIndex > startNumberIndex && questionBeforeGroupQuestionIndex < nextNumberIndex) {
+  //         temp = fnTemp(startNumberIndex, questionBeforeGroupQuestionIndex);
+  //       } else {
+  //         temp = fnTemp(startNumberIndex, nextNumberIndex);
+  //       }
+  //     } else {
+  //       // 그룹문제가 없을 경우
+  //       temp = fnTemp(startNumberIndex, nextNumberIndex);
+  //     }
+  //   }
+  //   console.log(i);
+  //   console.log(temp);
+  // }
 };
 
-parseQuestions(input);
-
-// for (let i = 0; i < inputData.length; i++) {
-//   let line = inputData[i].trim();
-
-//   if (line.startsWith('/#/')) {
-//     if (Object.keys(currentGroup).length !== 0) {
-//       arrQuestions.push(currentGroup);
-//     }
-//     currentGroup = {
-//       kind: 'group',
-//       question: line.substring(4).trim(),
-//       example: [],
-//     };
-//   } else if (line.startsWith('/보기그림')) {
-//     currentQuestion['example'].push({
-//       kind: 'image',
-//       content: inputData[i + 1].trim(),
-//     });
-//     i++;
-//   } else if (line.startsWith('/보기문')) {
-//     currentQuestion['example'].push({
-//       kind: 'text',
-//       content: inputData[i + 1].trim(),
-//     });
-//     i++;
-//   } else if (line.startsWith('/해설')) {
-//     currentQuestion['solve'] = inputData[i + 1].trim();
-//     i++;
-//   } else if (line.startsWith(String(startNumber))) {
-//     if (Object.keys(currentQuestion).length !== 0) {
-//       currentGroup['example'].push(currentQuestion);
-//     }
-//     currentQuestion = {
-//       kind: 'normal',
-//       question: line.substring(3).trim(),
-//       example: [], // 빈 배열로 초기화
-//     };
-//   } else if (line.startsWith('①') || line.startsWith('②') || line.startsWith('③') || line.startsWith('④')) {
-//     let answerNum = parseInt(line.charAt(1)) - 1;
-//     currentQuestion['answer-' + (answerNum + 1)] = line.substring(2).trim();
-//   }
-// }
-
-// if (Object.keys(currentGroup).length !== 0) {
-//   arrQuestions.push(currentGroup);
-// }
-// if (Object.keys(currentQuestion).length !== 0) {
-//   currentGroup['example'].push(currentQuestion);
-// }
-
-// return arrQuestions.slice(startNumber - 1, endNumber);
-// };
+parseQuestions(txtBoxInputData);
