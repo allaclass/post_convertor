@@ -1,18 +1,24 @@
 // 보기문, 보기그림 찾을 때 사용
 let str = `
+1.
+문제 질문 내용
 /보기문
 첫번째 보기문  
 /보기그림
 첫번째 보기그림
-/보기문
-두번째 보기문이지  
+① ㉠
+② ㉡
+③ ㉢
+④ ㉣
+/해설
+해설 내용입니다.
 `;
 
 // 정규 표현식을 사용하여 패턴의 모든 인덱스를 가져오는 함수
 function findAllIndices(str, patterns) {
   let indices = [];
   patterns.forEach((pattern) => {
-    const regex = new RegExp(`${pattern}\n`, 'g');
+    const regex = new RegExp(`${pattern}`, 'g');
     let match;
     while ((match = regex.exec(str)) !== null) {
       indices.push({ content: pattern, index: match.index });
@@ -23,7 +29,7 @@ function findAllIndices(str, patterns) {
 }
 
 // 패턴의 모든 인덱스를 가져옴
-let patterns = [`/보기문`, `/보기그림`];
+let patterns = [`1.`, `/보기문`, `/보기그림`, `①`, `②`, `③`, `④`, `/해설`];
 const indices = findAllIndices(str, patterns);
 console.log(indices);
 
