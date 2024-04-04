@@ -105,12 +105,11 @@ function array_lv1_input() {
 
   // html source
   final_reset();
-  // html_mobile_url_no();
+  html_mobile_url_no();
   html_thumb();
   html_notice_header();
   html_guide();
   html_title();
-  html_adsense();
 
   for (var i = 0; i < 100; i++) {
     // sNum(start number), nNum(next number), eNum(end number)
@@ -945,10 +944,11 @@ function array_lv1_input() {
 
   // html source
   html_question_check();
-  html_answer_table_header();
-  html_answer_table_input();
-  html_answer_table_contents();
-  html_answer_table_footer();
+  html_answer_table();
+  // html_answer_table_header();
+  // html_answer_table_input();
+  // html_answer_table_contents();
+  // html_answer_table_footer();
   html_shortcut();
   html_notice_footer();
   post_view();
@@ -1125,11 +1125,11 @@ function html_mobile_url_no() {
   fnl.value += src_mobile_url_no;
 }
 
-// html_thumb
+// [toHTML] 썸네일
 function html_thumb() {
   src_thumb = '';
   src_thumb += '<!-- 썸네일 영역 -->\n';
-  src_thumb += '<div class="allaThumbDiv">\n';
+  src_thumb += '<div class="alla6ThumbDiv">\n';
   src_thumb += '\t' + txt_thumb.value + '\n';
   src_thumb += '</div>\n';
   src_thumb += '<!-- // 썸네일 영역 -->\n';
@@ -1137,36 +1137,37 @@ function html_thumb() {
   fnl.value += src_thumb;
 }
 
-// html_notice_header
+// [toHTML] 공지사항 Header
 function html_notice_header() {
   src_notice_header = '';
   src_notice_header += '<!-- 공지사항 Header 영역 -->\n';
-  src_notice_header += '<div class="allaNoticeHeaderDiv">\n';
+  src_notice_header += '<div class="alla6NoticeHeaderDiv">\n';
   src_notice_header += '</div>\n';
   src_notice_header += '<!-- ------------------------------------------------------------------------------------ -->\n\n';
   fnl.value += src_notice_header;
 }
 
-// html_guide
+// [toHTML] 가이드(Img)
 function html_guide() {
   src_guide = '';
   src_guide += '<!-- 가이드 영역 -->\n';
-  src_guide += '<div class="allaGuideDiv">\n';
+  src_guide += '<div class="alla6GuideDiv">\n';
   src_guide += '\t<img src="" alt="올에이클래스 이용안내 이미지입니다. 올에이클래스는 인터넷 익스플로러를 제외한 크롬엔진 기반의 브라우저에서만 원활히 이용가능합니다.">\n';
   src_guide += '</div>\n';
   src_guide += '<!-- ------------------------------------------------------------------------------------ -->\n\n';
   fnl.value += src_guide;
 }
 
-// html_title
+// [toHTML] 타이틀
 function html_title() {
   src_title = '';
   src_title += '<!-- 타이틀 영역 -->\n';
-  src_title += '<table class="allaTitleTbl">\n';
-  src_title += '\t<tbody>\n';
-  src_title += '\t\t<colgroup><col width="100px"><col></colgroup>\n';
+  src_title += '<div class="alla6TitleDiv">\n';
+  src_title += '\t<table class="alla6TitleTbl">\n';
+  src_title += '\t\t<tbody>\n';
+  src_title += '\t\t\t<colgroup><col width="100px"><col></colgroup>\n';
   src_title +=
-    '\t\t<tr><td colspan="3"><span class="ibold">20' +
+    '\t\t\t<tr><td colspan="3"><span class="ibold">20' +
     txt_year.value +
     '</span>&nbsp;학년도&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ibold">' +
     txt_seme.value +
@@ -1175,423 +1176,327 @@ function html_title() {
     '</span>&nbsp;학년&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ibold">' +
     txt_count.value +
     '</span>&nbsp;문항</td></tr>\n';
-  src_title += '\t\t<tr><td colspan="3">' + txt_object.value + '</td></tr>\n';
-  src_title += '\t\t<tr><td>시험종류&nbsp;&nbsp;&nbsp;:</td><td>' + txt_kind.value + '시험</td></tr>\n';
-  src_title += '\t\t<tr><td>출제위원&nbsp;&nbsp;&nbsp;:</td><td>' + txt_prof.value + '</td></tr>\n';
-  src_title += '\t\t<tr><td>출제범위&nbsp;&nbsp;&nbsp;:</td><td>' + txt_range.value + '</td></tr>\n';
-  src_title += '\t\t<tr><td>자료출처&nbsp;&nbsp;&nbsp;:</td><td>한국방송통신대학교</td></tr>\n';
-  src_title += '\t\t<tr><td>웹앱제작&nbsp;&nbsp;&nbsp;:</td><td>올에이클래스 김현수</td></tr>\n';
-  src_title += '\t</tbody>\n';
-  src_title += '</table>\n';
+  src_title += '\t\t\t<tr><td colspan="3">' + txt_object.value + '</td></tr>\n';
+  src_title += '\t\t\t<tr><td>시험종류&nbsp;&nbsp;&nbsp;:</td><td>' + txt_kind.value + '시험</td></tr>\n';
+  src_title += '\t\t\t<tr><td>출제위원&nbsp;&nbsp;&nbsp;:</td><td>' + txt_prof.value + '</td></tr>\n';
+  src_title += '\t\t\t<tr><td>출제범위&nbsp;&nbsp;&nbsp;:</td><td>' + txt_range.value + '</td></tr>\n';
+  src_title += '\t\t\t<tr><td>자료출처&nbsp;&nbsp;&nbsp;:</td><td>한국방송통신대학교</td></tr>\n';
+  src_title += '\t\t\t<tr><td>웹앱제작&nbsp;&nbsp;&nbsp;:</td><td>올에이클래스 김현수</td></tr>\n';
+  src_title += '\t\t</tbody>\n';
+  src_title += '\t</table>\n';
+  src_title += '</div>\n';
   src_title += '<!-- ------------------------------------------------------------------------------------ -->\n\n';
   fnl.value += src_title;
 }
 
-// html_adsense
-function html_adsense() {
-  src_adsense = '';
-  src_adsense += '<!-- 애드센스 수동광고 영역 -->\n';
-  src_adsense += '<figure class="ad-wp" contenteditable="false" data-ke-type="revenue" data-ad-vendor="adsense" data-ad-id-pc="64535" data-ad-id-mobile="68630"></figure>\n';
-  src_adsense += '<p data-ke-size="size16">&nbsp;</p>\n';
-  src_adsense += '<!-- ------------------------------------------------------------------------------------ -->\n\n';
-  fnl.value += src_adsense;
-}
-
-// html_group_question_quiz
+// [toHTML] 그룹 문제 (시작)
 function html_group_question_quiz(question) {
   // replace (negative words to html)
-  var nagawords = question;
-  question = nagative_words_to_html(nagawords);
+  question = nagative_words_to_html(question);
   // replace (main)
   src_group_question_quiz = '';
   src_group_question_quiz += '<!-- 그룹 문제 -->\n';
-  src_group_question_quiz += '<form>\n';
-  src_group_question_quiz += '\t<table class="allaBasicTbl">\n';
-  src_group_question_quiz += '\t\t<tbody>\n';
-  src_group_question_quiz += '\t\t\t<!-- 질의 -->\n';
-  src_group_question_quiz += '\t\t\t<tr class="allaGroupQuestionTr">\n';
-  src_group_question_quiz += '\t\t\t\t<td>\n';
-  src_group_question_quiz += '\t\t\t\t\t<span class="allaQuestionNo">※</span>' + question + '\n';
-  src_group_question_quiz += '\t\t\t\t</td>\n';
-  src_group_question_quiz += '\t\t\t</tr>\n';
+  src_group_question_quiz += '<div class="alla6BasicDiv">\n';
+  src_group_question_quiz += '\t<form>\n';
+  src_group_question_quiz += '\t\t<table class="alla6BasicTbl">\n';
+  src_group_question_quiz += '\t\t\t<tbody>\n';
+  src_group_question_quiz += '\t\t\t\t<!-- 질의 -->\n';
+  src_group_question_quiz += '\t\t\t\t<tr class="alla6GroupQuestionTr">\n';
+  src_group_question_quiz += '\t\t\t\t\t<td>\n';
+  src_group_question_quiz += '\t\t\t\t\t\t<span class="alla6QuestionNo">※</span>' + question + '\n';
+  src_group_question_quiz += '\t\t\t\t\t</td>\n';
+  src_group_question_quiz += '\t\t\t\t</tr>\n';
   fnl.value += src_group_question_quiz;
 }
 
-// html_group_question_end
+// [toHTML] 그룹 문제 (마무리)
 function html_group_question_end() {
   src_group_question_end = '';
-  src_group_question_end += '\t\t</tbody>\n';
-  src_group_question_end += '\t</table>\n';
-  src_group_question_end += '</form>\n';
+  src_group_question_end += '\t\t\t</tbody>\n';
+  src_group_question_end += '\t\t</table>\n';
+  src_group_question_end += '\t</form>\n';
+  src_group_question_end += '</div>\n';
   src_group_question_end += '<!-- //그룹 문제-->\n';
   src_group_question_end += '<!-- ------------------------------------------------------------------------------------ -->\n\n';
   fnl.value += src_group_question_end;
 }
 
-// html_question_quiz
-function html_question_quiz(number, question) {
-  if (parseInt(number) < 10) {
-    // replace (negative words to html)
-    var nagawords = question;
-    question = nagative_words_to_html(nagawords);
-    // replace (main)
-    src_question_quiz = '';
-    src_question_quiz += '<!-- 문제 : 0' + number + ' -->\n';
-    src_question_quiz += '<form>\n';
-    src_question_quiz += '\t<table class="allaBasicTbl" id="allaBasicTbl0' + number + '">\n';
-    src_question_quiz += '\t\t<tbody>\n';
-    src_question_quiz += '\t\t\t<!-- 질의 -->\n';
-    src_question_quiz += '\t\t\t<tr class="allaQuestionTr">\n';
-    src_question_quiz += '\t\t\t\t<td>\n';
-    src_question_quiz += '\t\t\t\t\t<span class="allaQuestionNo">0' + number + '</span>' + question + '\n';
-    src_question_quiz += '\t\t\t\t</td>\n';
-    src_question_quiz += '\t\t\t</tr>\n';
-    fnl.value += src_question_quiz;
-  } else {
-    // replace (negative words to html)
-    var nagawords = question;
-    question = nagative_words_to_html(nagawords);
-    // replace (main)
-    src_question_quiz = '';
-    src_question_quiz += '<!-- 문제 : ' + number + ' -->\n';
-    src_question_quiz += '<form>\n';
-    src_question_quiz += '\t<table class="allaBasicTbl" id="allaBasicTbl' + number + '">\n';
-    src_question_quiz += '\t\t<tbody>\n';
-    src_question_quiz += '\t\t\t<!-- 질의 -->\n';
-    src_question_quiz += '\t\t\t<tr class="allaQuestionTr">\n';
-    src_question_quiz += '\t\t\t\t<td>\n';
-    src_question_quiz += '\t\t\t\t\t<span class="allaQuestionNo">' + number + '</span>' + question + '\n';
-    src_question_quiz += '\t\t\t\t</td>\n';
-    src_question_quiz += '\t\t\t</tr>\n';
-    fnl.value += src_question_quiz;
-  }
+// [toHTML] 일반 문제
+function html_question_quiz(questionNo, question) {
+  // replace (negative words to html)
+  question = nagative_words_to_html(question);
+  // replace (main)
+  let number;
+  parseInt(questionNo) < 10 ? (number = '0' + questionNo) : (number = questionNo);
+  src_question_quiz = '';
+  src_question_quiz += '<!-- 문제 : ' + number + ' -->\n';
+  src_question_quiz += '<div class="alla6BasicDiv">\n';
+  src_question_quiz += '\t<form>\n';
+  src_question_quiz += '\t\t<table class="alla6BasicTbl" id="alla6BasicTbl' + number + '">\n';
+  src_question_quiz += '\t\t\t<tbody>\n';
+  src_question_quiz += '\t\t\t\t<!-- 질의 -->\n';
+  src_question_quiz += '\t\t\t\t<tr class="alla6QuestionTr">\n';
+  src_question_quiz += '\t\t\t\t\t<td>\n';
+  src_question_quiz += '\t\t\t\t\t\t<span class="alla6QuestionNo">' + number + '</span>' + question + '\n';
+  src_question_quiz += '\t\t\t\t\t</td>\n';
+  src_question_quiz += '\t\t\t\t</tr>\n';
+  fnl.value += src_question_quiz;
 }
 
-// html_example_txt
+// [toHTML] 보기문
 function html_example_txt(example_1) {
   // replace (negative words to html)
-  var nagawords = example_1;
-  example_1 = nagative_words_to_html(nagawords);
+  example_1 = nagative_words_to_html(example_1);
   // replace (main)
   src_example_txt = '';
-  src_example_txt += '\t\t\t<!-- 보기문 -->\n';
-  src_example_txt += '\t\t\t<tr class="allaExampleTr_Txt">\n';
-  src_example_txt += '\t\t\t\t<td>\n';
-  src_example_txt += '\t\t\t\t\t' + example_1 + '\n';
-  src_example_txt += '\t\t\t\t</td>\n';
-  src_example_txt += '\t\t\t</tr>\n';
-  src_example_txt += '\t\t\t<tr class="allaBlankTr">\n';
-  src_example_txt += '\t\t\t\t<td></td>\n';
-  src_example_txt += '\t\t\t</tr>\n';
+  src_example_txt += '\t\t\t\t<!-- 보기문 -->\n';
+  src_example_txt += '\t\t\t\t<tr class="alla6ExampleTr_Txt">\n';
+  src_example_txt += '\t\t\t\t\t<td>\n';
+  src_example_txt += '\t\t\t\t\t\t' + example_1 + '\n';
+  src_example_txt += '\t\t\t\t\t</td>\n';
+  src_example_txt += '\t\t\t\t</tr>\n';
+  src_example_txt += '\t\t\t\t<tr class="alla6BlankTr">\n';
+  src_example_txt += '\t\t\t\t\t<td></td>\n';
+  src_example_txt += '\t\t\t\t</tr>\n';
   fnl.value += src_example_txt;
 }
 
-// html_example_txt_add
+// [toHTML] 보기문 (추가)
 function html_example_txt_add(example_2) {
   // replace (negative words to html)
-  var nagawords = example_2;
-  example_2 = nagative_words_to_html(nagawords);
+  example_2 = nagative_words_to_html(example_2);
   // replace (main)
   src_example_txt_add = '';
-  src_example_txt_add += '\t\t\t<!-- 추가보기문 -->\n';
-  src_example_txt_add += '\t\t\t<tr class="allaExampleTr_Txt">\n';
-  src_example_txt_add += '\t\t\t\t<td>\n';
-  src_example_txt_add += '\t\t\t\t\t' + example_2 + '\n';
-  src_example_txt_add += '\t\t\t\t</td>\n';
-  src_example_txt_add += '\t\t\t</tr>\n';
-  src_example_txt_add += '\t\t\t<tr class="allaBlankTr">\n';
-  src_example_txt_add += '\t\t\t\t<td></td>\n';
-  src_example_txt_add += '\t\t\t</tr>\n';
+  src_example_txt_add += '\t\t\t\t<!-- 추가보기문 -->\n';
+  src_example_txt_add += '\t\t\t\t<tr class="alla6ExampleTr_Txt">\n';
+  src_example_txt_add += '\t\t\t\t\t<td>\n';
+  src_example_txt_add += '\t\t\t\t\t\t' + example_2 + '\n';
+  src_example_txt_add += '\t\t\t\t\t</td>\n';
+  src_example_txt_add += '\t\t\t\t</tr>\n';
+  src_example_txt_add += '\t\t\t\t<tr class="alla6BlankTr">\n';
+  src_example_txt_add += '\t\t\t\t\t<td></td>\n';
+  src_example_txt_add += '\t\t\t\t</tr>\n';
   fnl.value += src_example_txt_add;
 }
 
-// html_example_img
+// [toHTML] 보기그림
 function html_example_img(example_1) {
   // replace (negative words to html)
-  var nagawords = example_1;
-  example_1 = nagative_words_to_html(nagawords);
+  example_1 = nagative_words_to_html(example_1);
   // replace (main)
   src_example_img = '';
-  src_example_img += '\t\t\t<!-- 보기그림 -->\n';
-  src_example_img += '\t\t\t<tr class="allaExampleTr_Img">\n';
-  src_example_img += '\t\t\t\t<td>\n';
-  // src_example_img += '\t\t\t\t\t<img src="'+example_1+'" alt="보기그림">\n';
-  src_example_img += '\t\t\t\t\t' + example_1 + '\n';
-  src_example_img += '\t\t\t\t</td>\n';
-  src_example_img += '\t\t\t</tr>\n';
-  src_example_img += '\t\t\t<tr class="allaBlankTr">\n';
-  src_example_img += '\t\t\t\t<td></td>\n';
-  src_example_img += '\t\t\t</tr>\n';
+  src_example_img += '\t\t\t\t<!-- 보기그림 -->\n';
+  src_example_img += '\t\t\t\t<tr class="alla6ExampleTr_Img">\n';
+  src_example_img += '\t\t\t\t\t<td>\n';
+  // src_example_img += '\t\t\t\t\t\t<img src="'+example_1+'" alt="보기그림">\n';
+  src_example_img += '\t\t\t\t\t\t' + example_1 + '\n';
+  src_example_img += '\t\t\t\t\t</td>\n';
+  src_example_img += '\t\t\t\t</tr>\n';
+  src_example_img += '\t\t\t\t<tr class="alla6BlankTr">\n';
+  src_example_img += '\t\t\t\t\t<td></td>\n';
+  src_example_img += '\t\t\t\t</tr>\n';
   fnl.value += src_example_img;
 }
 
-// html_example_img_add
+// [toHTML] 보기그림 (추가)
 function html_example_img_add(example_2) {
   // replace (negative words to html)
-  var nagawords = example_2;
-  example_2 = nagative_words_to_html(nagawords);
+  example_2 = nagative_words_to_html(example_2);
   // replace (main)
   src_example_img = '';
-  src_example_img += '\t\t\t<!-- 추가보기그림 -->\n';
-  src_example_img += '\t\t\t<tr class="allaExampleTr_Img">\n';
-  src_example_img += '\t\t\t\t<td>\n';
-  // src_example_img += '\t\t\t\t\t<img src="'+example_2+'" alt="추가보기그림">\n';
-  src_example_img += '\t\t\t\t\t' + example_2 + '\n';
-  src_example_img += '\t\t\t\t</td>\n';
-  src_example_img += '\t\t\t</tr>\n';
-  src_example_img += '\t\t\t<tr class="allaBlankTr">\n';
-  src_example_img += '\t\t\t\t<td></td>\n';
-  src_example_img += '\t\t\t</tr>\n';
+  src_example_img += '\t\t\t\t<!-- 추가보기그림 -->\n';
+  src_example_img += '\t\t\t\t<tr class="alla6ExampleTr_Img">\n';
+  src_example_img += '\t\t\t\t\t<td>\n';
+  // src_example_img += '\t\t\t\t\t\t<img src="'+example_2+'" alt="추가보기그림">\n';
+  src_example_img += '\t\t\t\t\t\t' + example_2 + '\n';
+  src_example_img += '\t\t\t\t\t</td>\n';
+  src_example_img += '\t\t\t\t</tr>\n';
+  src_example_img += '\t\t\t\t<tr class="alla6BlankTr">\n';
+  src_example_img += '\t\t\t\t\t<td></td>\n';
+  src_example_img += '\t\t\t\t</tr>\n';
   fnl.value += src_example_img;
 }
 
-// html_question_answer
-function html_question_answer(number, answer_1, answer_2, answer_3, answer_4) {
-  // replace (negative words to html) answer_1
-  var nagawords = answer_1;
-  answer_1 = nagative_words_to_html(nagawords);
-  // replace (negative words to html) answer_2
-  var nagawords = answer_2;
-  answer_2 = nagative_words_to_html(nagawords);
-  // replace (negative words to html) answer_3
-  var nagawords = answer_3;
-  answer_3 = nagative_words_to_html(nagawords);
-  // replace (negative words to html) answer_4
-  var nagawords = answer_4;
-  answer_4 = nagative_words_to_html(nagawords);
+// [toHTML] 객관식 선택지
+function html_question_answer(questionNo, answer_1, answer_2, answer_3, answer_4) {
+  // replace (negative words to html)
+  answer_1 = nagative_words_to_html(answer_1);
+  answer_2 = nagative_words_to_html(answer_2);
+  answer_3 = nagative_words_to_html(answer_3);
+  answer_4 = nagative_words_to_html(answer_4);
   // replace (main)
-  if (parseInt(number) < 10) {
-    src_question_answer = '';
-    src_question_answer += '\t\t\t<!-- 객관식 1번 -->\n';
-    src_question_answer += '\t\t\t<tr class="allaAnswerTr">\n';
-    src_question_answer += '\t\t\t\t<td class="allaAnswerTd">\n';
-    src_question_answer += '\t\t\t\t\t<label for="radio-0' + number + '-1">\n';
-    src_question_answer += '\t\t\t\t\t\t<input class="allaAnswerRadio" type="radio" id="radio-0' + number + '-1" name="question-0' + number + '" value="1">\n';
-    src_question_answer += '\t\t\t\t\t\t' + answer_1 + '\n';
-    src_question_answer += '\t\t\t\t\t</label>\n';
-    src_question_answer += '\t\t\t\t</td>\n';
-    src_question_answer += '\t\t\t</tr>\n';
-    src_question_answer += '\t\t\t<!-- 객관식 2번 -->\n';
-    src_question_answer += '\t\t\t<tr class="allaAnswerTr">\n';
-    src_question_answer += '\t\t\t\t<td class="allaAnswerTd">\n';
-    src_question_answer += '\t\t\t\t\t<label for="radio-0' + number + '-2">\n';
-    src_question_answer += '\t\t\t\t\t\t<input class="allaAnswerRadio" type="radio" id="radio-0' + number + '-2" name="question-0' + number + '" value="2">\n';
-    src_question_answer += '\t\t\t\t\t\t' + answer_2 + '\n';
-    src_question_answer += '\t\t\t\t\t</label>\n';
-    src_question_answer += '\t\t\t\t</td>\n';
-    src_question_answer += '\t\t\t</tr>\n';
-    src_question_answer += '\t\t\t<!-- 객관식 3번 -->\n';
-    src_question_answer += '\t\t\t<tr class="allaAnswerTr">\n';
-    src_question_answer += '\t\t\t\t<td class="allaAnswerTd">\n';
-    src_question_answer += '\t\t\t\t\t<label for="radio-0' + number + '-3">\n';
-    src_question_answer += '\t\t\t\t\t\t<input class="allaAnswerRadio" type="radio" id="radio-0' + number + '-3" name="question-0' + number + '" value="3">\n';
-    src_question_answer += '\t\t\t\t\t\t' + answer_3 + '\n';
-    src_question_answer += '\t\t\t\t\t</label>\n';
-    src_question_answer += '\t\t\t\t</td>\n';
-    src_question_answer += '\t\t\t</tr>\n';
-    src_question_answer += '\t\t\t<!-- 객관식 4번 -->\n';
-    src_question_answer += '\t\t\t<tr class="allaAnswerTr">\n';
-    src_question_answer += '\t\t\t\t<td class="allaAnswerTd">\n';
-    src_question_answer += '\t\t\t\t\t<label for="radio-0' + number + '-4">\n';
-    src_question_answer += '\t\t\t\t\t\t<input class="allaAnswerRadio" type="radio" id="radio-0' + number + '-4" name="question-0' + number + '" value="4">\n';
-    src_question_answer += '\t\t\t\t\t\t' + answer_4 + '\n';
-    src_question_answer += '\t\t\t\t\t</label>\n';
-    src_question_answer += '\t\t\t\t</td>\n';
-    src_question_answer += '\t\t\t</tr>\n';
-    src_question_answer += '\t\t\t<!-- 객관식 5번 -->\n';
-    src_question_answer += '\t\t\t<tr class="allaAnswerTr">\n';
-    src_question_answer += '\t\t\t\t<td class="allaAnswerTd">\n';
-    src_question_answer += '\t\t\t\t\t<label for="radio-0' + number + '-5">\n';
-    src_question_answer += '\t\t\t\t\t\t<input class="allaAnswerRadio" type="radio" id="radio-0' + number + '-5" name="question-0' + number + '" value="5">\n';
-    src_question_answer += '\t\t\t\t\t\t모름\n';
-    src_question_answer += '\t\t\t\t\t</label>\n';
-    src_question_answer += '\t\t\t\t</td>\n';
-    src_question_answer += '\t\t\t</tr>\n';
-    src_question_answer += '\t\t\t<!-- 메인 문제 채점 -->\n';
-    src_question_answer += '\t\t\t<tr class="allaCheckTr">\n';
-    src_question_answer += '\t\t\t\t<td>\n';
-    src_question_answer += '\t\t\t\t\t<button type="button">다시채점</button>\n';
-    src_question_answer += '\t\t\t\t</td>\n';
-    src_question_answer += '\t\t\t</tr>\n';
-    src_question_answer += '\t\t</tbody>\n';
-    src_question_answer += '\t</table>\n';
-    src_question_answer += '</form>\n';
-    src_question_answer += '<!-- //문제 : 0' + number + ' -->\n';
-    src_question_answer += '<!-- ------------------------------------------------------------------------------------ -->\n\n';
-    fnl.value += src_question_answer;
-  } else {
-    src_question_answer = '';
-    src_question_answer += '\t\t\t<!-- 객관식 1번 -->\n';
-    src_question_answer += '\t\t\t<tr class="allaAnswerTr">\n';
-    src_question_answer += '\t\t\t\t<td class="allaAnswerTd">\n';
-    src_question_answer += '\t\t\t\t\t<label for="radio-' + number + '-1">\n';
-    src_question_answer += '\t\t\t\t\t\t<input class="allaAnswerRadio" type="radio" id="radio-' + number + '-1" name="question-' + number + '" value="1">\n';
-    src_question_answer += '\t\t\t\t\t\t' + answer_1 + '\n';
-    src_question_answer += '\t\t\t\t\t</label>\n';
-    src_question_answer += '\t\t\t\t</td>\n';
-    src_question_answer += '\t\t\t</tr>\n';
-    src_question_answer += '\t\t\t<!-- 객관식 2번 -->\n';
-    src_question_answer += '\t\t\t<tr class="allaAnswerTr">\n';
-    src_question_answer += '\t\t\t\t<td class="allaAnswerTd">\n';
-    src_question_answer += '\t\t\t\t\t<label for="radio-' + number + '-2">\n';
-    src_question_answer += '\t\t\t\t\t\t<input class="allaAnswerRadio" type="radio" id="radio-' + number + '-2" name="question-' + number + '" value="2">\n';
-    src_question_answer += '\t\t\t\t\t\t' + answer_2 + '\n';
-    src_question_answer += '\t\t\t\t\t</label>\n';
-    src_question_answer += '\t\t\t\t</td>\n';
-    src_question_answer += '\t\t\t</tr>\n';
-    src_question_answer += '\t\t\t<!-- 객관식 3번 -->\n';
-    src_question_answer += '\t\t\t<tr class="allaAnswerTr">\n';
-    src_question_answer += '\t\t\t\t<td class="allaAnswerTd">\n';
-    src_question_answer += '\t\t\t\t\t<label for="radio-' + number + '-3">\n';
-    src_question_answer += '\t\t\t\t\t\t<input class="allaAnswerRadio" type="radio" id="radio-' + number + '-3" name="question-' + number + '" value="3">\n';
-    src_question_answer += '\t\t\t\t\t\t' + answer_3 + '\n';
-    src_question_answer += '\t\t\t\t\t</label>\n';
-    src_question_answer += '\t\t\t\t</td>\n';
-    src_question_answer += '\t\t\t</tr>\n';
-    src_question_answer += '\t\t\t<!-- 객관식 4번 -->\n';
-    src_question_answer += '\t\t\t<tr class="allaAnswerTr">\n';
-    src_question_answer += '\t\t\t\t<td class="allaAnswerTd">\n';
-    src_question_answer += '\t\t\t\t\t<label for="radio-' + number + '-4">\n';
-    src_question_answer += '\t\t\t\t\t\t<input class="allaAnswerRadio" type="radio" id="radio-' + number + '-4" name="question-' + number + '" value="4">\n';
-    src_question_answer += '\t\t\t\t\t\t' + answer_4 + '\n';
-    src_question_answer += '\t\t\t\t\t</label>\n';
-    src_question_answer += '\t\t\t\t</td>\n';
-    src_question_answer += '\t\t\t</tr>\n';
-    src_question_answer += '\t\t\t<!-- 객관식 5번 -->\n';
-    src_question_answer += '\t\t\t<tr class="allaAnswerTr">\n';
-    src_question_answer += '\t\t\t\t<td class="allaAnswerTd">\n';
-    src_question_answer += '\t\t\t\t\t<label for="radio-' + number + '-5">\n';
-    src_question_answer += '\t\t\t\t\t\t<input class="allaAnswerRadio" type="radio" id="radio-' + number + '-5" name="question-' + number + '" value="5">\n';
-    src_question_answer += '\t\t\t\t\t\t모름\n';
-    src_question_answer += '\t\t\t\t\t</label>\n';
-    src_question_answer += '\t\t\t\t</td>\n';
-    src_question_answer += '\t\t\t</tr>\n';
-    src_question_answer += '\t\t\t<!-- 메인 문제 채점 -->\n';
-    src_question_answer += '\t\t\t<tr class="allaCheckTr">\n';
-    src_question_answer += '\t\t\t\t<td>\n';
-    src_question_answer += '\t\t\t\t\t<button type="button">다시채점</button>\n';
-    src_question_answer += '\t\t\t\t</td>\n';
-    src_question_answer += '\t\t\t</tr>\n';
-    src_question_answer += '\t\t</tbody>\n';
-    src_question_answer += '\t</table>\n';
-    src_question_answer += '</form>\n';
-    src_question_answer += '<!-- //문제 : ' + number + ' -->\n';
-    src_question_answer += '<!-- ------------------------------------------------------------------------------------ -->\n\n';
-    fnl.value += src_question_answer;
-  }
+  let number;
+  parseInt(questionNo) < 10 ? (number = '0' + questionNo) : (number = questionNo);
+  src_question_answer = '';
+  src_question_answer += '\t\t\t\t<!-- 객관식 1번 -->\n';
+  src_question_answer += '\t\t\t\t<tr class="alla6AnswerTr">\n';
+  src_question_answer += '\t\t\t\t\t<td class="alla6AnswerTd">\n';
+  src_question_answer += '\t\t\t\t\t\t<label for="radio-' + number + '-1">\n';
+  src_question_answer += '\t\t\t\t\t\t\t<input class="alla6AnswerRadio" type="radio" id="radio-' + number + '-1" name="question-' + number + '" value="1">\n';
+  src_question_answer += '\t\t\t\t\t\t\t' + answer_1 + '\n';
+  src_question_answer += '\t\t\t\t\t\t</label>\n';
+  src_question_answer += '\t\t\t\t\t</td>\n';
+  src_question_answer += '\t\t\t\t</tr>\n';
+  src_question_answer += '\t\t\t\t<!-- 객관식 2번 -->\n';
+  src_question_answer += '\t\t\t\t<tr class="alla6AnswerTr">\n';
+  src_question_answer += '\t\t\t\t\t<td class="alla6AnswerTd">\n';
+  src_question_answer += '\t\t\t\t\t\t<label for="radio-' + number + '-2">\n';
+  src_question_answer += '\t\t\t\t\t\t\t<input class="alla6AnswerRadio" type="radio" id="radio-' + number + '-2" name="question-' + number + '" value="2">\n';
+  src_question_answer += '\t\t\t\t\t\t\t' + answer_2 + '\n';
+  src_question_answer += '\t\t\t\t\t\t</label>\n';
+  src_question_answer += '\t\t\t\t\t</td>\n';
+  src_question_answer += '\t\t\t\t</tr>\n';
+  src_question_answer += '\t\t\t\t<!-- 객관식 3번 -->\n';
+  src_question_answer += '\t\t\t\t<tr class="alla6AnswerTr">\n';
+  src_question_answer += '\t\t\t\t\t<td class="alla6AnswerTd">\n';
+  src_question_answer += '\t\t\t\t\t\t<label for="radio-' + number + '-3">\n';
+  src_question_answer += '\t\t\t\t\t\t\t<input class="alla6AnswerRadio" type="radio" id="radio-' + number + '-3" name="question-' + number + '" value="3">\n';
+  src_question_answer += '\t\t\t\t\t\t\t' + answer_3 + '\n';
+  src_question_answer += '\t\t\t\t\t\t</label>\n';
+  src_question_answer += '\t\t\t\t\t</td>\n';
+  src_question_answer += '\t\t\t\t</tr>\n';
+  src_question_answer += '\t\t\t\t<!-- 객관식 4번 -->\n';
+  src_question_answer += '\t\t\t\t<tr class="alla6AnswerTr">\n';
+  src_question_answer += '\t\t\t\t\t<td class="alla6AnswerTd">\n';
+  src_question_answer += '\t\t\t\t\t\t<label for="radio-' + number + '-4">\n';
+  src_question_answer += '\t\t\t\t\t\t\t<input class="alla6AnswerRadio" type="radio" id="radio-' + number + '-4" name="question-' + number + '" value="4">\n';
+  src_question_answer += '\t\t\t\t\t\t\t' + answer_4 + '\n';
+  src_question_answer += '\t\t\t\t\t\t</label>\n';
+  src_question_answer += '\t\t\t\t\t</td>\n';
+  src_question_answer += '\t\t\t\t</tr>\n';
+  src_question_answer += '\t\t\t\t<!-- 메인 문제 채점 -->\n';
+  src_question_answer += '\t\t\t\t<tr class="alla6CheckTr">\n';
+  src_question_answer += '\t\t\t\t\t<td>\n';
+  src_question_answer += '\t\t\t\t\t\t<button type="button">다시채점</button>\n';
+  src_question_answer += '\t\t\t\t\t</td>\n';
+  src_question_answer += '\t\t\t\t</tr>\n';
+  src_question_answer += '\t\t\t\t<!-- 메인 문제 해설 -->\n';
+  src_question_answer += '\t\t\t\t<tr class="alla6SolveTr">\n';
+  src_question_answer += '\t\t\t\t\t<td>\n';
+  src_question_answer += '\t\t\t\t\t\t해설)<br>\n';
+  src_question_answer += '\t\t\t\t\t</td>\n';
+  src_question_answer += '\t\t\t\t</tr>\n';
+  src_question_answer += '\t\t\t</tbody>\n';
+  src_question_answer += '\t\t</table>\n';
+  src_question_answer += '\t</form>\n';
+  src_question_answer += '</div>\n';
+  src_question_answer += '<!-- //문제 : ' + number + ' -->\n';
+  src_question_answer += '<!-- ------------------------------------------------------------------------------------ -->\n\n';
+  fnl.value += src_question_answer;
 }
 
-// html_question_check
+// [toHTML] 채점 / 다시풀기 버튼
 function html_question_check() {
   src_question_check = '';
   src_question_check += '<!-- 채점 버튼 영역 -->\n';
-  src_question_check += '<form>\n';
-  src_question_check += '\t<table class="allaCheckTbl">\n';
-  src_question_check += '\t\t<tbody>\n';
-  src_question_check += '\t\t\t<tr>\n';
-  src_question_check += '\t\t\t\t<td>\n';
-  src_question_check += '\t\t\t\t\t<label>각 문제마다 채점을 해줍니다.</label>\n';
-  src_question_check += '\t\t\t\t\t<button type="button">채점하기</button><br>\n';
-  src_question_check += '\t\t\t\t\t<label>모든 답안을 초기화합니다.</label>\n';
-  src_question_check += '\t\t\t\t\t<button type="button">다시풀기</button>\n';
-  src_question_check += '\t\t\t\t</td>\n';
-  src_question_check += '\t\t\t</tr>\n';
-  src_question_check += '\t\t</tbody>\n';
-  src_question_check += '\t</table>\n';
-  src_question_check += '</form>\n';
+  src_question_check += '<div class="alla6CheckDiv">\n';
+  src_question_check += '\t<form>\n';
+  src_question_check += '\t\t<table class="alla6CheckTbl">\n';
+  src_question_check += '\t\t\t<tbody>\n';
+  src_question_check += '\t\t\t\t<tr>\n';
+  src_question_check += '\t\t\t\t\t<td>\n';
+  src_question_check += '\t\t\t\t\t\t<label>각 문제마다 채점을 해줍니다.</label>\n';
+  src_question_check += '\t\t\t\t\t\t<button type="button">채점하기</button><br>\n';
+  src_question_check += '\t\t\t\t\t\t<label>모든 답안을 초기화합니다.</label>\n';
+  src_question_check += '\t\t\t\t\t\t<button type="button">다시풀기</button>\n';
+  src_question_check += '\t\t\t\t\t</td>\n';
+  src_question_check += '\t\t\t\t</tr>\n';
+  src_question_check += '\t\t\t</tbody>\n';
+  src_question_check += '\t\t</table>\n';
+  src_question_check += '\t</form>\n';
+  src_question_check += '</div>\n';
   src_question_check += '<!-- // 채점 버튼 영역 -->\n';
   src_question_check += '<!-- ------------------------------------------------------------------------------------ -->\n\n';
   fnl.value += src_question_check;
 }
 
-// html_answer_table_header
-function html_answer_table_header() {
+// [toHTML] 정답지 Header
+function html_answer_table(answer) {
   src_answer_table_header = '';
   src_answer_table_header += '<!-- 정답지 영역 -->\n';
-  src_answer_table_header += '<div class="allaAnswerGuideDiv">\n';
+  src_answer_table_header += '<div class="alla6AnswerTableDiv">\n';
   src_answer_table_header += '\t<table>\n';
   src_answer_table_header += '\t\t<tbody>\n';
-  src_answer_table_header += '\t\t\t<colgroup><col style="width:11.3%"><col style="width:22%"><col style="width:11.3%"><col style="width:22%"><col style="width:11.4%"><col style="width:22%"></colgroup>\n';
-  src_answer_table_header += '\t\t\t<tr><th colspan="6">중복답안 가이드</th></tr>\n';
-  src_answer_table_header += '\t\t\t<tr><td>A</td><td>1, 2</td><td>E</td><td>2, 4</td><td>I</td><td>1, 3, 4</td></tr>\n';
-  src_answer_table_header += '\t\t\t<tr><td>B</td><td>1, 3</td><td>F</td><td>3, 4</td><td>J</td><td>2, 3, 4</td></tr>\n';
-  src_answer_table_header += '\t\t\t<tr><td>C</td><td>1, 4</td><td>G</td><td>1, 2, 3</td><td>K</td><td>1, 2, 3, 4</td></tr>\n';
-  src_answer_table_header += '\t\t\t<tr><td>D</td><td>2, 3</td><td>H</td><td>1, 2, 4</td><td></td><td></td></tr>\n';
+  src_answer_table_header += '\t\t\t<tr><th>문제답안</th></tr>\n';
+  src_answer_table_header += '\t\t\t<tr><td>' + answer + '</td></tr>\n';
   src_answer_table_header += '\t\t</tbody>\n';
   src_answer_table_header += '\t</table><br>\n';
   src_answer_table_header += '</div>\n';
-  src_answer_table_header += '<div class="allaAnswerTableDiv">\n';
-  src_answer_table_header += '\t<table>\n';
-  src_answer_table_header += '\t\t<tbody>\n';
-  src_answer_table_header += '\t\t\t<colgroup><col style="width:11.3%"><col style="width:27.65%"><col style="width:27.65%"><col style="width:16.7%"><col style="width:16.7%"></colgroup>\n';
-  src_answer_table_header += '\t\t\t<tr><th>No</th><th>정답</th><th>선택</th><th>채점</th><th>바로가기</th></tr>\n';
   fnl.value += src_answer_table_header;
+}
+
+// html_answer_table_header
+function html_answer_table_header() {
+  // src_answer_table_header = '';
+  // src_answer_table_header += '<!-- 정답지 영역 -->\n';
+  // src_answer_table_header += '<div class="allaAnswerGuideDiv">\n';
+  // src_answer_table_header += '\t<table>\n';
+  // src_answer_table_header += '\t\t<tbody>\n';
+  // src_answer_table_header += '\t\t\t<colgroup><col style="width:11.3%"><col style="width:22%"><col style="width:11.3%"><col style="width:22%"><col style="width:11.4%"><col style="width:22%"></colgroup>\n';
+  // src_answer_table_header += '\t\t\t<tr><th colspan="6">중복답안 가이드</th></tr>\n';
+  // src_answer_table_header += '\t\t\t<tr><td>A</td><td>1, 2</td><td>E</td><td>2, 4</td><td>I</td><td>1, 3, 4</td></tr>\n';
+  // src_answer_table_header += '\t\t\t<tr><td>B</td><td>1, 3</td><td>F</td><td>3, 4</td><td>J</td><td>2, 3, 4</td></tr>\n';
+  // src_answer_table_header += '\t\t\t<tr><td>C</td><td>1, 4</td><td>G</td><td>1, 2, 3</td><td>K</td><td>1, 2, 3, 4</td></tr>\n';
+  // src_answer_table_header += '\t\t\t<tr><td>D</td><td>2, 3</td><td>H</td><td>1, 2, 4</td><td></td><td></td></tr>\n';
+  // src_answer_table_header += '\t\t</tbody>\n';
+  // src_answer_table_header += '\t</table><br>\n';
+  // src_answer_table_header += '</div>\n';
+  // src_answer_table_header += '<div class="allaAnswerTableDiv">\n';
+  // src_answer_table_header += '\t<table>\n';
+  // src_answer_table_header += '\t\t<tbody>\n';
+  // src_answer_table_header += '\t\t\t<colgroup><col style="width:11.3%"><col style="width:27.65%"><col style="width:27.65%"><col style="width:16.7%"><col style="width:16.7%"></colgroup>\n';
+  // src_answer_table_header += '\t\t\t<tr><th>No</th><th>정답</th><th>선택</th><th>채점</th><th>바로가기</th></tr>\n';
+  // fnl.value += src_answer_table_header;
 }
 
 // html_answer_table_input
 function html_answer_table_input() {
-  for (var i = 0; i <= parseInt(txt_count.value) - 1; i++) {
-    array_answer[i] = txt_answer.value.substring(i, i + 1);
-  }
+  // for (var i = 0; i <= parseInt(txt_count.value) - 1; i++) {
+  //   array_answer[i] = txt_answer.value.substring(i, i + 1);
+  // }
 }
 
 // html_answer_table_contents
 function html_answer_table_contents() {
-  for (var i = 0; i <= parseInt(txt_count.value) - 1; i++) {
-    var question_num = i + parseInt(txt_snum.value);
-    if (question_num < 10) {
-      src_answer_table_contents = '\t\t\t<tr><td>0' + question_num + '</td><td>' + array_answer[i] + '</td><td></td><td><img src="" width="26px"></td><td><img src="" id="shortcut-v501-0' + question_num + '" width="26px"></td></tr>\n';
-      fnl.value += src_answer_table_contents;
-    } else {
-      src_answer_table_contents = '\t\t\t<tr><td>' + question_num + '</td><td>' + array_answer[i] + '</td><td></td><td><img src="" width="26px"></td><td><img src="" id="shortcut-v501-' + question_num + '" width="26px"></td></tr>\n';
-      fnl.value += src_answer_table_contents;
-    }
-  }
+  // for (var i = 0; i <= parseInt(txt_count.value) - 1; i++) {
+  //   var question_num = i + parseInt(txt_snum.value);
+  //   if (question_num < 10) {
+  //     src_answer_table_contents = '\t\t\t<tr><td>0' + question_num + '</td><td>' + array_answer[i] + '</td><td></td><td><img src="" width="26px"></td><td><img src="" id="shortcut-v501-0' + question_num + '" width="26px"></td></tr>\n';
+  //     fnl.value += src_answer_table_contents;
+  //   } else {
+  //     src_answer_table_contents = '\t\t\t<tr><td>' + question_num + '</td><td>' + array_answer[i] + '</td><td></td><td><img src="" width="26px"></td><td><img src="" id="shortcut-v501-' + question_num + '" width="26px"></td></tr>\n';
+  //     fnl.value += src_answer_table_contents;
+  //   }
+  // }
 }
 
 // html_answer_table_footer
 function html_answer_table_footer() {
-  src_answer_table_footer = '';
-  src_answer_table_footer += '\t\t</tbody>\n';
-  src_answer_table_footer += '\t</table>\n';
-  src_answer_table_footer += '</div>\n';
-  src_answer_table_footer += '<!-- // 정답지 영역 -->\n';
-  src_answer_table_footer += '<!-- ------------------------------------------------------------------------------------ -->\n\n';
-  fnl.value += src_answer_table_footer;
+  // src_answer_table_footer = '';
+  // src_answer_table_footer += '\t\t</tbody>\n';
+  // src_answer_table_footer += '\t</table>\n';
+  // src_answer_table_footer += '</div>\n';
+  // src_answer_table_footer += '<!-- // 정답지 영역 -->\n';
+  // src_answer_table_footer += '<!-- ------------------------------------------------------------------------------------ -->\n\n';
+  // fnl.value += src_answer_table_footer;
 }
 
-// html_shortcut
+// [toHTML] 타년도 문제 바로가기
 function html_shortcut() {
   src_shortcut = '';
   src_shortcut += '<!-- 타년도 문제 바로가기 영역 -->\n';
-  src_shortcut += '<div class="allaOtherExamDiv">\n';
-  /*
-    src_shortcut += '\t<a href="https://allaclass.com/tag/'+txt_object.value+'%20'+txt_kind.value+'시험" target="_top">\n';
-    src_shortcut += '\t\t<div>\n';
-    src_shortcut += '\t\t\t<span class="allaOtherTitle">\''+txt_object.value+' '+txt_kind.value+'시험\'</span> 타년도 모의고사\n';
-    src_shortcut += '\t\t</div>\n';
-    src_shortcut += '\t\t<div>\n';
-    src_shortcut += '\t\t\t방송대 '+txt_object.value+' 기말시험 2019년도 / 올에이클래스 모의고사<br>\n';
-    src_shortcut += '\t\t\t방송대 '+txt_object.value+' 기말시험 2018년도 / 올에이클래스 모의고사<br>\n';
-    src_shortcut += '\t\t\t방송대 '+txt_object.value+' 기말시험 2017년도 / 올에이클래스 모의고사<br>\n';
-    src_shortcut += '\t\t\t방송대 '+txt_object.value+' 기말시험 2016년도 / 올에이클래스 모의고사<br>\n';
-    src_shortcut += '\t\t\t방송대 '+txt_object.value+' 기말시험 2015년도 / 올에이클래스 모의고사<br>\n';
-    src_shortcut += '\t\t\t방송대 '+txt_object.value+' 기말시험 2014년도 / 올에이클래스 모의고사<br>\n';
-    src_shortcut += '\t\t\t방송대 '+txt_object.value+' 기말시험 2013년도 / 올에이클래스 모의고사<br>\n';
-    src_shortcut += '\t\t</div>\n';
-    src_shortcut += '\t</a>\n';
-    */
+  src_shortcut += '<div class="alla6OtherExamDiv">\n';
   src_shortcut += '</div>\n';
   src_shortcut += '<!-- // 타년도 문제 바로가기 영역 -->\n';
   src_shortcut += '<!-- ------------------------------------------------------------------------------------ -->\n\n';
   fnl.value += src_shortcut;
 }
 
-// html_notice_footer
+// [toHTML] 공지사항 Footer
 function html_notice_footer() {
   src_notice_footer = '';
   src_notice_footer += '<!-- 공지사항 Footer 영역 -->\n';
-  src_notice_footer += '<div class="allaNoticeFooterDiv">\n';
+  src_notice_footer += '<div class="alla6NoticeFooterDiv">\n';
   src_notice_footer += '</div>\n';
   src_notice_footer += '<!-- ------------------------------------------------------------------------------------ -->\n\n';
   fnl.value += src_notice_footer;
