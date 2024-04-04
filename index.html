@@ -4,42 +4,30 @@
     <meta charset="UTF-8" />
     <title>C 업로드</title>
     <!-- style import -->
-    <link rel="stylesheet" href="./css/alla-class-input-common-5.0.1.css" />
-    <link rel="stylesheet" href="./css/alla-class-post-common-5.0.2.css" />
+    <link rel="stylesheet" href="./css/alla-class-input-common-5.2.1.css" />
+    <!-- <link rel="stylesheet" href="./css/alla-class-post-common-5.0.2.css" /> -->
+    <link rel="stylesheet" href="./css/alla-class-post-common-6.0.1.css" />
     <!-- <link rel="shortcut icon" type="image/x-icon" href="https://raw.githubusercontent.com/knouclass/inputpost/master/icon_admin.png"> -->
     <link rel="shortcut icon" type="image/x-icon" href="./img/icon_admin.png" />
   </head>
   <body>
-    <div class="menu">
-      <!-- textarea -->
-      <textarea id="txt_info" name="txt_info" placeholder="한번에 입력" onkeyup="info_input()"></textarea>
-      <textarea id="txt_title" name="txt_title" placeholder="타이틀" readonly></textarea>
-      <textarea id="txt_tag" name="txt_tag" placeholder="태그" readonly></textarea>
-      <!-- button -->
-      <button onclick="btn_lv1()" id="lv1">업로드용</button><br />
-      <!-- <button onclick="btn_lv2()" id="lv2">Lv.2</button> -->
-      <!-- textarea -->
-      <textarea id="txt_object" name="txt_object" placeholder="과목명" onkeyup="post_title()"></textarea>
-      <textarea id="txt_kind" name="txt_kind" placeholder="종류" onkeyup="post_title()"></textarea>
-      <textarea id="txt_year" name="txt_year" placeholder="연도" onkeyup="post_title()"></textarea>
-      <textarea id="txt_seme" name="txt_seme" placeholder="학기" onkeyup="post_title()"></textarea>
-      <textarea id="txt_grade" name="txt_grade" placeholder="학년" onkeyup="post_title()"></textarea>
-      <textarea id="txt_prof" name="txt_prof" placeholder="교수명"></textarea>
-      <textarea id="txt_range" name="txt_range" placeholder="시험범위"></textarea>
-      <textarea id="txt_snum" name="txt_snum" placeholder="시작번호" onkeyup="question_count()"></textarea>
-      <textarea id="txt_enum" name="txt_enum" placeholder="종료번호" onkeyup="question_count()"></textarea>
-      <textarea id="txt_count" name="txt_count" placeholder="문항수" readonly></textarea>
-      <textarea id="txt_thumb" name="txt_thumb" placeholder="썸네일 주소"></textarea>
-      <textarea id="txt_answer" name="txt_answer" placeholder="정답"></textarea><br />
+    <div class="container">
+      <div class="menu">
+        <!-- textarea -->
+        <textarea id="txt_info" name="txt_info" placeholder="한번에 입력" onkeyup="fnGetInfoData()"></textarea>
+        <textarea id="txt_title" name="txt_title" placeholder="타이틀" readonly></textarea>
+        <textarea id="txt_tag" name="txt_tag" placeholder="태그" readonly></textarea>
+        <!-- button -->
+        <button onclick="btn_lv1()" id="lv1">업로드용</button><br />
+        <!-- <button onclick="btn_lv2()" id="lv2">Lv.2</button> -->
+      </div>
+
+      <textarea class="txt_outputHtml" id="txt_outputHtml" placeholder="3. output html"></textarea>
+      <textarea class="txt_inputData" id="txt_inputData" placeholder="1. input data"></textarea>
+      <textarea class="txt_outputArray" id="txt_outputArray" placeholder="2. output array"></textarea>
+      <!-- <div id="postUpper"></div> -->
+      <div id="postView" class="postView"></div>
     </div>
-
-    <textarea class="final" id="final" placeholder="3. html conversion"></textarea>
-
-    <!-- result -->
-    <textarea class="contents" id="contents" placeholder="1. origin data"></textarea>
-    <textarea class="result" id="result" placeholder="2. array data"></textarea>
-    <!-- <div id="postUpper"></div> -->
-    <div id="postView" class="postView"></div>
 
     <!-- script import -->
     <script type="text/javascript" src="./js/alla-class-input-common-6.0.1.js"></script>

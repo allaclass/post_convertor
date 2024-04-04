@@ -229,19 +229,20 @@ table.alla6BasicTbl tr.alla6ExampleTr_Txt td div.allaExampleAlign_center {
 table.alla6BasicTbl tr.alla6ExampleTr_Img td:last-of-type {
   padding: 0px 16px;
   border-radius: 15px;
-  background-color: rgba(220, 220, 220, 0);
+  background-color: rgba(220, 220, 220, 0.7);
   text-align: center;
   line-height: 0px;
 }
 /* 보기그림 내 그림 */
 table.alla6BasicTbl tr.alla6ExampleTr_Img td:last-of-type img {
   width: 100%;
+  max-width: 740px;
 }
 
 /* 객관식 영역 */
 /* 라디오 */
 .alla6AnswerRadio {
-  margin-top: -5px;
+  margin-top: 9px;
   margin-right: 6px;
   margin-left: 9px;
   width: 18px;
