@@ -18,8 +18,8 @@
         <textarea id="txt_title" name="txt_title" placeholder="타이틀" readonly></textarea>
         <textarea id="txt_tag" name="txt_tag" placeholder="태그" readonly></textarea>
         <!-- button -->
-        <button onclick="btn_lv1()" id="lv1">업로드용</button><br />
-        <!-- <button onclick="btn_lv2()" id="lv2">Lv.2</button> -->
+        <button onclick="btn_sort()" id="lv1">정렬</button><br />
+        <button onclick="btn_sort('\n')" id="lv2">정렬 (1.)</button>
       </div>
 
       <textarea class="txt_outputHtml" id="txt_outputHtml" placeholder="3. output html"></textarea>
@@ -30,6 +30,8 @@
     </div>
 
     <!-- script import -->
+    <script type="text/javascript" src="./js/alla-class-fnGetQuestion.js"></script>
+    <script type="text/javascript" src="./js/alla-class-fnGetQuestionDetail.js"></script>
     <script type="text/javascript" src="./js/alla-class-input-common-6.0.1.js"></script>
   </body>
 </html>
