@@ -20,21 +20,24 @@ let str = `
 /보기문
 그룹 문제 보기문 내용
 
-1. 1번 문제 지문
+1.
+1번 문제 지문
 ① ⓐ
 ② ⓑ
 ③ ⓒ
 ④ ⓓ
 
-2. 2번 문제 지문
+2.
+2번 문제 지문
 /보기그림
 그림
 ① ⓐ
 ② ⓑ
 ③ ⓒ
-④ ⓓ
+④ 3.1
 
-※. (3~4) 그룹 문제 지문
+※.
+(3~4) 그룹 문제 지문
 /보기문
 그룹 문제 보기문 내용
 
@@ -45,15 +48,17 @@ let str = `
 ③ ⓒ
 ④ ⓓ
 
-4. 4번 문제 지문
+4.
+4번 문제 지문
 /보기그림
 그림
 ① ⓐ  
 ② ⓑ
-③ ⓒ  
+③ 3.1  
 ④ ⓓ
 
-5. 5번 문제 지문
+5.
+5번 문제 지문
 /보기그림
 그림
 ① ⓐ  
@@ -63,20 +68,13 @@ let str = `
 
 `;
 
-// 패턴들의 모든 인덱스를 가져오는 함수
-let findAllIndices = (str, patterns) => {
-  let indices = [];
-  patterns.forEach((pattern) => {
-    const regex = new RegExp(`${pattern}`, 'g');
-    let match;
-    while ((match = regex.exec(str)) !== null) {
-      let inputPattern = pattern.replace('\\.', '.');
-      indices.push({ content: inputPattern, index: match.index });
-    }
-  });
-  indices.sort((a, b) => a.index - b.index);
-  return indices;
-};
+let eNum = 100;
+
+let etc = '\n';
+
+// --------------------------------------------------------------------------------------
+// ----------------------------------- INIT FUNCTION ------------------------------------
+// --------------------------------------------------------------------------------------
 
 // 패턴배열에 패턴 채우기 함수
 // 예시 : [`※\\.`, `1\\.`, `2\\.`, `3\\.`, `4\\.`];
@@ -92,7 +90,24 @@ let setPatterns = (eNum) => {
   return arrPatterns;
 };
 
-// findAllIndices()의 index들을 토대로 내용 가져오기
+// 패턴들의 모든 인덱스를 가져오는 함수
+let findAllIndices = (str, patterns, etc) => {
+  let indices = [];
+  patterns.forEach((pattern) => {
+    const regex = new RegExp(`${pattern}${etc}`, 'g');
+    let match;
+    while ((match = regex.exec(str)) !== null) {
+      let inputPattern = pattern.replace(`\\.`, '.');
+      let kind;
+      inputPattern == '※.' ? (kind = 'group') : (kind = 'normal');
+      indices.push({ kind, content: inputPattern, index: match.index });
+    }
+  });
+  indices.sort((a, b) => a.index - b.index);
+  return indices;
+};
+
+// index들을 토대로 내용 가져오기
 let findAllContents = (indices) => {
   let arrContents = [];
   for (let i = 1; i <= indices.length; i++) {
@@ -102,27 +117,31 @@ let findAllContents = (indices) => {
     if (i !== indices.length) {
       let item_rear_index = indices[i].index;
       let temp = str.substring(item_current_index + item_current_content.length, item_rear_index).trim();
-      // console.log(`${item_current_content}\n${temp}\n`);
       arrContents.push(`${item_current_content}\n${temp}\n`);
     } else {
       let temp = str.substring(item_current_index + item_current_content.length, str.length).trim();
-      // console.log(`${item_current_content}\n${temp}\n`);
       arrContents.push(`${item_current_content}\n${temp}\n`);
     }
   }
   return arrContents;
 };
 
+// --------------------------------------------------------------------------------------
+// ------------------------------------ EXE FUNCTION ------------------------------------
+// --------------------------------------------------------------------------------------
+
+// str, eNum, etc 매개변수
+
 // 패턴 자동으로 채우기 함수 호출
-let patterns = setPatterns(100);
+let patterns = setPatterns(eNum, etc);
 
 // str 문제 index로 구분하는 함수 호출
-const indices = findAllIndices(str, patterns);
+const indices = findAllIndices(str, patterns, etc);
 console.log(indices);
 
 // 내용 가져오는 함수 호출
 const contents = findAllContents(indices);
-console.log(contents);
-// contents.forEach((item) => {
-//   console.log(item);
-// });
+// console.log(contents);
+contents.forEach((item) => {
+  console.log(item);
+});

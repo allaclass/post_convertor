@@ -52,7 +52,7 @@ function findIndexes() {
       if (data[i + 1] === '.') {
         let dataTemp = data.substring(i, data.length).trim();
         let dataIndex = dataTemp.indexOf(`※.`);
-        arr.push({ index: dataIndex + i, content: `※.` });
+        arr.push({ type: 'group', number: `※.`, index: dataIndex + i });
       }
     } else {
       for (let j = 1; j < data.length; j++) {
@@ -60,7 +60,7 @@ function findIndexes() {
           if (data[i + 1] === '.') {
             let dataTemp = data.substring(i, data.length).trim();
             let dataIndex = dataTemp.indexOf(`${j}.`);
-            arr.push({ content: `${j}.`, index: dataIndex + i });
+            arr.push({ type: 'normal', number: `${j}.`, index: dataIndex + i });
           }
         }
       }
@@ -74,7 +74,7 @@ const indexes = findIndexes();
 
 // 찾은 인덱스 출력
 indexes.forEach((item) => {
-  console.log(`내용: ${item.content}, 인덱스: ${item.index}`);
+  console.log(`type: ${item.type}, number: ${item.number}, index: ${item.index}`);
 });
 
 // let temp = data.substring(67, 115);
@@ -88,15 +88,15 @@ indexes.forEach((item) => {
 // 내용: 4., 인덱스: 339
 
 // 정규식을 사용하여 패턴에 맞는 부분을 찾아내는 함수
-// function findIndexes(startNum, endNum) {
-//   const regex = new RegExp(`(\\d+|※)(?=\\.\\s)`, 'g');
-//   let indexes = [];
-//   let match;
-//   while ((match = regex.exec(data)) !== null) {
-//     const index = match[0] === '※' ? match.index : parseInt(match[0]);
-//     if (index >= startNum && index <= endNum) {
-//       indexes.push({ index: match.index, content: match[0] });
-//     }
-//   }
-//   return indexes;
-// }
+function findIndexes(startNum, endNum) {
+  const regex = new RegExp(`(\\d+|※)(?=\\.\\s)`, 'g');
+  let indexes = [];
+  let match;
+  while ((match = regex.exec(data)) !== null) {
+    const index = match[0] === '※' ? match.index : parseInt(match[0]);
+    if (index >= startNum && index <= endNum) {
+      indexes.push({ index: match.index, number: match[0] });
+    }
+  }
+  return indexes;
+}
