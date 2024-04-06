@@ -12,8 +12,9 @@ body {
   height: 100%;
 }
 
-.txtBoxInputData {
+.txt_inputData {
   width: 100%;
+  /* height: 60%; */
   height: calc(100% - 370px);
   float: left;
   background-color: #252525;
@@ -29,13 +30,12 @@ body {
   border-top: 1px solid #525252;
 }
 
-.txtBoxOutputData {
+.txt_outputArray {
   display: none;
-  background-color: #777;
 }
 
-.txtBoxOutputHTML {
-  width: 45%;
+.txt_outputHtml {
+  width: 55%;
   /* height: 40%; */
   height: 370px;
   float: right;
@@ -46,8 +46,10 @@ body {
   border: none;
   resize: vertical;
   color: #aaa;
-  font-size: 10px;
+  font-size: 16px;
   font-weight: 300;
+  overflow-x: auto; /* 가로 스크롤 생성 */
+  white-space: nowrap; /* 텍스트가 가로로 넘칠 때 자동 줄바꿈 방지 */
 }
 
 /* div: post upper */
@@ -68,13 +70,13 @@ div#postView {
 }
 
 .menu {
-  width: 55%;
+  width: 45%;
   /* height: 40%; */
   height: 370px;
   float: left;
   background-color: #252525;
   margin: 0;
-  padding: 20px 20px 0 20px;
+  padding: 20px;
   box-sizing: border-box;
   border-right: 1px solid #525252;
   overflow: scroll;
@@ -89,7 +91,7 @@ div#postView {
   /* width: 78.8%; */
   width: 98.8%;
   height: 40px;
-  margin: 0;
+  margin: 0 0 20px 0;
   padding: 0px;
   border-radius: 5px;
   background-color: #454545;
@@ -124,6 +126,7 @@ div#postView {
 }
 .menu textarea#txt_info {
   height: 200px;
+  font-size: 15px;
 }
 
 .menu textarea#txt_title,
