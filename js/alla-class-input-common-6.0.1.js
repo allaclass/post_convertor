@@ -163,310 +163,304 @@ let fnToHTML_commandChange = (text) => {
 // 모바일 티스토리 접근 방지
 let fnToHTML_tistoryMobileNoEntry = () => {
   return `
-  <!-- 수정: 모바일 방지 -->
-  <div>
-  \t<script>
-  \t\tif (window.location.pathname.split("/")[1] === "m" && navigator.userAgent.indexOf("Tistory") === -1 && navigator.userAgent.indexOf("Android") === -1) {
-  \t\twindow.location.href = window.location.origin + window.location.pathname.substr(2);
-  \t\t}
-  \t</script>
-  </div>
-  <!-- /.수정: 모바일 방지 -->
-  <!-- ------------------------------------------------------------------------------------ -->
+<!-- 수정: 모바일 방지 -->
+<div>
+\t<script>
+\t\tif (window.location.pathname.split("/")[1] === "m" && navigator.userAgent.indexOf("Tistory") === -1 && navigator.userAgent.indexOf("Android") === -1) {
+\t\twindow.location.href = window.location.origin + window.location.pathname.substr(2);
+\t\t}
+\t</script>
+</div>
+<!-- /.수정: 모바일 방지 -->
+<!-- ------------------------------------------------------------------------------------ -->
 
-  `;
+`;
 };
 
 // [toHTML] 썸네일
 let fnToHTML_thumbnail = () => {
   return `
-  <!-- 썸네일 영역 -->
-  <div class="alla6ThumbDiv">
-  \t${infoData_thumb}
-  </div>
-  <!-- // 썸네일 영역 -->
-  <!-- ------------------------------------------------------------------------------------ -->
+<!-- 썸네일 영역 -->
+<div class="alla6ThumbDiv">
+\t${infoData_thumb}
+</div>
+<!-- // 썸네일 영역 -->
+<!-- ------------------------------------------------------------------------------------ -->
 
-  `;
+`;
 };
 
 // [toHTML] 공지사항 Header
 let fnToHTML_noticeTop = () => {
   return `
-  <!-- 공지사항 Header 영역 -->
-  <div class="alla6NoticeHeaderDiv">
-  </div>
-  <!-- ------------------------------------------------------------------------------------ -->
-  
-  `;
+<!-- 공지사항 Header 영역 -->
+<div class="alla6NoticeHeaderDiv">
+</div>
+<!-- ------------------------------------------------------------------------------------ -->
+
+`;
 };
 
 // [toHTML] 가이드(Img)
 let fnToHTML_guide = () => {
   return `
-  <!-- 가이드 영역 -->
-  <div class="alla6GuideDiv">
-  \t<img src="" alt="올에이클래스 이용안내 이미지입니다. 올에이클래스는 인터넷 익스플로러를 제외한 크롬엔진 기반의 브라우저에서만 원활히 이용가능합니다.">
-  </div>
-  <!-- ------------------------------------------------------------------------------------ -->
-  
-  `;
+<!-- 가이드 영역 -->
+<div class="alla6GuideDiv">
+\t<img src="" alt="올에이클래스 이용안내 이미지입니다. 올에이클래스는 인터넷 익스플로러를 제외한 크롬엔진 기반의 브라우저에서만 원활히 이용가능합니다.">
+</div>
+<!-- ------------------------------------------------------------------------------------ -->
+
+`;
 };
 
 // [toHTML] 타이틀
 let fnToHTML_title = () => {
   return `
-  <!-- 타이틀 영역 -->
-  <div class="alla6TitleDiv">
-  \t<table class="alla6TitleTbl">
-  \t\t<tbody>
-  \t\t\t<colgroup><col width="100px"><col></colgroup>
-  \t\t\t<tr><td colspan="3"><span class="ibold">20${infoData_year}</span>&nbsp;학년도&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ibold">${infoData_seme}</span>&nbsp;학기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ibold">${infoData_grade}</span>&nbsp;학년&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ibold">${infoData_countNum}</span>&nbsp;문항</td></tr>
-  \t\t\t<tr><td colspan="3">${infoData_object}</td></tr>
-  \t\t\t<tr><td>시험종류&nbsp;&nbsp;&nbsp;:</td><td>${infoData_kind}시험</td></tr>
-  \t\t\t<tr><td>출제위원&nbsp;&nbsp;&nbsp;:</td><td>${infoData_prof}</td></tr>
-  \t\t\t<tr><td>출제범위&nbsp;&nbsp;&nbsp;:</td><td>${infoData_range}</td></tr>
-  \t\t\t<tr><td>자료출처&nbsp;&nbsp;&nbsp;:</td><td>한국방송통신대학교</td></tr>
-  \t\t\t<tr><td>웹앱제작&nbsp;&nbsp;&nbsp;:</td><td>올에이클래스 김현수</td></tr>
-  \t\t</tbody>
-  \t</table>
-  </div>
-  <!-- ------------------------------------------------------------------------------------ -->
-  
-  `;
+<!-- 타이틀 영역 -->
+<div class="alla6TitleDiv">
+\t<table class="alla6TitleTbl">
+\t\t<tbody>
+\t\t\t<colgroup><col width="100px"><col></colgroup>
+\t\t\t<tr><td colspan="3"><span class="ibold">20${infoData_year}</span>&nbsp;학년도&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ibold">${infoData_seme}</span>&nbsp;학기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ibold">${infoData_grade}</span>&nbsp;학년&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ibold">${infoData_countNum}</span>&nbsp;문항</td></tr>
+\t\t\t<tr><td colspan="3">${infoData_object}</td></tr>
+\t\t\t<tr><td>시험종류&nbsp;&nbsp;&nbsp;:</td><td>${infoData_kind}시험</td></tr>
+\t\t\t<tr><td>출제위원&nbsp;&nbsp;&nbsp;:</td><td>${infoData_prof}</td></tr>
+\t\t\t<tr><td>출제범위&nbsp;&nbsp;&nbsp;:</td><td>${infoData_range}</td></tr>
+\t\t\t<tr><td>자료출처&nbsp;&nbsp;&nbsp;:</td><td>한국방송통신대학교</td></tr>
+\t\t\t<tr><td>웹앱제작&nbsp;&nbsp;&nbsp;:</td><td>올에이클래스 김현수</td></tr>
+\t\t</tbody>
+\t</table>
+</div>
+<!-- ------------------------------------------------------------------------------------ -->
+
+`;
 };
 
 // [toHTML] 그룹 문제 (시작)
 let fnToHTML_groupQuestionTop = (question) => {
   question = fnToHTML_commandChange(question);
   return `
-  <!-- 그룹 문제 -->
-  <div class="alla6BasicDiv">
-  \t<form>
-  \t\t<table class="alla6BasicTbl">
-  \t\t\t<tbody>
-  \t\t\t\t<!-- 질의 -->
-  \t\t\t\t<tr class="alla6GroupQuestionTr">
-  \t\t\t\t\t<td>
-  \t\t\t\t\t\t<span class="alla6QuestionNo">※</span>${question}
-  \t\t\t\t\t</td>
-  \t\t\t\t</tr>
-  
-  `;
+<!-- 그룹 문제 -->
+<div class="alla6BasicDiv">
+\t<form>
+\t\t<table class="alla6BasicTbl">
+\t\t\t<tbody>
+\t\t\t\t<!-- 질의 -->
+\t\t\t\t<tr class="alla6GroupQuestionTr">
+\t\t\t\t\t<td>
+\t\t\t\t\t\t<span class="alla6QuestionNo">※</span>${question}
+\t\t\t\t\t</td>
+\t\t\t\t</tr>
+
+`;
 };
 
-// [toHTML] 그룹 문제 (마무리)
+// [toHTML] 그룹 문제 (종료)
 let fnToHTML_groupQuestionBottom = () => {
   return `
-  \t\t\t</tbody>
-  \t\t</table>
-  \t</form>
-  </div>
-  <!-- //그룹 문제-->
-  <!-- ------------------------------------------------------------------------------------ -->
-  
-  `;
+\t\t\t</tbody>
+\t\t</table>
+\t</form>
+</div>
+<!-- //그룹 문제-->
+<!-- ------------------------------------------------------------------------------------ -->
+
+`;
 };
 
 // [toHTML] 일반 문제
 let fnToHTML_normalQuestionQuiz = (questionNo, question) => {
   let number;
   Number(questionNo) < 10 ? (number = '0' + questionNo) : (number = questionNo);
-
   question = fnToHTML_commandChange(question);
-
   return `
-  <!-- 문제 : ${number} -->
-  <div class="alla6BasicDiv">
-  \t<form>
-  \t\t<table class="alla6BasicTbl" id="alla6BasicTbl${number}">
-  \t\t\t<tbody>
-  \t\t\t\t<!-- 질의 -->
-  \t\t\t\t<tr class="alla6QuestionTr">
-  \t\t\t\t\t<td>
-  \t\t\t\t\t\t<span class="alla6QuestionNo">${number}</span>${question}
-  \t\t\t\t\t</td>
-  \t\t\t\t</tr>
-  
-  `;
+<!-- 문제 : ${number} -->
+<div class="alla6BasicDiv">
+\t<form>
+\t\t<table class="alla6BasicTbl" id="alla6BasicTbl${number}">
+\t\t\t<tbody>
+\t\t\t\t<!-- 질의 -->
+\t\t\t\t<tr class="alla6QuestionTr">
+\t\t\t\t\t<td>
+\t\t\t\t\t\t<span class="alla6QuestionNo">${number}</span>${question}
+\t\t\t\t\t</td>
+\t\t\t\t</tr>
+
+`;
 };
 
 // [toHTML] 보기문
 let fnToHTML_exampleTxt = (example) => {
   example = fnToHTML_commandChange(example);
-
   return `
-  \t\t\t\t<!-- 보기문 -->
-  \t\t\t\t<tr class="alla6ExampleTr_Txt">
-  \t\t\t\t\t<td>
-  \t\t\t\t\t\t${example}
-  \t\t\t\t\t</td>
-  \t\t\t\t</tr>
-  \t\t\t\t<tr class="alla6BlankTr">
-  \t\t\t\t\t<td></td>
-  \t\t\t\t</tr>
-  
-  `;
+\t\t\t\t<!-- 보기문 -->
+\t\t\t\t<tr class="alla6ExampleTr_Txt">
+\t\t\t\t\t<td>
+\t\t\t\t\t\t${example}
+\t\t\t\t\t</td>
+\t\t\t\t</tr>
+\t\t\t\t<tr class="alla6BlankTr">
+\t\t\t\t\t<td></td>
+\t\t\t\t</tr>
+
+`;
 };
 
 // [toHTML] 보기그림
 let fnToHTML_exampleImg = (example) => {
   example = fnToHTML_commandChange(example);
-
   return `
-  \t\t\t\t<!-- 보기그림 -->
-  \t\t\t\t<tr class="alla6ExampleTr_Img">
-  \t\t\t\t\t<td>
-  \t\t\t\t\t\t${example}
-  \t\t\t\t\t</td>
-  \t\t\t\t</tr>
-  \t\t\t\t<tr class="alla6BlankTr">
-  \t\t\t\t\t<td></td>
-  \t\t\t\t</tr>
-  
-  `;
+\t\t\t\t<!-- 보기그림 -->
+\t\t\t\t<tr class="alla6ExampleTr_Img">
+\t\t\t\t\t<td>
+\t\t\t\t\t\t${example}
+\t\t\t\t\t</td>
+\t\t\t\t</tr>
+\t\t\t\t<tr class="alla6BlankTr">
+\t\t\t\t\t<td></td>
+\t\t\t\t</tr>
+
+`;
 };
 
 // [toHTML] 객관식 선택지
-let fnToHTML_normalQuestionSelect = (questionNo, answer_1, answer_2, answer_3, answer_4) => {
+let fnToHTML_normalQuestionSelect = (questionNo, answer_1, answer_2, answer_3, answer_4, solve) => {
   let number;
   Number(questionNo) < 10 ? (number = '0' + questionNo) : (number = questionNo);
-
-  answer_1 = fnToHTML_commandChange(answer_1);
-  answer_2 = fnToHTML_commandChange(answer_2);
-  answer_3 = fnToHTML_commandChange(answer_3);
-  answer_4 = fnToHTML_commandChange(answer_4);
+  answer_1 == undefined ? (answer_1 = '') : (answer_1 = fnToHTML_commandChange(answer_1));
+  answer_2 == undefined ? (answer_2 = '') : (answer_2 = fnToHTML_commandChange(answer_2));
+  answer_3 == undefined ? (answer_3 = '') : (answer_3 = fnToHTML_commandChange(answer_3));
+  answer_4 == undefined ? (answer_4 = '') : (answer_4 = fnToHTML_commandChange(answer_4));
+  solve == undefined ? (solve = '') : (solve = fnToHTML_commandChange(solve));
 
   return `
-  \t\t\t\t<!-- 객관식 1번 -->
-  \t\t\t\t<tr class="alla6AnswerTr">
-  \t\t\t\t\t<td class="alla6AnswerTd">
-  \t\t\t\t\t\t<label for="radio-${number}-1">
-  \t\t\t\t\t\t\t<input class="alla6AnswerRadio" type="radio" id="radio-${number}-1" name="question-${number}" value="1">
-  \t\t\t\t\t\t\t${answer_1}
-  \t\t\t\t\t\t</label>
-  \t\t\t\t\t</td>
-  \t\t\t\t</tr>
-  \t\t\t\t<!-- 객관식 2번 -->
-  \t\t\t\t<tr class="alla6AnswerTr">
-  \t\t\t\t\t<td class="alla6AnswerTd">
-  \t\t\t\t\t\t<label for="radio-${number}-2">
-  \t\t\t\t\t\t\t<input class="alla6AnswerRadio" type="radio" id="radio-${number}-2" name="question-${number}" value="2">
-  \t\t\t\t\t\t\t${answer_2}
-  \t\t\t\t\t\t</label>
-  \t\t\t\t\t</td>
-  \t\t\t\t</tr>
-  \t\t\t\t<!-- 객관식 3번 -->
-  \t\t\t\t<tr class="alla6AnswerTr">
-  \t\t\t\t\t<td class="alla6AnswerTd">
-  \t\t\t\t\t\t<label for="radio-${number}-3">
-  \t\t\t\t\t\t\t<input class="alla6AnswerRadio" type="radio" id="radio-${number}-3" name="question-${number}" value="3">
-  \t\t\t\t\t\t\t${answer_3}
-  \t\t\t\t\t\t</label>
-  \t\t\t\t\t</td>
-  \t\t\t\t</tr>
-  \t\t\t\t<!-- 객관식 4번 -->
-  \t\t\t\t<tr class="alla6AnswerTr">
-  \t\t\t\t\t<td class="alla6AnswerTd">
-  \t\t\t\t\t\t<label for="radio-${number}-4">
-  \t\t\t\t\t\t\t<input class="alla6AnswerRadio" type="radio" id="radio-${number}-4" name="question-${number}" value="4">
-  \t\t\t\t\t\t\t${answer_4}
-  \t\t\t\t\t\t</label>
-  \t\t\t\t\t</td>
-  \t\t\t\t</tr>
-  \t\t\t\t<!-- 메인 문제 채점 -->
-  \t\t\t\t<tr class="alla6CheckTr">
-  \t\t\t\t\t<td>
-  \t\t\t\t\t\t<button type="button">다시채점</button>
-  \t\t\t\t\t</td>
-  \t\t\t\t</tr>
-  \t\t\t\t<!-- 메인 문제 해설 -->
-  \t\t\t\t<tr class="alla6SolveTr">
-  \t\t\t\t\t<td>
-  \t\t\t\t\t\t해설)<br>
-  \t\t\t\t\t</td>
-  \t\t\t\t</tr>
-  \t\t\t</tbody>
-  \t\t</table>
-  \t</form>
-  </div>
-  <!-- //문제 : ${number} -->
-  <!-- ------------------------------------------------------------------------------------ -->
-  
-  `;
+\t\t\t\t<!-- 객관식 1번 -->
+\t\t\t\t<tr class="alla6AnswerTr">
+\t\t\t\t\t<td class="alla6AnswerTd">
+\t\t\t\t\t\t<label for="radio-${number}-1">
+\t\t\t\t\t\t\t<input class="alla6AnswerRadio" type="radio" id="radio-${number}-1" name="question-${number}" value="1">
+\t\t\t\t\t\t\t${answer_1}
+\t\t\t\t\t\t</label>
+\t\t\t\t\t</td>
+\t\t\t\t</tr>
+\t\t\t\t<!-- 객관식 2번 -->
+\t\t\t\t<tr class="alla6AnswerTr">
+\t\t\t\t\t<td class="alla6AnswerTd">
+\t\t\t\t\t\t<label for="radio-${number}-2">
+\t\t\t\t\t\t\t<input class="alla6AnswerRadio" type="radio" id="radio-${number}-2" name="question-${number}" value="2">
+\t\t\t\t\t\t\t${answer_2}
+\t\t\t\t\t\t</label>
+\t\t\t\t\t</td>
+\t\t\t\t</tr>
+\t\t\t\t<!-- 객관식 3번 -->
+\t\t\t\t<tr class="alla6AnswerTr">
+\t\t\t\t\t<td class="alla6AnswerTd">
+\t\t\t\t\t\t<label for="radio-${number}-3">
+\t\t\t\t\t\t\t<input class="alla6AnswerRadio" type="radio" id="radio-${number}-3" name="question-${number}" value="3">
+\t\t\t\t\t\t\t${answer_3}
+\t\t\t\t\t\t</label>
+\t\t\t\t\t</td>
+\t\t\t\t</tr>
+\t\t\t\t<!-- 객관식 4번 -->
+\t\t\t\t<tr class="alla6AnswerTr">
+\t\t\t\t\t<td class="alla6AnswerTd">
+\t\t\t\t\t\t<label for="radio-${number}-4">
+\t\t\t\t\t\t\t<input class="alla6AnswerRadio" type="radio" id="radio-${number}-4" name="question-${number}" value="4">
+\t\t\t\t\t\t\t${answer_4}
+\t\t\t\t\t\t</label>
+\t\t\t\t\t</td>
+\t\t\t\t</tr>
+\t\t\t\t<!-- 메인 문제 채점 -->
+\t\t\t\t<tr class="alla6CheckTr">
+\t\t\t\t\t<td>
+\t\t\t\t\t\t<button type="button">다시채점</button>
+\t\t\t\t\t</td>
+\t\t\t\t</tr>
+\t\t\t\t<!-- 메인 문제 해설 -->
+\t\t\t\t<tr class="alla6SolveTr">
+\t\t\t\t\t<td>
+\t\t\t\t\t\t해설)<br>
+\t\t\t\t\t\t${solve}
+\t\t\t\t\t</td>
+\t\t\t\t</tr>
+\t\t\t</tbody>
+\t\t</table>
+\t</form>
+</div>
+<!-- //문제 : ${number} -->
+<!-- ------------------------------------------------------------------------------------ -->
+
+`;
 };
 
 // [toHTML] 채점 / 다시풀기 버튼
 let fnToHTML_checkButton = () => {
   return `
-  <!-- 채점 버튼 영역 -->
-  <div class="alla6CheckDiv">
-  \t<form>
-  \t\t<table class="alla6CheckTbl">
-  \t\t\t<tbody>
-  \t\t\t\t<tr>
-  \t\t\t\t\t<td>
-  \t\t\t\t\t\t<label>각 문제마다 채점을 해줍니다.</label>
-  \t\t\t\t\t\t<button type="button">채점하기</button><br>
-  \t\t\t\t\t\t<label>모든 답안을 초기화합니다.</label>
-  \t\t\t\t\t\t<button type="button">다시풀기</button>
-  \t\t\t\t\t</td>
-  \t\t\t\t</tr>
-  \t\t\t</tbody>
-  \t\t</table>
-  \t</form>
-  </div>
-  <!-- // 채점 버튼 영역 -->
-  <!-- ------------------------------------------------------------------------------------ -->
-  
-  `;
+<!-- 채점 버튼 영역 -->
+<div class="alla6CheckDiv">
+\t<form>
+\t\t<table class="alla6CheckTbl">
+\t\t\t<tbody>
+\t\t\t\t<tr>
+\t\t\t\t\t<td>
+\t\t\t\t\t\t<label>각 문제마다 채점을 해줍니다.</label>
+\t\t\t\t\t\t<button type="button">채점하기</button><br>
+\t\t\t\t\t\t<label>모든 답안을 초기화합니다.</label>
+\t\t\t\t\t\t<button type="button">다시풀기</button>
+\t\t\t\t\t</td>
+\t\t\t\t</tr>
+\t\t\t</tbody>
+\t\t</table>
+\t</form>
+</div>
+<!-- // 채점 버튼 영역 -->
+<!-- ------------------------------------------------------------------------------------ -->
+
+`;
 };
 
 // [toHTML] 정답지
 let fnToHTML_answerTable = (answer) => {
   return `
-  <!-- 정답지 영역 -->
-  <div class="alla6AnswerTableDiv">
-  \t<table>
-  \t\t<tbody>
-  \t\t\t<tr><th>문제답안</th></tr>
-  \t\t\t<tr><td>${answer}</td></tr>
-  \t\t</tbody>
-  \t</table><br>
-  </div>
-  
-  `;
+<!-- 정답지 영역 -->
+<div class="alla6AnswerTableDiv">
+\t<table>
+\t\t<tbody>
+\t\t\t<tr><th>문제답안</th></tr>
+\t\t\t<tr><td>${answer}</td></tr>
+\t\t</tbody>
+\t</table><br>
+</div>
+
+`;
 };
 
 // [toHTML] 타년도 문제 바로가기
 let fnToHTML_otherExams = () => {
   return `
-  <!-- 타년도 문제 바로가기 영역 -->
-  <div class="alla6OtherExamDiv">
-  </div>
-  <!-- // 타년도 문제 바로가기 영역 -->
-  <!-- ------------------------------------------------------------------------------------ -->
-  
-  `;
+<!-- 타년도 문제 바로가기 영역 -->
+<div class="alla6OtherExamDiv">
+</div>
+<!-- // 타년도 문제 바로가기 영역 -->
+<!-- ------------------------------------------------------------------------------------ -->
+
+`;
 };
 
 // [toHTML] 공지사항 Footer
 let fnToHTML_noticeBottom = () => {
   return `
-  <!-- 공지사항 Footer 영역 -->
-  <div class="alla6NoticeFooterDiv">
-  </div>
-  <!-- ------------------------------------------------------------------------------------ -->
-  
-  `;
+<!-- 공지사항 Footer 영역 -->
+<div class="alla6NoticeFooterDiv">
+</div>
+<!-- ------------------------------------------------------------------------------------ -->
+
+`;
 };
 
 // --------------------------------------------------------------------------------------
 // ------------------------------------ EXE FUNCTION ------------------------------------
 // --------------------------------------------------------------------------------------
-
-// 전역 변수 셋팅 : 문제내용 정리에 사용할 배열
-let array_lv1 = [];
 
 // 함수 : fnToHTML
 let fnToHTML = () => {
@@ -476,6 +470,7 @@ let fnToHTML = () => {
   txt_outputHtml.value += fnToHTML_noticeTop(); // 공지사항(상단) html코드
   txt_outputHtml.value += fnToHTML_guide(); // 이용가이드 html코드
   txt_outputHtml.value += fnToHTML_title(); // 문제타이틀 html코드
+
   txt_outputHtml.value += fnToHTML_checkButton(); // 채점, 다시풀기 버튼 html코드
   txt_outputHtml.value += fnToHTML_answerTable(infoData_answer); // 정답지 html코드
   txt_outputHtml.value += fnToHTML_otherExams(); // 타년도 문제 바로가기 html코드
@@ -485,23 +480,12 @@ let fnToHTML = () => {
   div_postView.innerHTML = txt_outputHtml.value;
 };
 
-// array_lv1_output
-let array_lv1_output = () => {
-  txt_inputData.value = '';
-  txt_outputArray.value = '';
-  for (var i = 0; i < array_lv1.length; i++) {
-    txt_outputArray.value += array_lv1[i];
-  }
-  txt_inputData.value = txt_outputArray.value;
-  txt_outputArray.value = '';
-};
-
-let fnCallGetQuestion = (etc) => {
+let fnCallGetQuestion = (enter) => {
   let str = txt_inputData.value;
   let eNum = infoData_eNum;
-  etc == undefined ? (etc = '') : (etc = '\n');
+  enter == undefined ? (enter = '') : (enter = '\n');
 
-  let arrContents = fnGetQuestion(str, eNum, etc);
+  let arrContents = fnGetQuestion(str, eNum, enter);
   return arrContents;
 };
 
@@ -516,26 +500,199 @@ let fnCallGetQuestionDetail = (questions) => {
   return detail;
 };
 
-let btn_sort = (etc) => {
-  // fnToHTML();
-  // array_lv1_output();
+let fnPrintInputDataBox = (arrQuestionDetail) => {
+  txt_inputData.value = '';
+  for (let i = 1; i <= arrQuestionDetail.length; i++) {
+    let j = i - 1;
+    arrQuestionDetail[j].forEach((item) => {
+      switch (item.type) {
+        case 'simbol':
+          let editSimbol = item.content.replace('\\.', '.');
+          txt_inputData.value += `\n${editSimbol}\n`;
+          i == arrQuestionDetail.length && (infoData_countNum = Number(editSimbol.replace('.', '')));
+          break;
+        case 'question':
+          item.content = fnReplace_gihoChange(item.content);
+          txt_inputData.value += `${item.content}\n`;
+          break;
+        case 'example_txt':
+          item.content = fnReplace_gihoChange(item.content);
+          txt_inputData.value += `/보기문\n${item.content}\n`;
+          break;
+        case 'example_img':
+          item.content = fnReplace_gihoChange(item.content);
+          txt_inputData.value += `/보기그림\n${item.content}\n`;
+          break;
+        case 'select_1':
+          item.content = fnReplace_gihoChange(item.content);
+          txt_inputData.value += `① ${item.content}\n`;
+          break;
+        case 'select_2':
+          item.content = fnReplace_gihoChange(item.content);
+          txt_inputData.value += `② ${item.content}\n`;
+          break;
+        case 'select_3':
+          item.content = fnReplace_gihoChange(item.content);
+          txt_inputData.value += `③ ${item.content}\n`;
+          break;
+        case 'select_4':
+          item.content = fnReplace_gihoChange(item.content);
+          txt_inputData.value += `④ ${item.content}\n`;
+          break;
+        case 'solve':
+          item.content = fnReplace_gihoChange(item.content);
+          txt_inputData.value += `/해설\n${item.content}\n`;
+          break;
+        default:
+      }
+    });
+  }
+};
+
+let fnPrintOutputHtmlBox = (arrQuestionDetail) => {
+  // 문제 내용에 따른 html 생성함수 호출하는 함수
+  let fnCalltoHtml = (objDetail) => {
+    // - 변수 할당
+    let simbol = objDetail.simbol;
+    let question = objDetail.question;
+    let arrExample_txt = objDetail.arrExample_txt; // 조건문 : length
+    let arrExample_img = objDetail.arrExample_img; // 조건문 : length
+    let select_1 = objDetail.select_1;
+    let select_2 = objDetail.select_2;
+    let select_3 = objDetail.select_3;
+    let select_4 = objDetail.select_4;
+    let solve = objDetail.solve; // 조건문 : undefined
+    let srcHtml;
+    // - 그룹문제 / 일반문제 구분
+    if (simbol == '※') {
+      // 그룹문제
+      // - 그룹문제 시작부
+      srcHtml = fnToHTML_groupQuestionTop(question);
+      // - 보기문
+      if (arrExample_txt.length !== 0) {
+        arrExample_txt.forEach((example) => {
+          srcHtml += fnToHTML_exampleTxt(example);
+        });
+      }
+      // - 보기그림
+      if (arrExample_img.length !== 0) {
+        arrExample_img.forEach((example) => {
+          srcHtml += fnToHTML_exampleImg(example);
+        });
+      }
+      // - 그룹문제 종료부
+      srcHtml += fnToHTML_groupQuestionBottom();
+    } else {
+      // 일반문제
+      // - 일반문제 시작
+      srcHtml = fnToHTML_normalQuestionQuiz(simbol, question);
+      // - 보기문
+      if (arrExample_txt.length !== 0) {
+        arrExample_txt.forEach((example) => {
+          srcHtml += fnToHTML_exampleTxt(example);
+        });
+      }
+      // - 보기그림
+      if (arrExample_img.length !== 0) {
+        arrExample_img.forEach((example) => {
+          srcHtml += fnToHTML_exampleImg(example);
+        });
+      }
+      // - 객관식
+      srcHtml += fnToHTML_normalQuestionSelect(simbol, select_1, select_2, select_3, select_4, solve);
+    }
+    return srcHtml;
+  };
+  // txt_outputHtml 텍스트박스 초기화
+  txt_outputHtml.value = '';
+  // 포스팅 윗쪽 기본 HTML 출력
+  txt_outputHtml.value += fnToHTML_tistoryMobileNoEntry(); // 모바일 방지 html 코드
+  txt_outputHtml.value += fnToHTML_thumbnail(); // 썸네일 코드 html코드
+  txt_outputHtml.value += fnToHTML_noticeTop(); // 공지사항(상단) html코드
+  txt_outputHtml.value += fnToHTML_guide(); // 이용가이드 html코드
+  txt_outputHtml.value += fnToHTML_title(); // 문제타이틀 html코드
+  // 문제 상세내용 변수로 할당
+  arrQuestionDetail.forEach((arrItem) => {
+    let simbol, question, select_1, select_2, select_3, select_4, solve;
+    let arrExample_txt = [];
+    let arrExample_img = [];
+    arrItem.forEach((item) => {
+      switch (item.type) {
+        case 'simbol':
+          let numberSimbol = Number(item.content.replace('\\.', ''));
+          isNaN(numberSimbol) ? (simbol = '※') : (simbol = numberSimbol);
+          break;
+        case 'question':
+          item.content = fnReplace_gihoChange(item.content);
+          question = `${item.content}`;
+          break;
+        case 'example_txt':
+          item.content = fnReplace_gihoChange(item.content);
+          arrExample_txt.push(`${item.content}`);
+          break;
+        case 'example_img':
+          item.content = fnReplace_gihoChange(item.content);
+          arrExample_img.push(`${item.content}`);
+          break;
+        case 'select_1':
+          item.content = fnReplace_gihoChange(item.content);
+          select_1 = `${item.content}`;
+          break;
+        case 'select_2':
+          item.content = fnReplace_gihoChange(item.content);
+          select_2 = `${item.content}`;
+          break;
+        case 'select_3':
+          item.content = fnReplace_gihoChange(item.content);
+          select_3 = `${item.content}`;
+          break;
+        case 'select_4':
+          item.content = fnReplace_gihoChange(item.content);
+          select_4 = `${item.content}`;
+          break;
+        case 'solve':
+          item.content = fnReplace_gihoChange(item.content);
+          solve = `${item.content}`;
+          break;
+        default:
+      }
+    });
+    let objDetail = { simbol, question, arrExample_txt, arrExample_img, select_1, select_2, select_3, select_4, solve };
+    txt_outputHtml.value += fnCalltoHtml(objDetail);
+  });
+  // 포스팅 아랫쪽 기본 HTML 출력
+  txt_outputHtml.value += fnToHTML_checkButton(); // 채점, 다시풀기 버튼 html코드
+  txt_outputHtml.value += fnToHTML_answerTable(infoData_answer); // 정답지 html코드
+  txt_outputHtml.value += fnToHTML_otherExams(); // 타년도 문제 바로가기 html코드
+  txt_outputHtml.value += fnToHTML_noticeBottom(); // 공지사항(하단) html코드
+  // [미리보기] 포스트뷰
+  div_postView.innerHTML = '';
+  div_postView.innerHTML = txt_outputHtml.value;
+};
+
+let btn_sort = (enter) => {
+  // 문제정보 수집
   fnGetInfoData();
 
-  let questions = fnCallGetQuestion(etc);
+  // 문제 구분하는 함수 실행
+  let arrQuestions = fnCallGetQuestion(enter);
 
-  // questions.forEach((item) => {
-  //   console.log(item);
-  // });
+  // 문제 한개씩 상세내용 구분하는 함수 실행
+  let arrQuestionDetail = fnCallGetQuestionDetail(arrQuestions);
 
-  let detail = fnCallGetQuestionDetail(questions);
+  // txt_inputData 텍스트박스에 정리된 내용 출력
+  fnPrintInputDataBox(arrQuestionDetail);
+};
 
-  txt_inputData.value = '';
+let btn_toHtml = () => {
+  // 문제 구분하는 함수 실행
+  let arrQuestions = fnCallGetQuestion('\n');
 
-  detail.forEach((item) => {
-    console.log(item);
-    txt_inputData.value += JSON.stringify(item);
-    txt_inputData.value += '\n\n';
-  });
+  // 문제 한개씩 상세내용 구분하는 함수 실행
+  let arrQuestionDetail = fnCallGetQuestionDetail(arrQuestions);
+
+  // 문제 상세내용 변수로 분할하여, 정리하는 함수 실행
+  fnPrintOutputHtmlBox(arrQuestionDetail);
 };
 
 /* -------------------------------------------- */
