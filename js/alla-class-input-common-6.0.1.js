@@ -704,6 +704,19 @@ let btn_toHtml = () => {
   fnPrintOutputHtmlBox(arrQuestionDetail);
 };
 
+// 예전 문제정리본 최신정리본으로 변환하는 함수 호출 (ex. 그룹문제: /1/ -> ※.)
+let btn_oldConvertor = () => {
+  let text = txt_inputData.value;
+  let arrPattern = [];
+  for (let i = 1; i <= 100; i++) {
+    arrPattern.push(`/${i}/\n`);
+  }
+  arrPattern.forEach((pattern) => {
+    text = text.replace(pattern, `※.\n`);
+  });
+  txt_inputData.value = text;
+};
+
 // 팝업 열고 닫는 함수
 let btn_togglePopup = (elementById) => {
   var popup = document.getElementById(elementById);
