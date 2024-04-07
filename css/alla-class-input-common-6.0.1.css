@@ -165,7 +165,7 @@ div#postView {
 
 .btnList button {
   width: 95%;
-  height: 40px;
+  height: 20px;
   margin: 0 0 10px 0;
   padding: 0px;
   border-radius: 5px;
@@ -185,15 +185,11 @@ div#postView {
 }
 
 .btnList #btn_toHtml,
+.btnList #btn_exConvertor,
 .btnList #btn_cmdGuide,
 .btnList #btn_oldConvertor {
   margin-top: 5px;
   margin-bottom: 5px;
-}
-
-.btnList #btn_cmdGuide,
-.btnList #btn_oldConvertor {
-  height: 20px;
 }
 
 .btnList #btn .btnList button:hover {

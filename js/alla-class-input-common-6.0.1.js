@@ -705,8 +705,8 @@ let btn_toHtml = () => {
 };
 
 // 팝업 열고 닫는 함수
-let btn_togglePopup = () => {
-  var popup = document.getElementById('popupWrapper');
+let btn_togglePopup = (elementById) => {
+  var popup = document.getElementById(elementById);
   popup.style.display = popup.style.display === 'none' ? 'flex' : 'none';
 };
 
