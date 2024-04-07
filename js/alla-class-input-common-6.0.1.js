@@ -85,7 +85,7 @@ String.prototype.replaceAll = function (org, dest) {
   return this.split(org).join(dest);
 };
 
-// question nagative words
+// 기호 replace
 let fnReplace_gihoChange = (text) => {
   text = text.replaceAll('～', '~');
   text = text.replaceAll('․', 'ㆍ');
@@ -101,6 +101,26 @@ let fnReplace_gihoChange = (text) => {
   text = text.replaceAll('’', "'");
   text = text.replaceAll('<', '&#60;');
   text = text.replaceAll('>', '&#62;');
+  return text;
+};
+
+// 부정문 replace
+let fnReplace_notChange = (text) => {
+  text = text.replaceAll(' 먼 ', ' /부정먼/.부정 ');
+  text = text.replaceAll(' 않은 ', ' /부정않은/.부정 ');
+  text = text.replaceAll(' 않는 ', ' /부정않는/.부정 ');
+  text = text.replaceAll(' 아닌 ', ' /부정아닌/.부정 ');
+  text = text.replaceAll(' 어려운 ', ' /부정어려운/.부정 ');
+  text = text.replaceAll(' 틀린 ', ' /부정틀린/.부정 ');
+  text = text.replaceAll(' 부적절한 ', ' /부정부적절한/.부정 ');
+  text = text.replaceAll(' 부적합한 ', ' /부정부적합한/.부정 ');
+  text = text.replaceAll(' 못한 ', ' /부정못한/.부정 ');
+  text = text.replaceAll(' 잘못 ', ' /부정잘못/.부정 ');
+  text = text.replaceAll(' 잘못된 ', ' /부정잘못된/.부정 ');
+  text = text.replaceAll(' 없는 ', ' /부정없는/.부정 ');
+  text = text.replaceAll(' 다른 ', ' /부정다른/.부정 ');
+  text = text.replaceAll(' 적은 ', ' /부정적은/.부정 ');
+  text = text.replaceAll(' 힘든 ', ' /부정힘든/.부정 ');
   return text;
 };
 
@@ -462,24 +482,6 @@ let fnToHTML_noticeBottom = () => {
 // ------------------------------------ EXE FUNCTION ------------------------------------
 // --------------------------------------------------------------------------------------
 
-// 함수 : fnToHTML
-let fnToHTML = () => {
-  txt_outputHtml.value = '';
-  txt_outputHtml.value += fnToHTML_tistoryMobileNoEntry(); // 모바일 방지 html 코드
-  txt_outputHtml.value += fnToHTML_thumbnail(); // 썸네일 코드 html코드
-  txt_outputHtml.value += fnToHTML_noticeTop(); // 공지사항(상단) html코드
-  txt_outputHtml.value += fnToHTML_guide(); // 이용가이드 html코드
-  txt_outputHtml.value += fnToHTML_title(); // 문제타이틀 html코드
-
-  txt_outputHtml.value += fnToHTML_checkButton(); // 채점, 다시풀기 버튼 html코드
-  txt_outputHtml.value += fnToHTML_answerTable(infoData_answer); // 정답지 html코드
-  txt_outputHtml.value += fnToHTML_otherExams(); // 타년도 문제 바로가기 html코드
-  txt_outputHtml.value += fnToHTML_noticeBottom(); // 공지사항(하단) html코드
-  // [미리보기] 포스트뷰
-  div_postView.innerHTML = '';
-  div_postView.innerHTML = txt_outputHtml.value;
-};
-
 let fnCallGetQuestion = (enter) => {
   let str = txt_inputData.value;
   let eNum = infoData_eNum;
@@ -500,7 +502,7 @@ let fnCallGetQuestionDetail = (questions) => {
   return detail;
 };
 
-let fnPrintInputDataBox = (arrQuestionDetail) => {
+let fnPrintInputDataBox = (arrQuestionDetail, not) => {
   txt_inputData.value = '';
   for (let i = 1; i <= arrQuestionDetail.length; i++) {
     let j = i - 1;
@@ -513,6 +515,7 @@ let fnPrintInputDataBox = (arrQuestionDetail) => {
           break;
         case 'question':
           item.content = fnReplace_gihoChange(item.content);
+          not == 'not' && (item.content = fnReplace_notChange(item.content));
           txt_inputData.value += `${item.content}\n`;
           break;
         case 'example_txt':
@@ -670,7 +673,7 @@ let fnPrintOutputHtmlBox = (arrQuestionDetail) => {
   div_postView.innerHTML = txt_outputHtml.value;
 };
 
-let btn_sort = (enter) => {
+let btn_sort = (enter, not) => {
   // 문제정보 수집
   fnGetInfoData();
 
@@ -685,7 +688,7 @@ let btn_sort = (enter) => {
   let arrQuestionDetail = fnCallGetQuestionDetail(arrQuestions);
 
   // txt_inputData 텍스트박스에 정리된 내용 출력
-  fnPrintInputDataBox(arrQuestionDetail);
+  fnPrintInputDataBox(arrQuestionDetail, not);
 };
 
 let btn_toHtml = () => {
