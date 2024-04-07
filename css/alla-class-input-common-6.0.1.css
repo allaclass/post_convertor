@@ -30,14 +30,10 @@ body {
   border-top: 1px solid #525252;
 }
 
-.txt_outputArray {
-  display: none;
-}
-
 .txt_outputHtml {
   width: 55%;
   /* height: 40%; */
-  height: 370px;
+  height: 310px;
   float: right;
   background-color: #252525;
   margin: 0;
@@ -46,17 +42,10 @@ body {
   border: none;
   resize: vertical;
   color: #aaa;
-  font-size: 16px;
+  font-size: 10px;
   font-weight: 300;
   overflow-x: auto; /* 가로 스크롤 생성 */
   white-space: nowrap; /* 텍스트가 가로로 넘칠 때 자동 줄바꿈 방지 */
-}
-
-/* div: post upper */
-div#postUpper {
-  width: 100%;
-  height: 100%;
-  border-bottom: 1px solid #525252;
 }
 
 /* div : post view */
@@ -70,49 +59,22 @@ div#postView {
 }
 
 .menu {
-  width: 45%;
+  width: 35%;
   /* height: 40%; */
-  height: 370px;
+  height: 310px;
   float: left;
   background-color: #252525;
   margin: 0;
   padding: 20px;
   box-sizing: border-box;
   border-right: 1px solid #525252;
-  overflow: scroll;
+  /* overflow: scroll; */
   font-size: 12px;
 }
 
-.menu span {
+.menu span,
+.btnList span {
   color: #aaa;
-}
-
-.menu button {
-  /* width: 78.8%; */
-  width: 98.8%;
-  height: 40px;
-  margin: 0 0 20px 0;
-  padding: 0px;
-  border-radius: 5px;
-  background-color: #454545;
-  color: #aaa;
-  border: none;
-  font-size: 12px;
-}
-
-/* .menu button:last-of-type {
-    width: 18.8%;
-} */
-.menu button:first-of-type {
-  margin-right: 5px;
-}
-
-.menu button:hover {
-  background-color: #656565;
-}
-
-.menu button:active {
-  background-color: #151515;
 }
 
 .menu textarea {
@@ -153,7 +115,56 @@ div#postView {
   margin-bottom: 5px;
 }
 
-/* scrollbar */
+.btnList {
+  width: 10%;
+  height: 310px;
+  float: left;
+  background-color: #252525;
+  margin: 0;
+  padding: 20px 1% 1% 1%;
+  box-sizing: border-box;
+  border-right: 1px solid #525252;
+  /* overflow: scroll; */
+  font-size: 12px;
+}
+
+.btnList button {
+  /* width: 78.8%; */
+  width: 95%;
+  height: 40px;
+  margin: 0 0 10px 0;
+  padding: 0px;
+  border-radius: 5px;
+  background-color: #454545;
+  color: #aaa;
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.btnList hr {
+  border: 1px solid #525252;
+}
+
+.btnList #btn_sort_cmd {
+  margin-bottom: 5px;
+}
+
+.btnList #btn_toHtml,
+.btnList #btn_cmdGuide {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.btnList button:hover {
+  background-color: #656565;
+}
+
+.btnList button:active {
+  background-color: #151515;
+}
+
+/* 스크롤바 */
 ::-webkit-scrollbar {
   width: 27px;
   height: 27px;
@@ -184,7 +195,7 @@ div#postView {
 }
 
 ::-webkit-scrollbar-track:hover {
-  cursor: pointer;
+  cursor: auto;
 }
 
 textarea:focus,
