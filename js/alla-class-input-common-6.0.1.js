@@ -673,6 +673,7 @@ let fnPrintOutputHtmlBox = (arrQuestionDetail) => {
   div_postView.innerHTML = txt_outputHtml.value;
 };
 
+// 문제 정렬시키는 함수 호출
 let btn_sort = (enter, not) => {
   // 문제정보 수집
   fnGetInfoData();
@@ -691,6 +692,7 @@ let btn_sort = (enter, not) => {
   fnPrintInputDataBox(arrQuestionDetail, not);
 };
 
+// HTML 만드는 함수 호출
 let btn_toHtml = () => {
   // 문제 구분하는 함수 실행
   let arrQuestions = fnCallGetQuestion('\n');
@@ -700,6 +702,12 @@ let btn_toHtml = () => {
 
   // 문제 상세내용 변수로 분할하여, 정리하는 함수 실행
   fnPrintOutputHtmlBox(arrQuestionDetail);
+};
+
+// 팝업 열고 닫는 함수
+let btn_togglePopup = () => {
+  var popup = document.getElementById('popupWrapper');
+  popup.style.display = popup.style.display === 'none' ? 'flex' : 'none';
 };
 
 /* -------------------------------------------- */

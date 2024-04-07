@@ -26,12 +26,102 @@
         <button onclick="btn_toHtml()" id="btn_toHtml" accesskey="w">HTML. (w)</button>
         <hr />
         <button onclick="" id="btn_oldConvertor" accesskey="q">Conv. (q)</button><br />
-        <button onclick="" id="btn_cmdGuide">Guide</button>
+        <button onclick="btn_togglePopup()" id="btn_cmdGuide">Guide</button>
       </div>
 
       <textarea class="txt_outputHtml" id="txt_outputHtml" placeholder="2. output html"></textarea>
       <textarea class="txt_inputData" id="txt_inputData" placeholder="1. input data"></textarea>
       <div id="postView" class="postView"></div>
+
+      <!-- 팝업을 감싸는 div -->
+      <div id="popupWrapper" class="popup-wrapper">
+        <!-- 팝업 내용을 담는 div -->
+        <div class="popup-content">
+          <h2>명령어 가이드</h2>
+          <table>
+            <tr>
+              <td>
+                <ul>
+                  <li>/부정~/.부정</li>
+                  <li>/밑줄~/.밑줄</li>
+                  <li>/윗줄~/.윗줄</li>
+                  <li>/굵게~/.굵게</li>
+                  <li>/기움~/.기움</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>/미지수~/.미지수</li>
+                  <li>/윗첨자~/.윗첨자</li>
+                  <li>/아랫첨자~/.아랫첨자</li>
+                  <li>/이미지~/.이미지</li>
+                  <li>/줄, /빈칸, /숏빈칸, /롱빈칸</li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+
+          <table>
+            <tr>
+              <td>
+                <ul>
+                  <li>/단락_~/.단락</li>
+                  <li>/좌들_~/.좌들</li>
+                  <li>/바_~/.바</li>
+                  <li>/영소_~/.영소</li>
+                  <li>/괄호영대_~/.괄호영대</li>
+                  <li>/괄호영소_~/.괄호영소</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>/한글_~/.한글</li>
+                  <li>/괄호한글_~/.괄호한글</li>
+                  <li>/괄호자음_~/.괄호자음</li>
+                  <li>/서클_~/.서클</li>
+                  <li>/중앙_~/.중앙</li>
+                  <li>/우측_~/.우측</li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+
+          <table>
+            <tr>
+              <td>
+                <ul>
+                  <li>~먼~</li>
+                  <li>~않은~</li>
+                  <li>~않는~</li>
+                  <li>~아닌~</li>
+                  <li>~어려운~</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>~틀린~</li>
+                  <li>~부적절한~</li>
+                  <li>~부적합한~</li>
+                  <li>~못한~</li>
+                  <li>~잘못~</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>~잘못된~</li>
+                  <li>~없는~</li>
+                  <li>~다른~</li>
+                  <li>~적은~</li>
+                  <li>~힘든~</li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+
+          <!-- 팝업 닫기 버튼 -->
+          <button onclick="btn_togglePopup()">닫기</button>
+        </div>
+      </div>
     </div>
 
     <!-- script import -->
