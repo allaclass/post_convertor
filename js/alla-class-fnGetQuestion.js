@@ -22,13 +22,13 @@ let fnGetQuestion = (str, eNum, etc) => {
   let findAllIndices = (str, patterns, etc) => {
     let indices = [];
     patterns.forEach((pattern) => {
-      const regex = new RegExp(`${pattern}${etc}`, 'g');
+      const regex = new RegExp(`\n${pattern}${etc}`, 'g');
       let match;
       while ((match = regex.exec(str)) !== null) {
         let inputPattern = pattern.replace(`\\.`, '.');
         let type;
         inputPattern == '※.' ? (type = 'group') : (type = 'normal');
-        indices.push({ type, simbol: inputPattern, index: match.index });
+        indices.push({ type, simbol: inputPattern, index: match.index + 1 });
       }
     });
     indices.sort((a, b) => a.index - b.index);

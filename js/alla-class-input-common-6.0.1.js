@@ -674,6 +674,10 @@ let btn_sort = (enter) => {
   // 문제정보 수집
   fnGetInfoData();
 
+  // 텍스트박스 inputData 공백 첫줄 추가하기
+  let temp = txt_inputData.value;
+  txt_inputData.value = '\n' + temp;
+
   // 문제 구분하는 함수 실행
   let arrQuestions = fnCallGetQuestion(enter);
 
