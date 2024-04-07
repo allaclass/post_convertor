@@ -151,12 +151,18 @@ div#postView {
 }
 
 .btnList #btn_toHtml,
-.btnList #btn_cmdGuide {
+.btnList #btn_cmdGuide,
+.btnList #btn_oldConvertor {
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
-.btnList button:hover {
+.btnList #btn_cmdGuide,
+.btnList #btn_oldConvertor {
+  height: 20px;
+}
+
+.btnList #btn .btnList button:hover {
   background-color: #656565;
 }
 
