@@ -46,7 +46,7 @@
 
 .popup-example-table button {
   width: 90px;
-  margin: 0;
+  margin: 0 8px;
   margin-right: 2px;
   float: right;
 }

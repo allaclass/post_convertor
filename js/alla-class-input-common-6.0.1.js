@@ -718,17 +718,17 @@ let btn_oldConvertor = () => {
 };
 
 // 팝업 열고 닫는 함수
-let btn_togglePopup = (elementById) => {
-  // 팝업 열고닫고
+let btn_togglePopup = (elementById, how) => {
+  // 팝업 div 가져오기
   let popup = document.getElementById(elementById);
+
   // 팝업이 열려있다면 닫을 때 textarea#txt_example.value를 복사해라
-  if (popup.style.display === 'flex') {
-    if (elementById == 'ExamplePopupWrapper') {
+  if (elementById == 'ExamplePopupWrapper' && how == 'save') {
+    if (popup.style.display === 'flex') {
       // inputData 블록정보 가져오기
       let inputData = document.getElementById('txt_inputData');
       let startIndex = inputData.selectionStart;
       let endIndex = inputData.selectionEnd;
-      let selectedText = inputData.value.substring(startIndex, endIndex);
 
       // example 데이터정보 가져오기
       let txt_example = document.getElementById('txt_example');
@@ -736,24 +736,12 @@ let btn_togglePopup = (elementById) => {
 
       // 기존 텍스트에서 선택한 부분을 새로운 부정 표시로 교체
       inputData.value = inputData.value.substring(0, startIndex) + exampleData + inputData.value.substring(endIndex);
-
-      // 커서 위치 재조정
-      // let newPosition = startIndex;
-      // inputData.setSelectionRange(newPosition, newPosition);
-
-      // 복사하기
-      // let txt_example = document.getElementById('txt_example');
-      // let copy_text = txt_example.value;
-      // navigator.clipboard
-      //   .writeText(copy_text)
-      //   .then(() => {
-      //     console.log('successed text: ', copy_text);
-      //   })
-      //   .catch((err) => {
-      //     console.log('error text: ', err);
-      //   });
+    } else {
+      // 팝업 닫기
+      popup.style.display = popup.style.display === 'none' ? 'flex' : 'none';
     }
   }
+
   // 팝업 닫기
   popup.style.display = popup.style.display === 'none' ? 'flex' : 'none';
 
