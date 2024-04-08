@@ -228,8 +228,9 @@ table.alla6BasicTbl tr.alla6ExampleTr_Txt td div.allaExampleAlign_center {
 /* 보기그림 라인 */
 table.alla6BasicTbl tr.alla6ExampleTr_Img td:last-of-type {
   padding: 0px 16px;
+  height: 100px;
   border-radius: 15px;
-  background-color: rgba(220, 220, 220, 0.7);
+  background-color: rgba(175, 196, 223, 0.7);
   text-align: center;
   line-height: 0px;
 }
