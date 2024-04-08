@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <textarea id="txt_a" style="width: 300px"></textarea>
+    <button onclick="convertor('부정')">부정</button>
+    <button onclick="convertor('굵게')">굵게</button>
+    <script>
+      function convertor(kind) {
+        var textarea = document.getElementById('txt_a');
+        var startIndex = textarea.selectionStart;
+        var endIndex = textarea.selectionEnd;
+        var selectedText = textarea.value.substring(startIndex, endIndex);
+
+        // 추가할 부정 표시 및 빈 칸 여부 확인
+        var replacement = `/${kind}` + selectedText.trim() + `/.${kind}`;
+        if (selectedText.endsWith(' ')) {
+          replacement += ' ';
+        }
+        if (selectedText.startsWith(' ')) {
+          replacement = ' ' + replacement;
+        }
+
+        // 기존 텍스트에서 선택한 부분을 새로운 부정 표시로 교체
+        textarea.value = textarea.value.substring(0, startIndex) + replacement + textarea.value.substring(endIndex);
+
+        // 커서 위치 재조정
+        var newPosition = startIndex + '/부정'.length;
+        textarea.setSelectionRange(newPosition, newPosition);
+      }
+    </script>
+  </body>
+</html>
