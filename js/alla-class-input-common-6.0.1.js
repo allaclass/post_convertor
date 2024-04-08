@@ -798,6 +798,24 @@ let btn_cmd = (type, kind) => {
     // 커서 위치 재조정
     let newPosition = startIndex + `/${kind}`.length;
     inputData.setSelectionRange(newPosition, newPosition);
+  } else if (type == 'cancle') {
+    // inputData에서 블록영역 텍스트 가져오기
+    let inputData = document.getElementById('txt_inputData');
+    let startIndex = inputData.selectionStart;
+    let endIndex = inputData.selectionEnd;
+    let selectedText = inputData.value.substring(startIndex, endIndex);
+
+    // 추가할 kind 표시 및 빈 칸 여부 확인
+    let replacement;
+    replacement = selectedText.replace(`/${kind}`, ``);
+    replacement = replacement.replace(`/.${kind}`, ``);
+
+    // 기존 텍스트에서 선택한 부분을 새로운 부정 표시로 교체
+    inputData.value = inputData.value.substring(0, startIndex) + replacement + inputData.value.substring(endIndex);
+
+    // 커서 위치 재조정
+    let newPosition = startIndex + `/${kind}`.length;
+    inputData.setSelectionRange(newPosition, newPosition);
   } else if (type == 'example') {
     // inputData에서 블록영역 텍스트 가져오기
     let inputData = document.getElementById('txt_inputData');
