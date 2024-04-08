@@ -760,97 +760,77 @@ let btn_togglePopup = (elementById, how) => {
 
 // txt_inputData에 명령어 바로 입력하는 버튼 함수
 let btn_cmd = (type, kind) => {
+  // inputData에서 블록영역 텍스트 가져오기
+  let inputData = document.getElementById('txt_inputData');
+  let startIndex = inputData.selectionStart;
+  let endIndex = inputData.selectionEnd;
+  let selectedText = inputData.value.substring(startIndex, endIndex);
+  let selectedTextTrim = selectedText.trim();
+  let replacement;
+
   if (type == 'double') {
-    // inputData에서 블록영역 텍스트 가져오기
-    let inputData = document.getElementById('txt_inputData');
-    let startIndex = inputData.selectionStart;
-    let endIndex = inputData.selectionEnd;
-    let selectedText = inputData.value.substring(startIndex, endIndex);
-
-    // 추가할 kind 표시 및 빈 칸 여부 확인
-    let replacement = `/${kind}` + selectedText.trim() + `/.${kind}`;
-    if (selectedText.endsWith(' ')) {
-      replacement += ' ';
+    if (selectedTextTrim.startsWith(`/${kind}`) && selectedTextTrim.endsWith(`/.${kind}`)) {
+      // 이미 kind 표식이 되어있는 경우, 삭제하기
+      replacement = selectedText.replace(`/${kind}`, ``);
+      replacement = replacement.replace(`/.${kind}`, ``);
+    } else {
+      // 추가할 kind 표시 및 블록 앞뒤로 빈 칸 여부 확인하여 기존과 동일하게 추가하기
+      replacement = `/${kind}` + selectedText.trim() + `/.${kind}`;
+      if (selectedText.endsWith(' ')) {
+        replacement += ' ';
+      }
+      if (selectedText.startsWith(' ')) {
+        replacement = ' ' + replacement;
+      }
     }
-    if (selectedText.startsWith(' ')) {
-      replacement = ' ' + replacement;
+  } else if (type == 'doubleSpace') {
+    if (selectedTextTrim.startsWith(`/${kind} `) && selectedTextTrim.endsWith(`/.${kind}`)) {
+      // 이미 kind 표식이 되어있는 경우, 삭제하기
+      replacement = selectedText.replace(`/${kind}`, ``);
+      replacement = replacement.replace(`/.${kind}`, ``);
+    } else {
+      // 추가할 kind 표시 및 블록 앞뒤로 빈 칸 여부 확인하여 기존과 동일하게 추가하기
+      replacement = `/${kind} ` + selectedText.trim() + `/.${kind}`;
+      if (selectedText.endsWith(' ')) {
+        replacement += ' ';
+      }
+      if (selectedText.startsWith(' ')) {
+        replacement = ' ' + replacement;
+      }
     }
-
-    // 기존 텍스트에서 선택한 부분을 새로운 부정 표시로 교체
-    inputData.value = inputData.value.substring(0, startIndex) + replacement + inputData.value.substring(endIndex);
-
-    // 커서 위치 재조정
-    let newPosition = startIndex + `/${kind}`.length;
-    inputData.setSelectionRange(newPosition, newPosition);
   } else if (type == 'single') {
-    // inputData에서 블록영역 텍스트 가져오기
-    let inputData = document.getElementById('txt_inputData');
-    let startIndex = inputData.selectionStart;
-    let endIndex = inputData.selectionEnd;
-    let selectedText = inputData.value.substring(startIndex, endIndex);
-
-    // 추가할 kind 표시 및 빈 칸 여부 확인
-    let replacement = `/${kind}`;
-
-    // 기존 텍스트에서 선택한 부분을 새로운 부정 표시로 교체
-    inputData.value = inputData.value.substring(0, startIndex) + replacement + inputData.value.substring(endIndex);
-
-    // 커서 위치 재조정
-    let newPosition = startIndex + `/${kind}`.length;
-    inputData.setSelectionRange(newPosition, newPosition);
-  } else if (type == 'cancle') {
-    // inputData에서 블록영역 텍스트 가져오기
-    let inputData = document.getElementById('txt_inputData');
-    let startIndex = inputData.selectionStart;
-    let endIndex = inputData.selectionEnd;
-    let selectedText = inputData.value.substring(startIndex, endIndex);
-
-    // 추가할 kind 표시 및 빈 칸 여부 확인
-    let replacement;
-    replacement = selectedText.replace(`/${kind}`, ``);
-    replacement = replacement.replace(`/.${kind}`, ``);
-
-    // 기존 텍스트에서 선택한 부분을 새로운 부정 표시로 교체
-    inputData.value = inputData.value.substring(0, startIndex) + replacement + inputData.value.substring(endIndex);
-
-    // 커서 위치 재조정
-    let newPosition = startIndex + `/${kind}`.length;
-    inputData.setSelectionRange(newPosition, newPosition);
+    if (selectedTextTrim.startsWith(`/${kind}`)) {
+      replacement = selectedText.replace(`/${kind}`, ``);
+    } else {
+      // 추가할 kind 표시 및 빈 칸 여부 확인
+      replacement = `/${kind}`;
+    }
   } else if (type == 'example') {
-    // inputData에서 블록영역 텍스트 가져오기
-    let inputData = document.getElementById('txt_inputData');
-    let startIndex = inputData.selectionStart;
-    let endIndex = inputData.selectionEnd;
-    let selectedText = inputData.value.substring(startIndex, endIndex);
-
     // 추가할 kind 표시 및 빈 칸 여부 확인
-    let replacement = `/${kind}\n` + selectedText.trim();
-    // if (selectedText.endsWith(' ')) {
-    //   replacement += ' ';
-    // }
-    // if (selectedText.startsWith(' ')) {
-    //   replacement = ' ' + replacement;
-    // }
-
-    // 기존 텍스트에서 선택한 부분을 새로운 부정 표시로 교체
-    inputData.value = inputData.value.substring(0, startIndex) + replacement + inputData.value.substring(endIndex);
-
-    // 커서 위치 재조정
-    let newPosition = startIndex + `/${kind}`.length;
-    inputData.setSelectionRange(newPosition, newPosition);
+    replacement = `/${kind}\n` + selectedText.trim();
   }
+
+  // 기존 텍스트에서 선택한 부분을 새로운 부정 표시로 교체
+  inputData.value = inputData.value.substring(0, startIndex) + replacement + inputData.value.substring(endIndex);
+
+  // 커서 위치 재조정
+  let newPosition = startIndex + `/${kind}`.length;
+  inputData.setSelectionRange(newPosition, newPosition);
 };
 
 // inputData.value를 .txt 파일로 저장하는 함수 호출
 let btn_save = (textarea) => {
   let textToSave = document.getElementById(textarea).value; // 저장할 text 내용
-  infoData_object == undefined && alert('과목정보가 없습니다.');
-  let fileName = `${infoData_object}-${infoData_kind}-${infoData_year}-${infoData_seme}-${infoData_grade}.txt`; // 저장할 file 이름
-  let blob = new Blob([textToSave], { type: 'text/plain' });
-  let a = document.createElement('a');
-  a.download = fileName;
-  a.href = window.URL.createObjectURL(blob);
-  a.click();
+  if (infoData_object == undefined) {
+    alert('과목정보가 없습니다.');
+  } else {
+    let fileName = `${infoData_object}-${infoData_kind}-${infoData_year}-${infoData_seme}-${infoData_grade}.txt`; // 저장할 file 이름
+    let blob = new Blob([textToSave], { type: 'text/plain' });
+    let a = document.createElement('a');
+    a.download = fileName;
+    a.href = window.URL.createObjectURL(blob);
+    a.click();
+  }
 };
 
 /* -------------------------------------------- */

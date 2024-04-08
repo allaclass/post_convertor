@@ -145,8 +145,18 @@ function convertor_basic() {
   pushData_result();
 }
 
-function convertor_init() {
-  clearData(); // #txt_example 비우기
+function convertor_trim() {
+  inputData(); // #txt_example 데이터 가져오기
+  let arrDataExample = data_example.split('\n');
+  clearData();
+  for (let i = 1; i <= arrDataExample.length; i++) {
+    let editItem = arrDataExample[i - 1].trim();
+    if (i == arrDataExample.length) {
+      url_example.value += `${editItem}`;
+    } else {
+      url_example.value += `${editItem}\n`;
+    }
+  }
 }
 
 function convertor_frontSpace() {
