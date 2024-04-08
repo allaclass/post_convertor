@@ -26,7 +26,7 @@ div#btnList_command {
 }
 
 div#btnList_command button {
-  margin: 10px 1px;
+  margin: 5px 1px;
   min-width: 50px;
   height: 25px;
   padding: 0px;
@@ -56,7 +56,7 @@ div#btnList_command button {
 }
 
 .txt_outputHtml {
-  width: 55%;
+  width: calc(100% - 370px - 115px);
   height: 310px;
   float: right;
   background-color: #252525;
@@ -123,67 +123,43 @@ div#postView {
 }
 
 .menu {
-  width: 35%;
+  width: 370px;
   height: 310px;
   float: left;
   background-color: #252525;
   margin: 0;
-  padding: 20px;
+  padding: 20px 15px;
   box-sizing: border-box;
   border-right: 1px solid #525252;
   font-size: 12px;
 }
 
-.menu span,
-.btnList span {
-  color: #aaa;
-}
-
 .menu textarea {
-  background-color: #353535;
+  width: 330px;
+  height: 20px;
   color: #aaa;
+  background-color: #353535;
   border: none;
   border-radius: 5px;
-  font-size: 16px;
-  height: 20px;
-  width: 98.5%;
+  font-size: 13px;
+  margin-bottom: 6px;
+  padding: 5px;
 }
+
 .menu textarea#txt_info {
-  height: 200px;
-  font-size: 15px;
+  height: 181px;
+  overflow-x: auto; /* 가로 스크롤 생성 */
+  white-space: nowrap; /* 텍스트가 가로로 넘칠 때 자동 줄바꿈 방지 */
 }
 
-.menu textarea#txt_title,
-.menu textarea#txt_count {
-  border: 1px solid #777;
-}
-.menu textarea#txt_year,
-.menu textarea#txt_seme,
-.menu textarea#txt_grade,
-.menu textarea#txt_snum,
-.menu textarea#txt_enum,
-.menu textarea#txt_count {
-  width: 32%;
-}
-
-.menu textarea#txt_object,
-.menu textarea#txt_kind,
-.menu textarea#txt_prof,
-.menu textarea#txt_range {
-  width: 48.7%;
-}
-
-.menu textarea {
-  margin-bottom: 5px;
-}
-
+/* 버튼리스트 - 정렬 등 */
 .btnList {
-  width: 10%;
+  width: 115px;
   height: 310px;
   float: left;
   background-color: #252525;
   margin: 0;
-  padding: 20px 1% 1% 1%;
+  padding: 20px 10px;
   box-sizing: border-box;
   border-right: 1px solid #525252;
   /* overflow: scroll; */
@@ -191,7 +167,7 @@ div#postView {
 }
 
 .btnList button {
-  width: 95%;
+  width: 95px;
   height: 26px;
   margin: 0 0 10px 0;
   padding: 0px;
@@ -229,8 +205,8 @@ div#postView {
 
 /* 스크롤바 */
 ::-webkit-scrollbar {
-  width: 27px;
-  height: 27px;
+  width: 15px;
+  height: 15px;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0);
 }
@@ -238,11 +214,11 @@ div#postView {
   width: 3px;
   border-radius: 15px;
   background-color: #525252;
-  border: 8px solid rgba(0, 0, 0, 0);
+  border: 5px solid rgba(0, 0, 0, 0);
   background-clip: padding-box;
 }
 ::-webkit-scrollbar-track {
-  background-color: #252525;
+  background-color: rgba(0, 0, 0, 0);
 }
 ::-webkit-scrollbar-button {
   width: 5;
@@ -258,7 +234,7 @@ div#postView {
 }
 
 ::-webkit-scrollbar-track:hover {
-  cursor: auto;
+  cursor: pointer;
 }
 
 textarea:focus,

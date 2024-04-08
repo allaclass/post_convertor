@@ -20,15 +20,15 @@
       </div>
       <div class="btnList">
         <!-- button -->
-        <button onclick="btn_sort()" id="btn_sort" accesskey="1">Sort (1)</button><br />
-        <button onclick="btn_sort('\n')" id="btn_sort_n" accesskey="2">Sort \n (2)</button><br />
-        <button onclick="btn_sort('\n', 'not')" id="btn_sort_cmd" accesskey="3">Sort \not (3)</button><br />
-        <button onclick="btn_oldConvertor()" id="btn_oldConvertor" accesskey="4">Old. (4)</button><br />
+        <button onclick="btn_sort()" id="btn_sort" accesskey="1">정렬/일반 (1)</button><br />
+        <button onclick="btn_sort('\n')" id="btn_sort_n" accesskey="2">정렬/엔터 (2)</button><br />
+        <button onclick="btn_sort('\n', 'not')" id="btn_sort_cmd" accesskey="3">정렬/부정 (3)</button><br />
+        <button onclick="btn_toHtml()" id="btn_toHtml" accesskey="4">소스 (4)</button>
         <hr />
-        <button onclick="btn_togglePopup('ExamplePopupWrapper')" id="btn_exConvertor" accesskey="q">example (q)</button>
-        <button onclick="btn_toHtml()" id="btn_toHtml" accesskey="w">html (w)</button>
+        <button onclick="btn_togglePopup('ExamplePopupWrapper')" id="btn_exConvertor" accesskey="q">보기문 (q)</button>
+        <button onclick="btn_oldConvertor()" id="btn_oldConvertor" accesskey="w">구.변환 (w)</button><br />
         <hr />
-        <button onclick="btn_togglePopup('CommandPopupWrapper')" id="btn_cmdGuide" accesskey="g">Guide (g)</button>
+        <button onclick="btn_togglePopup('CommandPopupWrapper')" id="btn_cmdGuide" accesskey="g">가이드 (g)</button>
       </div>
 
       <textarea class="txt_outputHtml" id="txt_outputHtml" placeholder="2. output html"></textarea>
