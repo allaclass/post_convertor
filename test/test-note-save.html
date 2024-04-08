@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Save Text as .txt File</title>
+  </head>
+  <body>
+    <textarea id="txt_a" rows="5" cols="50">Type your text here...</textarea><br />
+    <textarea id="txt_b" placeholder="Enter file name"></textarea><br />
+    <button id="btn_save">Save as .txt</button>
+
+    <script>
+      document.getElementById('btn_save').addEventListener('click', function () {
+        let textToSave = document.getElementById('txt_a').value; // 저장할 text 내용
+        let fileName = document.getElementById('txt_b').value + '.txt'; // 저장할 file 이름
+        let blob = new Blob([textToSave], { type: 'text/plain' });
+        let a = document.createElement('a');
+        a.download = fileName;
+        a.href = window.URL.createObjectURL(blob);
+        a.click();
+      });
+    </script>
+  </body>
+</html>
