@@ -841,6 +841,18 @@ let btn_cmd = (type, kind) => {
   }
 };
 
+// inputData.value를 .txt 파일로 저장하는 함수 호출
+let btn_save = (textarea) => {
+  let textToSave = document.getElementById(textarea).value; // 저장할 text 내용
+  infoData_object == undefined && alert('과목정보가 없습니다.');
+  let fileName = `${infoData_object}-${infoData_kind}-${infoData_year}-${infoData_seme}-${infoData_grade}.txt`; // 저장할 file 이름
+  let blob = new Blob([textToSave], { type: 'text/plain' });
+  let a = document.createElement('a');
+  a.download = fileName;
+  a.href = window.URL.createObjectURL(blob);
+  a.click();
+};
+
 /* -------------------------------------------- */
 /* 종  료 : alla-class-input-common-6.0.1.js    */
 /* -------------------------------------------- */

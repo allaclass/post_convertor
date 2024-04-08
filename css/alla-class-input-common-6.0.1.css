@@ -169,7 +169,6 @@ div#postView {
 .btnList button {
   width: 95px;
   height: 26px;
-  margin: 0 0 10px 0;
   padding: 0px;
   border-radius: 5px;
   background-color: #454545;
@@ -177,22 +176,21 @@ div#postView {
   border: none;
   font-size: 12px;
   cursor: pointer;
+  margin: 3px 0;
 }
 
 .btnList hr {
   border: 1px solid #525252;
 }
 
-.btnList #btn_sort_cmd {
-  margin-bottom: 5px;
+.btnList #btn_toHtml,
+.btnList #btn_oldConvertor {
+  margin-bottom: 0;
 }
 
-.btnList #btn_toHtml,
 .btnList #btn_exConvertor,
-.btnList #btn_cmdGuide,
-.btnList #btn_oldConvertor {
-  margin-top: 5px;
-  margin-bottom: 5px;
+.btnList #btn_cmdGuide {
+  margin-top: 0;
 }
 
 .btnList #btn .btnList button:hover {
