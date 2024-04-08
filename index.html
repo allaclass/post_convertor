@@ -32,15 +32,34 @@
       </div>
 
       <textarea class="txt_outputHtml" id="txt_outputHtml" placeholder="2. output html"></textarea>
+      <div class="btnList_command" id="btnList_command">
+        <button onclick="btn_cmd('double', '부정')">부정</button>
+        <button onclick="btn_cmd('double', '굵게')">굵게</button>
+        <button onclick="btn_cmd('double', '기움')">기움</button> |
+        <button onclick="btn_cmd('double', '밑줄')">밑줄</button>
+        <button onclick="btn_cmd('double', '윗줄')">윗줄</button> |
+        <button onclick="btn_cmd('double', '윗첨자')">윗첨자</button>
+        <button onclick="btn_cmd('double', '아랫첨자')">아랫첨자</button> |
+        <button onclick="btn_cmd('double', '미지수')">미지수</button>
+        <button onclick="btn_cmd('double', '이미지')">이미지</button>　|　<button onclick="btn_cmd('single', '줄')">줄</button> |
+        <button onclick="btn_cmd('single', '빈칸')">빈칸</button>
+        <button onclick="btn_cmd('single', '숏빈칸')">숏빈칸</button>
+        <button onclick="btn_cmd('single', '롱빈칸')">롱빈칸</button> |
+        <button onclick="btn_cmd('example', '보기문')">보기문</button>
+        <button onclick="btn_cmd('example', '보기그림')">보기그림</button>
+      </div>
       <textarea class="txt_inputData" id="txt_inputData" placeholder="1. input data"></textarea>
       <div id="postView" class="postView"></div>
 
-      <!-- 팝업을 감싸는 div -->
+      <!-- 명령어 가이드 팝업을 감싸는 div -->
       <div id="CommandPopupWrapper" class="popup-wrapper">
         <!-- 팝업 내용을 담는 div -->
         <div class="popup-content">
           <h2>명령어 가이드</h2>
           <table>
+            <tr>
+              글자 효과
+            </tr>
             <tr>
               <td>
                 <ul>
@@ -53,17 +72,20 @@
               </td>
               <td>
                 <ul>
-                  <li>/미지수~/.미지수</li>
+                  <li>/미지수~/.미지수 (수학기호)</li>
                   <li>/윗첨자~/.윗첨자</li>
                   <li>/아랫첨자~/.아랫첨자</li>
-                  <li>/이미지~/.이미지</li>
                   <li>/줄, /빈칸, /숏빈칸, /롱빈칸</li>
+                  <li>/이미지~/.이미지</li>
                 </ul>
               </td>
             </tr>
           </table>
 
           <table>
+            <tr>
+              단락 효과
+            </tr>
             <tr>
               <td>
                 <ul>
@@ -89,6 +111,9 @@
           </table>
 
           <table>
+            <tr>
+              부정문 자동 변환 (~■~ → /부정■/.부정)
+            </tr>
             <tr>
               <td>
                 <ul>
@@ -120,13 +145,51 @@
             </tr>
           </table>
 
+          <table>
+            <tr>
+              기호 자동 변환
+            </tr>
+            <tr>
+              <td>
+                <ul>
+                  <li>～ → ~</li>
+                  <li>․ → ㆍ</li>
+                  <li>· → ㆍ</li>
+                  <li>⋅ → ㆍ</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>‘ → '</li>
+                  <li>’ → '</li>
+                  <li>< → &#60;</li>
+                  <li>> → &#62;</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>󰡔 → 『</li>
+                  <li>󰡕 → 』</li>
+                  <li>ꡔ → 『</li>
+                  <li>ꡕ → 』</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>｢ → 「</li>
+                  <li>｣ → 」</li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+
           <!-- 팝업 닫기 버튼 -->
           <button onclick="btn_togglePopup('CommandPopupWrapper')">닫기</button>
         </div>
       </div>
     </div>
 
-    <!-- 팝업을 감싸는 div -->
+    <!-- 보기문 팝업을 감싸는 div -->
     <div id="ExamplePopupWrapper" class="popup-wrapper">
       <!-- 팝업 내용을 담는 div -->
       <div class="popup-content">
@@ -144,7 +207,9 @@
         <textarea class="txt_example" id="txt_example" placeholder=""></textarea>
 
         <div class="menuWrap">
-          <button id="basic" onclick="convertor_basic()">보기문</button>
+          <button id="convertor_basic" onclick="convertor_basic()">보기문</button>
+          <button onclick="convertor_init()">초기화</button>
+          <button onclick="convertor_frontSpace()">빈칸(2)</button>
           <hr />
           <button onclick="convertor_Kor()">가.</button>
           <button onclick="convertor_KorJa()">ㄱ.</button>

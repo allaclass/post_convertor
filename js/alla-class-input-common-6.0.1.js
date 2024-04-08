@@ -719,8 +719,102 @@ let btn_oldConvertor = () => {
 
 // 팝업 열고 닫는 함수
 let btn_togglePopup = (elementById) => {
-  var popup = document.getElementById(elementById);
+  // 팝업 열고닫고
+  let popup = document.getElementById(elementById);
+  // 팝업이 열려있다면 닫을 때 textarea#txt_example.value를 복사해라
+  if (popup.style.display === 'flex') {
+    if (elementById == 'ExamplePopupWrapper') {
+      let txt_example = document.getElementById('txt_example');
+      let copy_text = txt_example.value;
+      navigator.clipboard
+        .writeText(copy_text)
+        .then(() => {
+          console.log('successed text: ', copy_text);
+        })
+        .catch((err) => {
+          console.log('error text: ', err);
+        });
+    }
+  }
+  // 팝업 닫기
   popup.style.display = popup.style.display === 'none' ? 'flex' : 'none';
+
+  // 팝업 열 때 textarea#txt_inputData.value에서 커서블록잡은 텍스트 가져와서 textarea#txt_example.value에 뿌려라
+  if (elementById == 'ExamplePopupWrapper') {
+    let fromTextarea = document.getElementById('txt_inputData');
+    let toTextarea = document.getElementById('txt_example');
+    if (fromTextarea.selectionStart >= 0 && fromTextarea.selectionEnd) {
+      let startTextIndex = fromTextarea.selectionStart;
+      let endTextIndex = fromTextarea.selectionEnd;
+      let blockText = fromTextarea.value.substring(startTextIndex, endTextIndex);
+      toTextarea.value = blockText;
+    }
+  }
+};
+
+// txt_inputData에 명령어 바로 입력하는 버튼 함수
+let btn_cmd = (type, kind) => {
+  if (type == 'double') {
+    // inputData에서 블록영역 텍스트 가져오기
+    let inputData = document.getElementById('txt_inputData');
+    let startIndex = inputData.selectionStart;
+    let endIndex = inputData.selectionEnd;
+    let selectedText = inputData.value.substring(startIndex, endIndex);
+
+    // 추가할 kind 표시 및 빈 칸 여부 확인
+    let replacement = `/${kind}` + selectedText.trim() + `/.${kind}`;
+    if (selectedText.endsWith(' ')) {
+      replacement += ' ';
+    }
+    if (selectedText.startsWith(' ')) {
+      replacement = ' ' + replacement;
+    }
+
+    // 기존 텍스트에서 선택한 부분을 새로운 부정 표시로 교체
+    inputData.value = inputData.value.substring(0, startIndex) + replacement + inputData.value.substring(endIndex);
+
+    // 커서 위치 재조정
+    let newPosition = startIndex + `/${kind}`.length;
+    inputData.setSelectionRange(newPosition, newPosition);
+  } else if (type == 'single') {
+    // inputData에서 블록영역 텍스트 가져오기
+    let inputData = document.getElementById('txt_inputData');
+    let startIndex = inputData.selectionStart;
+    let endIndex = inputData.selectionEnd;
+    let selectedText = inputData.value.substring(startIndex, endIndex);
+
+    // 추가할 kind 표시 및 빈 칸 여부 확인
+    let replacement = `/${kind}`;
+
+    // 기존 텍스트에서 선택한 부분을 새로운 부정 표시로 교체
+    inputData.value = inputData.value.substring(0, startIndex) + replacement + inputData.value.substring(endIndex);
+
+    // 커서 위치 재조정
+    let newPosition = startIndex + `/${kind}`.length;
+    inputData.setSelectionRange(newPosition, newPosition);
+  } else if (type == 'example') {
+    // inputData에서 블록영역 텍스트 가져오기
+    let inputData = document.getElementById('txt_inputData');
+    let startIndex = inputData.selectionStart;
+    let endIndex = inputData.selectionEnd;
+    let selectedText = inputData.value.substring(startIndex, endIndex);
+
+    // 추가할 kind 표시 및 빈 칸 여부 확인
+    let replacement = `/${kind}\n` + selectedText.trim();
+    // if (selectedText.endsWith(' ')) {
+    //   replacement += ' ';
+    // }
+    // if (selectedText.startsWith(' ')) {
+    //   replacement = ' ' + replacement;
+    // }
+
+    // 기존 텍스트에서 선택한 부분을 새로운 부정 표시로 교체
+    inputData.value = inputData.value.substring(0, startIndex) + replacement + inputData.value.substring(endIndex);
+
+    // 커서 위치 재조정
+    let newPosition = startIndex + `/${kind}`.length;
+    inputData.setSelectionRange(newPosition, newPosition);
+  }
 };
 
 /* -------------------------------------------- */

@@ -35,8 +35,8 @@
   border: 1px solid #525252;
 }
 
-.menuWrap button:first-of-type {
-  width: 98%;
+.menuWrap button#convertor_basic {
+  width: 58%;
   margin: 10px 5px;
 }
 
@@ -50,10 +50,6 @@
   margin-right: 2px;
   float: right;
 }
-
-/* .menuWrap button#basic {
-  width: 500px;
-} */
 
 .menuWrap button:hover {
   background-color: #656565;

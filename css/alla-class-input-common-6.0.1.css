@@ -12,9 +12,34 @@ body {
   height: 100%;
 }
 
+/* 버튼리스트 - 명령어 */
+div#btnList_command {
+  width: 100%;
+  /* height: 60px; */
+  float: left;
+  text-align: center;
+  /* background-color: aqua; */
+  border-top: 1px solid #525252;
+  white-space: nowrap; /* 텍스트가 가로로 넘칠 때 자동 줄바꿈 방지 */
+  overflow-x: auto;
+}
+
+div#btnList_command button {
+  margin: 10px 1px;
+  min-width: 50px;
+  height: 25px;
+  padding: 0px;
+  border-radius: 5px;
+  background-color: #454545;
+  color: #aaa;
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+}
+
 .txt_inputData {
   width: 100%;
-  height: calc(100% - 370px);
+  height: calc(100% - 372px);
   float: left;
   background-color: #252525;
   margin: 0;
@@ -73,6 +98,7 @@ div#postView {
 /* 팝업 내용을 담는 div의 스타일 */
 .popup-content {
   background-color: #252525;
+  color: #aaa;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
