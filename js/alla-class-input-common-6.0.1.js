@@ -551,6 +551,13 @@ let fnPrintInputDataBox = (arrQuestionDetail, not) => {
         default:
       }
     });
+    // arrQuestionDetail에 key:solve가 없을 경우 /해설\n\n만 추가한다.
+    let foundSolve = false;
+    arrQuestionDetail[j].forEach((item) => {
+      item.type === 'simbol' && item.content === '※.' && (foundSolve = true);
+      item.type === 'solve' && (foundSolve = true);
+    });
+    !foundSolve && (txt_inputData.value += `/해설\n\n`);
   }
 };
 

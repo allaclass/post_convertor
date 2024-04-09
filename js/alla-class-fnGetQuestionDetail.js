@@ -159,6 +159,12 @@ let fnGetQuestionDetail = (str, simbol, type) => {
 // 첫번째 보기그림
 // `;
 
+// let detail = fnGetQuestionDetail(str, simbol, type);
+
+// detail.forEach((item) => {
+//   console.log(item);
+// });
+
 // let type = 'normal';
 // let simbol = `1\\.`;
 // let str = `
