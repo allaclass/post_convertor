@@ -3,7 +3,7 @@
 /* 텍스트 영역 */
 .txt_example {
   width: 100%;
-  height: 310px;
+  height: 260px;
   /* float: left; */
   background-color: #252525;
   margin: 0;
@@ -35,8 +35,8 @@
   border: 1px solid #525252;
 }
 
-.menuWrap button#convertor_basic {
-  width: 58%;
+.menuWrap button#btn_save_n_exit {
+  width: 38%;
   margin: 10px 5px;
 }
 

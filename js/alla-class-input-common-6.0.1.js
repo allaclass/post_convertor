@@ -101,6 +101,8 @@ let fnReplace_gihoChange = (text) => {
   text = text.replaceAll('’', "'");
   text = text.replaceAll('<', '&#60;');
   text = text.replaceAll('>', '&#62;');
+  text = text.replaceAll(/\s*:\s*/g, '：');
+  text = text.replaceAll(/\(\s*\)/g, '(/빈칸)'); // 연속된 괄호들을 /빈칸)으로 대체합니다.
   return text;
 };
 
@@ -807,7 +809,7 @@ let btn_cmd = (type, kind) => {
     }
   } else if (type == 'example') {
     // 추가할 kind 표시 및 빈 칸 여부 확인
-    replacement = `/${kind}\n` + selectedText.trim();
+    replacement = `/${kind}` + selectedText.trim();
   }
 
   // 기존 텍스트에서 선택한 부분을 새로운 부정 표시로 교체

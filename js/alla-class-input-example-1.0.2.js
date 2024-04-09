@@ -145,6 +145,34 @@ function convertor_basic() {
   pushData_result();
 }
 
+// 앞에 공백2개씩 넣는 기능
+function convertor_frontSpace() {
+  inputData(); // #txt_example 데이터 가져오기
+  let arrDataExample = data_example.split('\n');
+  clearData();
+  for (let i = 1; i <= arrDataExample.length; i++) {
+    let editItem = arrDataExample[i - 1].trim();
+    if (i == arrDataExample.length) {
+      url_example.value += `  ${editItem}`;
+    } else {
+      url_example.value += `  ${editItem}\n`;
+    }
+  }
+  // let txt_example = document.getElementById('txt_example');
+  // if (txt_example.selectionStart >= 0 && txt_example.selectionEnd) {
+  //   let startTextIndex = txt_example.selectionStart;
+  //   let endTextIndex = txt_example.selectionEnd;
+  //   let blockText = txt_example.value.substring(startTextIndex, endTextIndex);
+  //   clearData(); // #txt_example 비우기
+  //   let arrBlockText = blockText.split('\n');
+  //   arrBlockText.forEach((item) => {
+  //     let editItem = item.trim();
+  //     txt_example.value += `  ${editItem}\n`;
+  //   });
+  // }
+}
+
+// 앞뒤공백 지우는 기능
 function convertor_trim() {
   inputData(); // #txt_example 데이터 가져오기
   let arrDataExample = data_example.split('\n');
@@ -156,21 +184,6 @@ function convertor_trim() {
     } else {
       url_example.value += `${editItem}\n`;
     }
-  }
-}
-
-function convertor_frontSpace() {
-  let txt_example = document.getElementById('txt_example');
-  if (txt_example.selectionStart >= 0 && txt_example.selectionEnd) {
-    let startTextIndex = txt_example.selectionStart;
-    let endTextIndex = txt_example.selectionEnd;
-    let blockText = txt_example.value.substring(startTextIndex, endTextIndex);
-    clearData(); // #txt_example 비우기
-    let arrBlockText = blockText.split('\n');
-    arrBlockText.forEach((item) => {
-      let editItem = item.trim();
-      txt_example.value += `  ${editItem}\n`;
-    });
   }
 }
 
