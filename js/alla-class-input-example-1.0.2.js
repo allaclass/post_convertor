@@ -161,7 +161,7 @@ function convertor_frontSpace() {
 }
 
 // 보기문, 보기그림
-function convertor_example(kind) {
+function convertor_example(type) {
   // 보기문 텍스트박스(txt_example)값 가져오기
   let txt_example = document.getElementById('txt_example');
   // 변경할 텍스트 담을 변수
@@ -171,13 +171,37 @@ function convertor_example(kind) {
   let selectedText = txt_example.value.substring(startTextIndex, endTextIndex); // 블록잡은 텍스트 가져오기
   // 마우스 블록을 잡은 부분이 있다면? (블록 시작부분과 끝부분이 0 이상이라면)
   if (startTextIndex >= 0 && endTextIndex >= 0) {
-    if (selectedText.startsWith(`/${kind}`)) {
-      replacement = selectedText.replace(`/${kind}`, ``);
+    if (selectedText.startsWith(`/${type}`)) {
+      replacement = selectedText.replace(`/${type}`, ``);
     } else {
-      replacement = `/${kind}`;
+      replacement = `/${type}`;
     }
   } else {
-    replacement = `/${kind}`;
+    replacement = `/${type}`;
+  }
+  // 기존 텍스트에서 선택한 부분을 새로운 부정 표시로 교체
+  txt_example.value = txt_example.value.substring(0, startTextIndex) + replacement + txt_example.value.substring(endTextIndex);
+}
+
+// 단락, 좌들, 중앙, 우측
+function convertor_commandDoubleSpace(type) {
+  // 보기문 텍스트박스(txt_example)값 가져오기
+  let txt_example = document.getElementById('txt_example');
+  // 변경할 텍스트 담을 변수
+  let replacement = '';
+  let startTextIndex = txt_example.selectionStart; // 블록 시작 Index 가져오기
+  let endTextIndex = txt_example.selectionEnd; // 블록 종료 Index 가져오기
+  let selectedText = txt_example.value.substring(startTextIndex, endTextIndex); // 블록잡은 텍스트 가져오기
+  // 마우스 블록을 잡은 부분이 있다면? (블록 시작부분과 끝부분이 0 이상이라면)
+  if (startTextIndex >= 0 && endTextIndex >= 0) {
+    if (selectedText.startsWith(`/${type}`)) {
+      replacement = selectedText.replace(`/${type} `, ``);
+      replacement = replacement.replace(`/.${type}`, ``);
+    } else {
+      replacement = `/${type} ${selectedText}/.${type}`;
+    }
+  } else {
+    replacement = `/${type} ${selectedText}/.${type}`;
   }
   // 기존 텍스트에서 선택한 부분을 새로운 부정 표시로 교체
   txt_example.value = txt_example.value.substring(0, startTextIndex) + replacement + txt_example.value.substring(endTextIndex);

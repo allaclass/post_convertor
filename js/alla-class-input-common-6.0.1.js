@@ -792,7 +792,7 @@ let btn_cmd = (type, kind) => {
     // 명령어 뒤에 빈칸 하나 더 붙는 유형
     if (selectedTextTrim.startsWith(`/${kind} `) && selectedTextTrim.endsWith(`/.${kind}`)) {
       // 이미 kind 표식이 되어있는 경우, 삭제하기
-      replacement = selectedText.replace(`/${kind}`, ``);
+      replacement = selectedText.replace(`/${kind} `, ``);
       replacement = replacement.replace(`/.${kind}`, ``);
     } else {
       // 추가할 kind 표시 및 블록 앞뒤로 빈 칸 여부 확인하여 기존과 동일하게 추가하기
