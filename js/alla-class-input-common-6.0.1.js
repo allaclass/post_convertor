@@ -857,9 +857,10 @@ let btn_save = (arrTextarea) => {
     textToSave += document.getElementById(textarea).value; // 저장할 text 내용
     textToSave += '\n\n\n';
   });
-  if (infoData_object == undefined) {
+  if (infoData_object === undefined || infoData_object == '') {
     alert('과목정보가 없습니다.');
   } else {
+    console.log(infoData_object);
     let fileName = `${infoData_object}-${infoData_kind}-${infoData_year}-${infoData_seme}-${infoData_grade}.txt`; // 저장할 file 이름
     let blob = new Blob([textToSave], { type: 'text/plain' });
     let a = document.createElement('a');
