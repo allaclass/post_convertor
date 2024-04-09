@@ -724,30 +724,30 @@ let btn_togglePopup = (elementById, how) => {
   // 팝업 div 가져오기
   let popup = document.getElementById(elementById);
 
-  // 팝업이 열려있다면 닫을 때 textarea#txt_example.value를 복사해라
+  // 보기문 편집기 팝업이 열려있다면 닫을 때 textarea#txt_example.value(보기문 편집기 텍스트박스)를 복사해라
   if (elementById == 'ExamplePopupWrapper' && how == 'save') {
     if (popup.style.display === 'flex') {
-      // inputData 블록정보 가져오기
+      // inputData 마우스 드래그한 블록 텍스트정보 가져오기
       let inputData = document.getElementById('txt_inputData');
       let startIndex = inputData.selectionStart;
       let endIndex = inputData.selectionEnd;
 
-      // example 데이터정보 가져오기
+      // example 텍스트 정보 가져오기
       let txt_example = document.getElementById('txt_example');
       let exampleData = txt_example.value;
 
-      // 기존 텍스트에서 선택한 부분을 새로운 부정 표시로 교체
+      // 기존 문제입력창 텍스트에서 선택한 블록부분을 새로 편집한 내용으로 교체
       inputData.value = inputData.value.substring(0, startIndex) + exampleData + inputData.value.substring(endIndex);
     } else {
-      // 팝업 닫기
+      // 팝업 열기 또는 닫기
       popup.style.display = popup.style.display === 'none' ? 'flex' : 'none';
     }
   }
 
-  // 팝업 닫기
+  // 보기문 편집기 외 팝업이라면 그냥 열기 또는 닫기
   popup.style.display = popup.style.display === 'none' ? 'flex' : 'none';
 
-  // 팝업 열 때 textarea#txt_inputData.value에서 커서블록잡은 텍스트 가져와서 textarea#txt_example.value에 뿌려라
+  // 팝업 열 때 textarea#txt_inputData.value(문제입력 텍스트박스)에서 커서블록잡은 텍스트 가져와서 textarea#txt_example.value(보기문 편집기 텍스트박스)에 뿌려라
   if (elementById == 'ExamplePopupWrapper') {
     let fromTextarea = document.getElementById('txt_inputData');
     let toTextarea = document.getElementById('txt_example');
@@ -771,6 +771,8 @@ let btn_cmd = (type, kind) => {
   let replacement;
 
   if (type == 'double') {
+    // 부정, 굵게, 기움, 밑줄, 윗줄, 윗첨자, 아랫첨자, 미지수, 이미지
+    // 명령어 뒤에 빈칸 없는 유형
     if (selectedTextTrim.startsWith(`/${kind}`) && selectedTextTrim.endsWith(`/.${kind}`)) {
       // 이미 kind 표식이 되어있는 경우, 삭제하기
       replacement = selectedText.replace(`/${kind}`, ``);
@@ -786,6 +788,8 @@ let btn_cmd = (type, kind) => {
       }
     }
   } else if (type == 'doubleSpace') {
+    // 좌들, 중앙, 우측
+    // 명령어 뒤에 빈칸 하나 더 붙는 유형
     if (selectedTextTrim.startsWith(`/${kind} `) && selectedTextTrim.endsWith(`/.${kind}`)) {
       // 이미 kind 표식이 되어있는 경우, 삭제하기
       replacement = selectedText.replace(`/${kind}`, ``);
@@ -801,6 +805,7 @@ let btn_cmd = (type, kind) => {
       }
     }
   } else if (type == 'single') {
+    // 줄, 빈칸, 숏빈칸, 롱빈칸, 보기문, 보기그림
     if (selectedTextTrim.startsWith(`/${kind}`)) {
       replacement = selectedText.replace(`/${kind}`, ``);
     } else {
@@ -808,6 +813,8 @@ let btn_cmd = (type, kind) => {
       replacement = `/${kind}`;
     }
   } else if (type == 'example') {
+    // 기존에 보기문\n, 보기그림\n 으로 사용했으나
+    // 지금은 사용안함 (사유: 블록잡은 영역이 그대로 남아서)
     // 추가할 kind 표시 및 빈 칸 여부 확인
     replacement = `/${kind}` + selectedText.trim();
   }
@@ -825,7 +832,7 @@ let btn_save = (arrTextarea) => {
   let textToSave = '';
   arrTextarea.forEach((textarea) => {
     textToSave += document.getElementById(textarea).value; // 저장할 text 내용
-    textToSave += '\n\n\n\n';
+    textToSave += '\n\n\n';
   });
   if (infoData_object == undefined) {
     alert('과목정보가 없습니다.');
