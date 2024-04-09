@@ -75,21 +75,20 @@
           </tr>
         </table>
         <div class="menuWrap">
-          <button onclick="convertor_trim()">앞뒤공백X</button>
-          <button onclick="convertor_frontSpace()">앞2빈칸</button>
           <button onclick="convertor_basic()" id="convertor_basic">보기문/단락</button>
           <button onclick="convertor_example('보기문')">보기문</button>
           <button onclick="convertor_example('보기그림')">보기그림</button>
-
           <button onclick="convertor_commandDoubleSpace('단락')">단락</button>
           <button onclick="convertor_commandDoubleSpace('좌들')">좌들</button>
           <button onclick="convertor_commandDoubleSpace('중앙')">중앙</button>
           <button onclick="convertor_commandDoubleSpace('우측')">우측</button>
-          <button onclick="btn_togglePopup('ExamplePopupWrapper', 'save')">저장 및 닫기</button>
+          <button onclick="btn_togglePopup('ExamplePopupWrapper', 'save')" accesskey="a">저장&닫기 (A)</button>
         </div>
         <textarea class="txt_example" id="txt_example" placeholder=""></textarea>
         <div class="menuWrap">
-          <button onclick="btn_togglePopup('ExamplePopupWrapper', 'save')" id="btn_save_n_exit">저장 및 닫기</button>
+          <button onclick="convertor_trim()">앞뒤공백X</button>
+          <button onclick="convertor_frontSpace()">앞2빈칸</button>
+          <button onclick="btn_togglePopup('ExamplePopupWrapper', 'save')" id="btn_save_n_exit" accesskey="a">저장 및 닫기 (A)</button>
           <hr />
           <button onclick="convertor_Kor()">가.</button>
           <button onclick="convertor_KorJa()">ㄱ.</button>

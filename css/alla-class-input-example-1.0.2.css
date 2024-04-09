@@ -35,11 +35,15 @@
   border: 1px solid #525252;
   margin-bottom: 0px;
 }
+.menuWrap button#convertor_basic {
+  width: 58%;
+}
 
 .menuWrap button#btn_save_n_exit {
   /* width: 38%; */
-  width: 100%;
-  margin: 10px 5px;
+  width: 58%;
+  /* width: 100%; */
+  /* margin: 10px 5px; */
 }
 
 .popup-example-table {
