@@ -819,8 +819,12 @@ let btn_cmd = (type, kind) => {
 };
 
 // inputData.value를 .txt 파일로 저장하는 함수 호출
-let btn_save = (textarea) => {
-  let textToSave = document.getElementById(textarea).value; // 저장할 text 내용
+let btn_save = (arrTextarea) => {
+  let textToSave = '';
+  arrTextarea.forEach((textarea) => {
+    textToSave += document.getElementById(textarea).value; // 저장할 text 내용
+    textToSave += '\n\n\n\n';
+  });
   if (infoData_object == undefined) {
     alert('과목정보가 없습니다.');
   } else {
