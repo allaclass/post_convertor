@@ -33,6 +33,7 @@
 
 .menuWrap hr {
   border: 1px solid #525252;
+  margin-bottom: 0px;
 }
 
 .menuWrap button#btn_save_n_exit {

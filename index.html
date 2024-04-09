@@ -37,15 +37,17 @@
         <button onclick="btn_cmd('double', '부정')">부정</button>
         <button onclick="btn_cmd('double', '굵게')">굵게</button>
         <button onclick="btn_cmd('double', '기움')">기움</button>|
+        <button onclick="btn_cmd('single/n', '※.')">※.</button>
+        <button onclick="btn_cmd('single', '줄')">줄</button>|
+        <button onclick="btn_cmd('single', '빈칸')">빈칸</button>
+        <button onclick="btn_cmd('single', '숏빈칸')">숏빈칸</button>
+        <button onclick="btn_cmd('single', '롱빈칸')">롱빈칸</button>|
         <button onclick="btn_cmd('double', '밑줄')">밑줄</button>
         <button onclick="btn_cmd('double', '윗줄')">윗줄</button>|
         <button onclick="btn_cmd('double', '윗첨자')">윗첨자</button>
         <button onclick="btn_cmd('double', '아랫첨자')">아랫첨자</button>|
         <button onclick="btn_cmd('double', '미지수')">미지수</button>
-        <button onclick="btn_cmd('double', '이미지')">이미지</button>|<button onclick="btn_cmd('single', '줄')">줄</button>|
-        <button onclick="btn_cmd('single', '빈칸')">빈칸</button>
-        <button onclick="btn_cmd('single', '숏빈칸')">숏빈칸</button>
-        <button onclick="btn_cmd('single', '롱빈칸')">롱빈칸</button>|
+        <button onclick="btn_cmd('double', '이미지')">이미지</button>|
         <button onclick="btn_cmd('single', '보기문')">보기문</button>
         <button onclick="btn_cmd('single', '보기그림')">보기그림</button>|
         <button onclick="btn_cmd('doubleSpace', '좌들')">좌들</button>
@@ -75,10 +77,16 @@
         <textarea class="txt_example" id="txt_example" placeholder=""></textarea>
 
         <div class="menuWrap">
-          <button onclick="btn_togglePopup('ExamplePopupWrapper', 'save')" id="btn_save_n_exit">저장 및 닫기</button>
-          <button onclick="convertor_basic()" id="convertor_basic">보기문</button>
+          <button onclick="convertor_basic()" id="convertor_basic">보기문/단락</button>
           <button onclick="convertor_frontSpace()">앞2빈칸</button>
           <button onclick="convertor_trim()">앞뒤공백X</button>
+          <button onclick="btn_togglePopup('ExamplePopupWrapper', 'save')" id="btn_save_n_exit">저장 및 닫기</button>
+          <hr />
+          <button onclick="convertor_example('보기문')">보기문</button>
+          <button onclick="convertor_example('보기그림')">보기그림</button>
+          <button onclick="convertor_()"></button>
+          <button onclick="convertor_()"></button>
+          <button onclick="convertor_()"></button>
           <hr />
           <button onclick="convertor_Kor()">가.</button>
           <button onclick="convertor_KorJa()">ㄱ.</button>

@@ -760,7 +760,7 @@ let btn_togglePopup = (elementById, how) => {
   }
 };
 
-// txt_inputData에 명령어 바로 입력하는 버튼 함수
+// txt_inputData에 명령어 바로 입력하는 버튼 함수 #btnList_command
 let btn_cmd = (type, kind) => {
   // inputData에서 블록영역 텍스트 가져오기
   let inputData = document.getElementById('txt_inputData');
@@ -812,6 +812,10 @@ let btn_cmd = (type, kind) => {
       // 추가할 kind 표시 및 빈 칸 여부 확인
       replacement = `/${kind}`;
     }
+  } else if (type == 'single/n') {
+    // ※.
+    // 추가할 kind 표시 및 빈 칸 여부 확인
+    replacement = `${kind}\n`;
   } else if (type == 'example') {
     // 기존에 보기문\n, 보기그림\n 으로 사용했으나
     // 지금은 사용안함 (사유: 블록잡은 영역이 그대로 남아서)

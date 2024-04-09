@@ -158,18 +158,29 @@ function convertor_frontSpace() {
       url_example.value += `  ${editItem}\n`;
     }
   }
-  // let txt_example = document.getElementById('txt_example');
-  // if (txt_example.selectionStart >= 0 && txt_example.selectionEnd) {
-  //   let startTextIndex = txt_example.selectionStart;
-  //   let endTextIndex = txt_example.selectionEnd;
-  //   let blockText = txt_example.value.substring(startTextIndex, endTextIndex);
-  //   clearData(); // #txt_example 비우기
-  //   let arrBlockText = blockText.split('\n');
-  //   arrBlockText.forEach((item) => {
-  //     let editItem = item.trim();
-  //     txt_example.value += `  ${editItem}\n`;
-  //   });
-  // }
+}
+
+// 보기문, 보기그림
+function convertor_example(kind) {
+  // 보기문 텍스트박스(txt_example)값 가져오기
+  let txt_example = document.getElementById('txt_example');
+  // 변경할 텍스트 담을 변수
+  let replacement = '';
+  let startTextIndex = txt_example.selectionStart; // 블록 시작 Index 가져오기
+  let endTextIndex = txt_example.selectionEnd; // 블록 종료 Index 가져오기
+  let selectedText = txt_example.value.substring(startTextIndex, endTextIndex); // 블록잡은 텍스트 가져오기
+  // 마우스 블록을 잡은 부분이 있다면? (블록 시작부분과 끝부분이 0 이상이라면)
+  if (startTextIndex >= 0 && endTextIndex >= 0) {
+    if (selectedText.startsWith(`/${kind}`)) {
+      replacement = selectedText.replace(`/${kind}`, ``);
+    } else {
+      replacement = `/${kind}`;
+    }
+  } else {
+    replacement = `/${kind}`;
+  }
+  // 기존 텍스트에서 선택한 부분을 새로운 부정 표시로 교체
+  txt_example.value = txt_example.value.substring(0, startTextIndex) + replacement + txt_example.value.substring(endTextIndex);
 }
 
 // 앞뒤공백 지우는 기능
