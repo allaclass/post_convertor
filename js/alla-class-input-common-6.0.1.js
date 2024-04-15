@@ -537,7 +537,7 @@ let fnPrintInputDataBox = (arrQuestionDetail, not) => {
           txt_inputData.value += `/보기문\n${item.content}\n`;
           break;
         case 'example_img':
-          item.content = fnReplace_gihoChange(item.content);
+          // item.content = fnReplace_gihoChange(item.content);
           txt_inputData.value += `/보기그림\n${item.content}\n`;
           break;
         case 'select_1':
