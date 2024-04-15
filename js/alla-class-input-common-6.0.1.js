@@ -469,6 +469,18 @@ let fnToHTML_otherExams = () => {
 `;
 };
 
+// [toHTML] 문제 다운로드 바로가기
+let fnToHTML_downloadExams = () => {
+  return `
+<!-- 문제 다운로드 바로가기 영역 -->
+<div class="alla6DownloadExamDiv">
+</div>
+<!-- // 문제 다운로드 바로가기 영역 -->
+<!-- ------------------------------------------------------------------------------------ -->
+
+`;
+};
+
 // [toHTML] 공지사항 Footer
 let fnToHTML_noticeBottom = () => {
   return `
@@ -676,6 +688,7 @@ let fnPrintOutputHtmlBox = (arrQuestionDetail) => {
   txt_outputHtml.value += fnToHTML_checkButton(); // 채점, 다시풀기 버튼 html코드
   txt_outputHtml.value += fnToHTML_answerTable(infoData_answer); // 정답지 html코드
   txt_outputHtml.value += fnToHTML_otherExams(); // 타년도 문제 바로가기 html코드
+  txt_outputHtml.value += fnToHTML_downloadExams(); // 문제 다운로드 바로가기 html코드
   txt_outputHtml.value += fnToHTML_noticeBottom(); // 공지사항(하단) html코드
   // [미리보기] 포스트뷰
   div_postView.innerHTML = '';
