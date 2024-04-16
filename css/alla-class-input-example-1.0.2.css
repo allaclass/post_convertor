@@ -1,5 +1,20 @@
 @charset "UTF-8";
 
+@font-face {
+  font-family: 'KoPubDotumLight';
+  src: url('../font/KoPubWorld\ Dotum\ Light.ttf');
+}
+
+@font-face {
+  font-family: 'KoPubDotumMedium';
+  src: url('../font/KoPubWorld\ Dotum\ Medium.ttf');
+}
+
+@font-face {
+  font-family: 'KoPub_World_Batang_Medium';
+  src: url('https://tistory1.daumcdn.net/tistory/4700529/skin/images/KoPubWorld%20Batang_Pro%20Medium.otf');
+}
+
 /* 텍스트 영역 */
 .txt_example {
   width: 100%;
@@ -17,6 +32,7 @@
   font-weight: 300;
   border-top: 1px solid #525252;
   border-bottom: 1px solid #525252;
+  font-family: 'KoPubDotumLight';
 }
 
 /* menuWrap */
@@ -24,11 +40,13 @@
   width: 500px;
   background-color: #252525;
   text-align: center;
+  font-family: 'KoPubDotumLight';
 }
 
 .menuWrap button {
   width: 90px;
   margin: 10px 5px;
+  font-family: 'KoPubDotumLight';
 }
 
 .menuWrap hr {
@@ -37,6 +55,7 @@
 }
 .menuWrap button#convertor_basic {
   width: 58%;
+  font-family: 'KoPubDotumLight';
 }
 
 .menuWrap button#btn_save_n_exit {
@@ -44,10 +63,12 @@
   width: 58%;
   /* width: 100%; */
   /* margin: 10px 5px; */
+  font-family: 'KoPubDotumLight';
 }
 
 .popup-example-table {
   width: 100%;
+  font-family: 'KoPubDotumLight';
 }
 
 .popup-example-table button {
@@ -55,6 +76,7 @@
   margin: 0 8px;
   margin-right: 2px;
   float: right;
+  font-family: 'KoPubDotumLight';
 }
 
 .menuWrap button:hover {

@@ -206,6 +206,7 @@ div#postView {
   border-right: 1px solid #525252;
   /* overflow: scroll; */
   font-size: 12px;
+  font-family: 'KoPubDotumLight';
 }
 
 .btnList button {
@@ -219,6 +220,7 @@ div#postView {
   font-size: 12px;
   cursor: pointer;
   margin: 3px 0;
+  font-family: 'KoPubDotumLight';
 }
 
 .btnList hr {
