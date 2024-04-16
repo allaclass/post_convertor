@@ -243,7 +243,7 @@ let fnToHTML_title = () => {
 \t<table class="alla6TitleTbl">
 \t\t<tbody>
 \t\t\t<colgroup><col width="100px"><col></colgroup>
-\t\t\t<tr><td colspan="3"><span class="ibold">20${infoData_year}</span>&nbsp;학년도&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ibold">${infoData_seme}</span>&nbsp;학기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ibold">${infoData_grade}</span>&nbsp;학년&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ibold">${infoData_countNum}</span>&nbsp;문항</td></tr>
+\t\t\t<tr><td colspan="3"><span class="ibold">20${infoData_year}</span>&nbsp;학년도&nbsp;&nbsp;<span class="ibold">${infoData_seme}</span>&nbsp;학기&nbsp;&nbsp;<span class="ibold">${infoData_grade}</span>&nbsp;학년&nbsp;&nbsp;<span class="ibold">${infoData_countNum}</span>&nbsp;문항</td></tr>
 \t\t\t<tr><td colspan="3">${infoData_object}</td></tr>
 \t\t\t<tr><td>시험종류&nbsp;&nbsp;&nbsp;:</td><td>${infoData_kind}시험</td></tr>
 \t\t\t<tr><td>출제위원&nbsp;&nbsp;&nbsp;:</td><td>${infoData_prof}</td></tr>
