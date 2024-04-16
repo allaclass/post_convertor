@@ -1,5 +1,20 @@
 @charset "UTF-8";
 
+@font-face {
+  font-family: 'KoPubDotumLight';
+  src: url('../font/KoPubWorld\ Dotum\ Light.ttf');
+}
+
+@font-face {
+  font-family: 'KoPubDotumMedium';
+  src: url('../font/KoPubWorld\ Dotum\ Medium.ttf');
+}
+
+@font-face {
+  font-family: 'KoPub_World_Batang_Medium';
+  src: url('https://tistory1.daumcdn.net/tistory/4700529/skin/images/KoPubWorld%20Batang_Pro%20Medium.otf');
+}
+
 html,
 body {
   height: 100%;
@@ -10,6 +25,7 @@ body {
 
 .container {
   height: 100%;
+  font-family: 'KoPubDotumMedium';
   width: 100%;
   display: flex; /* flexbox를 사용하여 내부 아이템을 정렬합니다. */
 }
@@ -70,6 +86,7 @@ div#btnList_command button {
   line-height: 1.6em;
   font-weight: 300;
   border-top: 1px solid #525252;
+  font-family: 'KoPubDotumLight';
 }
 
 .txt_outputHtml {
@@ -87,6 +104,7 @@ div#btnList_command button {
   font-weight: 300;
   overflow-x: auto; /* 가로 스크롤 생성 */
   white-space: nowrap; /* 텍스트가 가로로 넘칠 때 자동 줄바꿈 방지 */
+  font-family: 'KoPubDotumLight';
 }
 
 /* div : post view */
@@ -111,6 +129,7 @@ div#postView {
   z-index: 9999; /* 다른 요소들보다 위에 위치하도록 설정 */
   justify-content: center;
   align-items: center;
+  font-family: 'KoPubDotumMedium';
 }
 
 /* 팝업 내용을 담는 div의 스타일 */
@@ -123,6 +142,7 @@ div#postView {
   max-width: 80%; /* 최대 너비 설정 */
   max-height: 80%; /* 최대 높이 설정 */
   overflow: auto; /* 내용이 넘칠 경우 스크롤 표시 */
+  font-family: 'KoPubDotumMedium';
 }
 
 .popup-content button {
@@ -137,6 +157,7 @@ div#postView {
   border: none;
   font-size: 12px;
   cursor: pointer;
+  font-family: 'KoPubDotumMedium';
 }
 
 .menu {
@@ -149,6 +170,7 @@ div#postView {
   box-sizing: border-box;
   border-right: 1px solid #525252;
   font-size: 12px;
+  font-family: 'KoPubDotumLight';
 }
 
 .menu textarea {
@@ -161,12 +183,15 @@ div#postView {
   font-size: 13px;
   margin-bottom: 6px;
   padding: 5px;
+  font-family: 'KoPubDotumLight';
 }
 
 .menu textarea#txt_info {
   height: 181px;
+  line-height: 1.2em;
   overflow-x: auto; /* 가로 스크롤 생성 */
   white-space: nowrap; /* 텍스트가 가로로 넘칠 때 자동 줄바꿈 방지 */
+  font-family: 'KoPubDotumLight';
 }
 
 /* 버튼리스트 - 정렬 등 */
