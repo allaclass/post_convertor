@@ -37,6 +37,25 @@ body {
 
 .container {
   height: 100%;
+  font-family: 'KoPubDotumMedium';
+  width: 100%;
+  display: flex; /* flexbox를 사용하여 내부 아이템을 정렬합니다. */
+}
+
+.wrapper {
+  height: 100%;
+  box-sizing: border-box; /* padding과 border를 포함한 전체 너비를 유지합니다. */
+}
+
+.wrapper:first-of-type {
+  width: 55%;
+  border-right: 1px solid #525252;
+}
+
+.wrapper:nth-of-type(2) {
+  width: 45%;
+  height: 100%;
+  overflow: auto;
   font-family: 'KoPubWorld Dotum Light';
 }
 
@@ -77,7 +96,7 @@ div#btnList_command button {
   border: none;
   resize: vertical;
   color: #aaa;
-  font-size: 16px;
+  font-size: 24px;
   line-height: 1.6em;
   font-weight: 300;
   border-top: 1px solid #525252;
@@ -201,6 +220,7 @@ div#postView {
   border-right: 1px solid #525252;
   /* overflow: scroll; */
   font-size: 12px;
+  font-family: 'KoPubDotumLight';
 }
 
 .btnList button {
@@ -214,6 +234,7 @@ div#postView {
   font-size: 12px;
   cursor: pointer;
   margin: 3px 0;
+  font-family: 'KoPubDotumLight';
 }
 
 .btnList hr {

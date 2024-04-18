@@ -12,51 +12,55 @@
   </head>
   <body>
     <div class="container">
-      <div class="menu">
-        <!-- textarea -->
-        <textarea id="txt_info" name="txt_info" placeholder="한번에 입력" onkeyup="fnGetInfoData()"></textarea>
-        <textarea id="txt_title" name="txt_title" placeholder="타이틀" readonly></textarea>
-        <textarea id="txt_tag" name="txt_tag" placeholder="태그" readonly></textarea>
+      <div class="wrapper">
+        <div class="menu">
+          <!-- textarea -->
+          <textarea id="txt_info" name="txt_info" placeholder="한번에 입력" onkeyup="fnGetInfoData()"></textarea>
+          <textarea id="txt_title" name="txt_title" placeholder="타이틀" readonly></textarea>
+          <textarea id="txt_tag" name="txt_tag" placeholder="태그" readonly></textarea>
+        </div>
+        <div class="btnList">
+          <!-- button -->
+          <button onclick="btn_sort()" id="btn_sort" accesskey="1">정렬/일반 (1)</button><br />
+          <button onclick="btn_sort('\n')" id="btn_sort_n" accesskey="2">정렬/엔터 (2)</button><br />
+          <button onclick="btn_sort('\n', 'not')" id="btn_sort_cmd" accesskey="3">정렬/부정 (3)</button><br />
+          <button onclick="btn_toHtml()" id="btn_toHtml" accesskey="4">HTML소스 (4)</button>
+          <hr />
+          <button onclick="btn_togglePopup('ExamplePopupWrapper')" id="btn_exConvertor" accesskey="q">보기문 (Q)</button>
+          <button onclick="btn_oldConvertor()" id="btn_oldConvertor" accesskey="w">구.변환 (W)</button><br />
+          <hr />
+          <button onclick="btn_togglePopup('CommandPopupWrapper')" id="btn_cmdGuide" accesskey="g">가이드 (G)</button>
+          <button onclick="btn_save(['txt_info', 'txt_inputData'])" id="btn_save" accesskey="s">저장(.txt) (S)</button>
+        </div>
+        <textarea class="txt_outputHtml" id="txt_outputHtml" placeholder="2. output html"></textarea>
+        <div class="btnList_command" id="btnList_command">
+          <button onclick="btn_cmd('double', '부정')">부정</button>
+          <button onclick="btn_cmd('double', '굵게')">굵게</button>
+          <button onclick="btn_cmd('double', '기움')">기움</button>|
+          <button onclick="btn_cmd('single/n', '※.')">※.</button>
+          <button onclick="btn_cmd('single', '줄')">줄</button>|
+          <button onclick="btn_cmd('single', '보기문')">보기문</button>
+          <button onclick="btn_cmd('single', '보기그림')">보기그림</button> |
+          <button onclick="btn_cmd('doubleSpace', '단락')">단락</button>
+          <button onclick="btn_cmd('doubleSpace', '좌들')">좌들</button>
+          <button onclick="btn_cmd('doubleSpace', '중앙')">중앙</button>
+          <button onclick="btn_cmd('doubleSpace', '우측')">우측</button>|
+          <button onclick="btn_cmd('single', '빈칸')">빈칸</button>
+          <button onclick="btn_cmd('single', '숏빈칸')">숏빈칸</button>
+          <button onclick="btn_cmd('single', '롱빈칸')">롱빈칸</button>|
+          <button onclick="btn_cmd('double', '밑줄')">밑줄</button>
+          <button onclick="btn_cmd('double', '윗줄')">윗줄</button>|
+          <button onclick="btn_cmd('double', '윗첨자')">윗첨자</button>
+          <button onclick="btn_cmd('double', '아랫첨자')">아랫첨자</button>|
+          <button onclick="btn_cmd('double', '미지수')">미지수</button>
+          <button onclick="btn_cmd('double', '이미지')">이미지</button>
+        </div>
+        <textarea class="txt_inputData" id="txt_inputData" placeholder="1. input data" onkeyup="btn_toHtml()" onclick="btn_toHtml()"></textarea>
+        <!-- <div id="postView" class="postView"></div> -->
       </div>
-      <div class="btnList">
-        <!-- button -->
-        <button onclick="btn_sort()" id="btn_sort" accesskey="1">정렬/일반 (1)</button><br />
-        <button onclick="btn_sort('\n')" id="btn_sort_n" accesskey="2">정렬/엔터 (2)</button><br />
-        <button onclick="btn_sort('\n', 'not')" id="btn_sort_cmd" accesskey="3">정렬/부정 (3)</button><br />
-        <button onclick="btn_toHtml()" id="btn_toHtml" accesskey="4">HTML소스 (4)</button>
-        <hr />
-        <button onclick="btn_togglePopup('ExamplePopupWrapper')" id="btn_exConvertor" accesskey="q">보기문 (Q)</button>
-        <button onclick="btn_oldConvertor()" id="btn_oldConvertor" accesskey="w">구.변환 (W)</button><br />
-        <hr />
-        <button onclick="btn_togglePopup('CommandPopupWrapper')" id="btn_cmdGuide" accesskey="g">가이드 (G)</button>
-        <button onclick="btn_save(['txt_info', 'txt_inputData'])" id="btn_save" accesskey="s">저장(.txt) (S)</button>
+      <div class="wrapper">
+        <div id="postView" class="postView"></div>
       </div>
-
-      <textarea class="txt_outputHtml" id="txt_outputHtml" placeholder="2. output html"></textarea>
-      <div class="btnList_command" id="btnList_command">
-        <button onclick="btn_cmd('double', '부정')">부정</button>
-        <button onclick="btn_cmd('double', '굵게')">굵게</button>
-        <button onclick="btn_cmd('double', '기움')">기움</button>|
-        <button onclick="btn_cmd('single/n', '※.')">※.</button>
-        <button onclick="btn_cmd('single', '줄')">줄</button>|
-        <button onclick="btn_cmd('single', '보기문')">보기문</button>
-        <button onclick="btn_cmd('single', '보기그림')">보기그림</button> |
-        <button onclick="btn_cmd('doubleSpace', '단락')">단락</button>
-        <button onclick="btn_cmd('doubleSpace', '좌들')">좌들</button>
-        <button onclick="btn_cmd('doubleSpace', '중앙')">중앙</button>
-        <button onclick="btn_cmd('doubleSpace', '우측')">우측</button>|
-        <button onclick="btn_cmd('single', '빈칸')">빈칸</button>
-        <button onclick="btn_cmd('single', '숏빈칸')">숏빈칸</button>
-        <button onclick="btn_cmd('single', '롱빈칸')">롱빈칸</button>|
-        <button onclick="btn_cmd('double', '밑줄')">밑줄</button>
-        <button onclick="btn_cmd('double', '윗줄')">윗줄</button>|
-        <button onclick="btn_cmd('double', '윗첨자')">윗첨자</button>
-        <button onclick="btn_cmd('double', '아랫첨자')">아랫첨자</button>|
-        <button onclick="btn_cmd('double', '미지수')">미지수</button>
-        <button onclick="btn_cmd('double', '이미지')">이미지</button>
-      </div>
-      <textarea class="txt_inputData" id="txt_inputData" placeholder="1. input data"></textarea>
-      <div id="postView" class="postView"></div>
     </div>
 
     <!-- 보기문 팝업을 감싸는 div -->
