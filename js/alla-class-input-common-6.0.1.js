@@ -321,6 +321,7 @@ let fnToHTML_exampleTxt = (example) => {
 \t\t\t\t\t\t${example}
 \t\t\t\t\t</td>
 \t\t\t\t</tr>
+\t\t\t\t<!-- 빈줄 -->
 \t\t\t\t<tr class="alla6BlankTr">
 \t\t\t\t\t<td></td>
 \t\t\t\t</tr>
@@ -338,6 +339,7 @@ let fnToHTML_exampleImg = (example) => {
 \t\t\t\t\t\t${example}
 \t\t\t\t\t</td>
 \t\t\t\t</tr>
+\t\t\t\t<!-- 빈줄 -->
 \t\t\t\t<tr class="alla6BlankTr">
 \t\t\t\t\t<td></td>
 \t\t\t\t</tr>
@@ -392,11 +394,9 @@ let fnToHTML_normalQuestionSelect = (questionNo, answer_1, answer_2, answer_3, a
 \t\t\t\t\t\t</label>
 \t\t\t\t\t</td>
 \t\t\t\t</tr>
-\t\t\t\t<!-- 메인 문제 채점 -->
-\t\t\t\t<tr class="alla6CheckTr">
-\t\t\t\t\t<td>
-\t\t\t\t\t\t<button type="button">다시채점</button>
-\t\t\t\t\t</td>
+\t\t\t\t<!-- 빈줄 -->
+\t\t\t\t<tr class="alla6BlankTr">
+\t\t\t\t\t<td></td>
 \t\t\t\t</tr>
 \t\t\t\t<!-- 메인 문제 해설 -->
 \t\t\t\t<tr class="alla6SolveTr">
@@ -436,6 +436,28 @@ let fnToHTML_checkButton = () => {
 \t</form>
 </div>
 <!-- // 채점 버튼 영역 -->
+<!-- ------------------------------------------------------------------------------------ -->
+
+`;
+};
+
+// [toHTML] 채점 영역
+let fnToHTML_GradingExams = () => {
+  return `
+<!-- 채점 영역 -->
+<div class="alla6GradingDiv">
+</div>
+<!-- ------------------------------------------------------------------------------------ -->
+
+`;
+};
+
+// [toHTML] 초기화 영역
+let fnToHTML_resetExams = () => {
+  return `
+<!-- 초기화 영역 -->
+<div class="alla6ResetDiv">
+</div>
 <!-- ------------------------------------------------------------------------------------ -->
 
 `;
@@ -685,7 +707,8 @@ let fnPrintOutputHtmlBox = (arrQuestionDetail) => {
     txt_outputHtml.value += fnCalltoHtml(objDetail);
   });
   // 포스팅 아랫쪽 기본 HTML 출력
-  txt_outputHtml.value += fnToHTML_checkButton(); // 채점, 다시풀기 버튼 html코드
+  txt_outputHtml.value += fnToHTML_GradingExams(); // 채점 영역 html코드
+  txt_outputHtml.value += fnToHTML_resetExams(); // 초기화 영역 html코드
   txt_outputHtml.value += fnToHTML_answerTable(infoData_answer); // 정답지 html코드
   txt_outputHtml.value += fnToHTML_otherExams(); // 타년도 문제 바로가기 html코드
   txt_outputHtml.value += fnToHTML_downloadExams(); // 문제 다운로드 바로가기 html코드
