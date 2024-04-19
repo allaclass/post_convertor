@@ -442,7 +442,7 @@ let fnToHTML_checkButton = () => {
 };
 
 // [toHTML] 채점 영역
-let fnToHTML_GradingExams = () => {
+let fnToHTML_gradingExams = () => {
   return `
 <!-- 채점 영역 -->
 <div class="alla6GradingDiv">
@@ -707,7 +707,7 @@ let fnPrintOutputHtmlBox = (arrQuestionDetail) => {
     txt_outputHtml.value += fnCalltoHtml(objDetail);
   });
   // 포스팅 아랫쪽 기본 HTML 출력
-  txt_outputHtml.value += fnToHTML_GradingExams(); // 채점 영역 html코드
+  txt_outputHtml.value += fnToHTML_gradingExams(); // 채점 영역 html코드
   txt_outputHtml.value += fnToHTML_resetExams(); // 초기화 영역 html코드
   txt_outputHtml.value += fnToHTML_answerTable(infoData_answer); // 정답지 html코드
   txt_outputHtml.value += fnToHTML_otherExams(); // 타년도 문제 바로가기 html코드
