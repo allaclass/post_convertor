@@ -921,6 +921,68 @@ let btn_save = (arrTextarea) => {
   }
 };
 
+let btn_open = () => {
+  var fileInput = document.createElement('input');
+  fileInput.type = 'file';
+  fileInput.accept = '.txt';
+
+  fileInput.addEventListener('change', function (e) {
+    let file = e.target.files[0];
+    let reader = new FileReader();
+
+    reader.onload = function (e) {
+      let contents = e.target.result;
+      let lines = contents.split('\n');
+      let infoContent = '';
+      let inputContent = '';
+
+      for (let i = 0; i < lines.length; i++) {
+        if (i < 11) {
+          infoContent += lines[i] + '\n';
+        } else {
+          inputContent += lines[i] + '\n';
+        }
+      }
+
+      document.getElementById('txt_info').value = infoContent;
+      document.getElementById('txt_inputData').value = inputContent;
+      fnGetInfoData();
+    };
+
+    reader.readAsText(file);
+  });
+
+  fileInput.click();
+};
+
+let btn_changeThumb = () => {
+  // infoData와 newThumb의 내용을 가져옴
+  let infoData = document.getElementById('txt_info').value;
+  let newThumb = document.getElementById('txt_newThumb').value;
+  newThumb = newThumb.replaceAll('<p>', '');
+  newThumb = newThumb.replaceAll('</p>', '');
+
+  // 기존 썸네일과 정답의 위치를 찾음
+  let startIndex = infoData.indexOf('[썸네일] ') + '[썸네일] '.length;
+  let endIndex = infoData.indexOf('[정  답]');
+
+  // 새로운 정보로 교체
+  var updatedInfoData = infoData.substring(0, startIndex) + newThumb + '\n' + infoData.substring(endIndex);
+
+  // 결과를 textarea에 설정
+  document.getElementById('txt_info').value = updatedInfoData;
+
+  // 구버전 → 신버전 변환 함수 호출
+  // btn_oldConvertor();
+
+  // toHTML 호출
+  btn_toHtml();
+};
+
+// JavaScript를 사용하여 textarea#txt_info의 높이를 가져와서 CSS 변수로 설정
+var infoHeight = document.getElementById('txt_info').clientHeight;
+document.documentElement.style.setProperty('--infoHeight', infoHeight + 'px');
+
 /* -------------------------------------------- */
 /* 종  료 : alla-class-input-common-6.0.1.js    */
 /* -------------------------------------------- */

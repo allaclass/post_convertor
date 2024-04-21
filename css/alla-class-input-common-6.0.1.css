@@ -68,7 +68,8 @@ div#btnList_command {
   text-align: center;
   /* background-color: aqua; */
   border-top: 1px solid #525252;
-  white-space: nowrap; /* 텍스트가 가로로 넘칠 때 자동 줄바꿈 방지 */
+  /* 텍스트가 가로로 넘칠 때 자동 줄바꿈 방지 */
+  /* white-space: nowrap; */
   overflow-x: auto;
 }
 
@@ -87,7 +88,8 @@ div#btnList_command button {
 
 .txt_inputData {
   width: 100%;
-  height: calc(100% - 372px - 30px);
+  /* height: calc(100% - 372px - 30px); */
+  height: calc(100% - var(--infoHeight) - 220px);
   float: left;
   background-color: #252525;
   margin: 0;
@@ -241,15 +243,20 @@ div#postView {
   border: 1px solid #525252;
 }
 
-/* .btnList #btn_toHtml, */
+/* .btnList hr 위아래 버튼 마진 0 변경 */
+
 .btnList #btn_exConvertor,
-.btnList #btn_oldConvertor {
-  margin-bottom: 0;
+.btnList #btn_open,
+.btnList #btn_cmdGuide,
+.btnList #btn_save {
+  margin-top: 0;
 }
 
 .btnList #btn_exConvertor,
+.btnList #btn_oldConvertor,
+.btnList #btn_changeThumb,
 .btnList #btn_cmdGuide {
-  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .btnList #btn .btnList button:hover {
