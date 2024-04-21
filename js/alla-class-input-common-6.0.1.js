@@ -780,9 +780,13 @@ let btn_oldConvertor = () => {
     arrPattern.push(`/${i}/\n`);
   }
   arrPattern.forEach((pattern) => {
-    text = text.replace(pattern, `※.\n`);
+    // text = text.replace(pattern, `※.\n`);
+    text = text.replace(pattern, `※\n`);
   });
   txt_inputData.value = text;
+
+  // 정렬(엔터)버전 실행
+  btn_sort('\n');
 };
 
 // 팝업 열고 닫는 함수

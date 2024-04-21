@@ -10,7 +10,8 @@ let fnGetQuestion = (str, eNum, etc) => {
     let arrPatterns = [];
     for (let i = 0; i <= eNum; i++) {
       if (i === 0) {
-        arrPatterns.push(`※\\.`);
+        // arrPatterns.push(`※\\.`);
+        arrPatterns.push(`※`);
       } else {
         arrPatterns.push(`${i}\\.`);
       }
