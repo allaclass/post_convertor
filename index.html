@@ -25,6 +25,7 @@
           <textarea id="txt_info" name="txt_info" placeholder="한번에 입력" onkeyup="fnGetInfoData()"></textarea>
           <textarea id="txt_title" name="txt_title" placeholder="타이틀" readonly></textarea>
           <textarea id="txt_tag" name="txt_tag" placeholder="태그" readonly></textarea>
+          <textarea id="txt_newThumb" name="txt_newThumb" placeholder="새 썸네일"></textarea>
         </div>
         <div class="btnList">
           <!-- button -->
@@ -34,7 +35,10 @@
           <button onclick="btn_oldConvertor()" id="btn_oldConvertor" accesskey="w">구 → 신 (W)</button><br />
           <hr />
           <button onclick="btn_togglePopup('ExamplePopupWrapper')" id="btn_exConvertor" accesskey="q">보기문 (Q)</button>
-          <button onclick="btn_toHtml()" id="btn_toHtml" accesskey="4">HTML소스 (4)</button>
+          <!-- <button onclick="btn_toHtml()" id="btn_toHtml" accesskey="4">HTML소스 (4)</button> -->
+          <hr />
+          <button onclick="" id="btn_open" accesskey="o">열기(.txt) (O)</button>
+          <button onclick="" id="btn_changeThumb" accesskey="v">썸 교체 (V)</button>
           <hr />
           <button onclick="btn_togglePopup('CommandPopupWrapper')" id="btn_cmdGuide" accesskey="g">가이드 (G)</button>
           <button onclick="btn_save(['txt_info', 'txt_inputData'])" id="btn_save" accesskey="s">저장(.txt) (S)</button>

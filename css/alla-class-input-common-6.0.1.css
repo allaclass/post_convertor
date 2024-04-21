@@ -87,7 +87,7 @@ div#btnList_command button {
 
 .txt_inputData {
   width: 100%;
-  height: calc(100% - 372px);
+  height: calc(100% - 372px - 30px);
   float: left;
   background-color: #252525;
   margin: 0;
@@ -105,7 +105,7 @@ div#btnList_command button {
 
 .txt_outputHtml {
   width: calc(100% - 370px - 115px);
-  height: 310px;
+  height: 340px;
   float: right;
   background-color: #252525;
   margin: 0;
@@ -176,11 +176,11 @@ div#postView {
 
 .menu {
   width: 370px;
-  height: 310px;
+  height: 340px;
   float: left;
   background-color: #252525;
   margin: 0;
-  padding: 20px 15px;
+  padding: 13px 15px;
   box-sizing: border-box;
   border-right: 1px solid #525252;
   font-size: 12px;
@@ -211,11 +211,11 @@ div#postView {
 /* 버튼리스트 - 정렬 등 */
 .btnList {
   width: 115px;
-  height: 310px;
+  height: 340px;
   float: left;
   background-color: #252525;
   margin: 0;
-  padding: 20px 10px;
+  padding: 10px;
   box-sizing: border-box;
   border-right: 1px solid #525252;
   /* overflow: scroll; */
@@ -241,7 +241,8 @@ div#postView {
   border: 1px solid #525252;
 }
 
-.btnList #btn_toHtml,
+/* .btnList #btn_toHtml, */
+.btnList #btn_exConvertor,
 .btnList #btn_oldConvertor {
   margin-bottom: 0;
 }
