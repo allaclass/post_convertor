@@ -1,0 +1,50 @@
+<!-- 텍스트파일을 불러와서 info, inputData에 뿌리기 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Loader</title>
+  </head>
+  <body>
+    <button id="loadButton">Load File</button>
+    <div id="infoDiv" style="background-color: yellow; width: 100%"></div>
+    <div id="inputDiv"></div>
+
+    <script>
+      document.getElementById('loadButton').addEventListener('click', function () {
+        var fileInput = document.createElement('input');
+        fileInput.type = 'file';
+        fileInput.accept = '.txt';
+
+        fileInput.addEventListener('change', function (e) {
+          var file = e.target.files[0];
+          var reader = new FileReader();
+
+          reader.onload = function (e) {
+            var contents = e.target.result;
+            var lines = contents.split('\n');
+            var infoContent = '';
+            var inputContent = '';
+
+            for (var i = 0; i < lines.length; i++) {
+              if (i < 11) {
+                infoContent += lines[i] + '<br>';
+              } else {
+                inputContent += lines[i] + '<br>';
+              }
+            }
+
+            document.getElementById('infoDiv').innerHTML = infoContent;
+            document.getElementById('inputDiv').innerHTML = inputContent;
+          };
+
+          reader.readAsText(file);
+        });
+
+        fileInput.click();
+      });
+    </script>
+  </body>
+</html>

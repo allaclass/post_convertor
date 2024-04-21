@@ -1,0 +1,35 @@
+<!-- 새로운 썸네일로 교체하기 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <textarea id="infoData"></textarea>
+    <textarea id="newThumb"></textarea>
+    <button id="btn_inputThumb">변환</button>
+    <script>
+      // 버튼 클릭 이벤트 핸들러 등록
+      document.getElementById('btn_inputThumb').addEventListener('click', function () {
+        // infoData와 newThumb의 내용을 가져옴
+        var infoData = document.getElementById('infoData').value;
+        var newThumb = document.getElementById('newThumb').value;
+        newThumb = newThumb.replaceAll('<p>', '');
+        newThumb = newThumb.replaceAll('</p>', '');
+
+        // 기존 썸네일과 정답의 위치를 찾음
+        var startIndex = infoData.indexOf('[썸네일] ') + '[썸네일] '.length;
+        var endIndex = infoData.indexOf('[정  답]');
+
+        // 새로운 정보로 교체
+        var updatedInfoData = infoData.substring(0, startIndex) + newThumb + '\n' + infoData.substring(endIndex);
+
+        // 결과를 textarea에 설정
+        document.getElementById('infoData').value = updatedInfoData;
+      });
+    </script>
+  </body>
+</html>
