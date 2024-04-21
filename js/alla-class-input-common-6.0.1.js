@@ -546,7 +546,8 @@ let fnPrintInputDataBox = (arrQuestionDetail, not) => {
         case 'simbol':
           let editSimbol = item.content.replace('\\.', '.');
           txt_inputData.value += `\n${editSimbol}\n`;
-          i == arrQuestionDetail.length && (infoData_countNum = Number(editSimbol.replace('.', '')));
+          // i == arrQuestionDetail.length && (infoData_countNum = Number(editSimbol.replace('.', '')));
+          i == arrQuestionDetail.length && (infoData_countNum = Number(i));
           break;
         case 'question':
           item.content = fnReplace_gihoChange(item.content);
