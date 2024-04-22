@@ -101,6 +101,7 @@ let fnReplace_gihoChange = (text) => {
   text = text.replaceAll('’', "'");
   text = text.replaceAll('<', '&#60;');
   text = text.replaceAll('>', '&#62;');
+  text = text.replaceAll('．', '.'); // ver.5.0.1까지는 문제번호와 겹치는 소수점이 있을 경우를 대비해서 사용했던 기호
   text = text.replaceAll(/\s*:\s*/g, '：');
   text = text.replaceAll(/\(\s*\)/g, '(/빈칸)'); // 연속된 괄호들을 /빈칸)으로 대체합니다.
   return text;
