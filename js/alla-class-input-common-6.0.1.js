@@ -772,7 +772,7 @@ let btn_sort = (enter, not) => {
   btn_toHtml();
 };
 
-// 예전 문제정리본 최신정리본으로 변환하는 함수 호출 (ex. 그룹문제: /1/ -> ※.)
+// 예전 문제정리본 최신정리본으로 변환하는 함수 호출 (ex. 그룹문제: /1/ -> ※)
 let btn_oldConvertor = () => {
   let text = txt_inputData.value;
   let arrPattern = [];
