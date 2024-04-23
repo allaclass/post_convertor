@@ -1,6 +1,7 @@
 // 제    목 : alla-input-common-6.0.1.js
 // 작 성 자 : 김현수
 // 작 성 일 : 2024.04.02
+// 수 정 일 : 2024.04.22
 
 // 전역 변수 셋팅 : 프론트페이지 텍스트박스 주소값
 let txt_info = document.getElementById('txt_info');
