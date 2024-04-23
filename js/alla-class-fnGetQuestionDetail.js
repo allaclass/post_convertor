@@ -179,27 +179,27 @@ let fnGetQuestionDetail = (str, simbol, type) => {
 //   console.log(item);
 // });
 
-let type = 'normal';
-let simbol = `1\\.`;
-let str = `
-1.
-문제 질문 내용.
-/보기문
-1.0첫번째 보기문
-/보기그림
-첫번째 보기그림
-/보기문
-두번째 보기문
-① ㉠
-② ㉡
-③ ㉢
-④ ㉣
-/해설
-해설 내용입니다.
-`;
+// let type = 'normal';
+// let simbol = `1\\.`;
+// let str = `
+// 1.
+// 문제 질문 내용.
+// /보기문
+// 1.0첫번째 보기문
+// /보기그림
+// 첫번째 보기그림
+// /보기문
+// 두번째 보기문
+// ① ㉠
+// ② ㉡
+// ③ ㉢
+// ④ ㉣
+// /해설
+// 해설 내용입니다.
+// `;
 
-let detail = fnGetQuestionDetail(str, simbol, type);
+// let detail = fnGetQuestionDetail(str, simbol, type);
 
-detail.forEach((item) => {
-  console.log(item);
-});
+// detail.forEach((item) => {
+//   console.log(item);
+// });
