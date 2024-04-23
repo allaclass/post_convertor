@@ -28,7 +28,7 @@ let fnGetQuestion = (str, eNum, etc) => {
       while ((match = regex.exec(str)) !== null) {
         let inputPattern = pattern.replace(`\\.`, '.');
         let type;
-        inputPattern == '※.' ? (type = 'group') : (type = 'normal');
+        inputPattern == '※' ? (type = 'group') : (type = 'normal');
         indices.push({ type, simbol: inputPattern, index: match.index + 1 });
       }
     });
@@ -78,7 +78,7 @@ let fnGetQuestion = (str, eNum, etc) => {
   // 문제구분 시, 엔터(\n)이 필요하면 etc에 \n할당하여 호출
   const indices = findAllIndices(str, patterns, etc);
   // test
-  // console.log(indices);
+  // console.log('indices: ', indices);
 
   // 구분된 index를 토대로 문제내용을 가져오는 함수 호출
   const contents = findAllContents(indices);
