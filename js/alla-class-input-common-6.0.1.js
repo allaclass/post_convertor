@@ -1,7 +1,6 @@
 // 제    목 : alla-input-common-6.0.1.js
 // 작 성 자 : 김현수
 // 작 성 일 : 2024.04.02
-// 수 정 일 : 2024.04.22
 
 // 전역 변수 셋팅 : 프론트페이지 텍스트박스 주소값
 let txt_info = document.getElementById('txt_info');
@@ -913,7 +912,7 @@ let btn_save = (arrTextarea) => {
   if (infoData_object === undefined || infoData_object == '') {
     alert('과목정보가 없습니다.');
   } else {
-    console.log(infoData_object);
+    // console.log(infoData_object);
     let fileName = `${infoData_object}-${infoData_kind}-${infoData_year}-${infoData_seme}-${infoData_grade}.txt`; // 저장할 file 이름
     let blob = new Blob([textToSave], { type: 'text/plain' });
     let a = document.createElement('a');
