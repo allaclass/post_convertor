@@ -103,7 +103,7 @@ let fnGetQuestionDetail = (str, simbol, type) => {
 
       if (item_current_type == 'simbol') {
         let editSimbol = item_current_content.replace('\\.', '.');
-        if (item_current_index == 1) {
+        if (item_current_index == 0) {
           arrContents.push({ type: item_current_type, content: editSimbol });
           arrContents.push({ type: 'question', content: temp.replace(`${editSimbol}\n`, '') });
         }
