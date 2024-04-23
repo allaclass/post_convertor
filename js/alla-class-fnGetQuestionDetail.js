@@ -84,16 +84,29 @@ let fnGetQuestionDetail = (str, simbol, type) => {
       let temp;
 
       if (i !== indices.length) {
+        let item_next_type = indices[i].type;
+        let item_next_content = indices[i].content;
         let item_next_index = indices[i].index;
-        temp = str.substring(item_current_index + item_current_content.length, item_next_index).trim();
+        let item_next_next_index;
+        if (i + 1 !== indices.length) {
+          item_next_next_index = indices[i + 1].index;
+        }
+
+        if (item_next_type !== 'simbol') {
+          temp = str.substring(item_current_index + item_current_content.length, item_next_index).trim();
+        } else {
+          temp = str.substring(item_current_index + item_current_content.length + item_next_content.length - item_next_content.length, item_next_next_index).trim();
+        }
       } else {
         temp = str.substring(item_current_index + item_current_content.length, str.length).trim();
       }
 
       if (item_current_type == 'simbol') {
         let editSimbol = item_current_content.replace('\\.', '.');
-        arrContents.push({ type: item_current_type, content: editSimbol });
-        arrContents.push({ type: 'question', content: temp.replace(`${editSimbol}\n`, '') });
+        if (item_current_index == 1) {
+          arrContents.push({ type: item_current_type, content: editSimbol });
+          arrContents.push({ type: 'question', content: temp.replace(`${editSimbol}\n`, '') });
+        }
       } else {
         arrContents.push({ type: item_current_type, content: temp });
       }
@@ -123,7 +136,8 @@ let fnGetQuestionDetail = (str, simbol, type) => {
 
   // str을 패턴으로 index 구분하는 함수 호출
   const indices = findAllIndices(str, patterns);
-  // console.log(indices);
+  console.log('indices');
+  console.log(indices);
 
   // 내용 가져오는 함수 호출
   const contents = findAllContents(indices);
@@ -137,15 +151,15 @@ let fnGetQuestionDetail = (str, simbol, type) => {
 // 예시)
 // [
 //   { type: 'simbol', content: '1.' }
-//   { type: 'question', content: '문제 질문 내용' }
-//   { type: 'example_txt', content: '/보기문\n첫번째 보기문' }
-//   { type: 'example_img', content: '/보기그림\n첫번째 보기그림' }
-//   { type: 'example_txt', content: '/보기문\n두번째 보기문' }
-//   { type: 'select_1', content: '① ㉠' }
-//   { type: 'select_2', content: '② ㉡' }
-//   { type: 'select_3', content: '③ ㉢' }
-//   { type: 'select_4', content: '④ ㉣' }
-//   { type: 'solve', content: '/해설\n해설 내용입니다.' }
+//   { type: 'question', content: '문제 질문 내용.' }
+//   { type: 'example_txt', content: '첫번째 보기문' }
+//   { type: 'example_img', content: '첫번째 보기그림' }
+//   { type: 'example_txt', content: '두번째 보기문' }
+//   { type: 'select_1', content: '㉠' }
+//   { type: 'select_2', content: '㉡' }
+//   { type: 'select_3', content: '㉢' }
+//   { type: 'select_4', content: '㉣' }
+//   { type: 'solve', content: '해설 내용입니다.' }
 // ]
 
 // let type = 'group';
@@ -165,27 +179,27 @@ let fnGetQuestionDetail = (str, simbol, type) => {
 //   console.log(item);
 // });
 
-// let type = 'normal';
-// let simbol = `1\\.`;
-// let str = `
-// 1.
-// 문제 질문 내용.
-// /보기문
-// 첫번째 보기문
-// /보기그림
-// 첫번째 보기그림
-// /보기문
-// 두번째 보기문
-// ① ㉠
-// ② ㉡
-// ③ ㉢
-// ④ ㉣
-// /해설
-// 해설 내용입니다.
-// `;
+let type = 'normal';
+let simbol = `1\\.`;
+let str = `
+1.
+문제 질문 내용.
+/보기문
+1.0첫번째 보기문
+/보기그림
+첫번째 보기그림
+/보기문
+두번째 보기문
+① ㉠
+② ㉡
+③ ㉢
+④ ㉣
+/해설
+해설 내용입니다.
+`;
 
-// let detail = fnGetQuestionDetail(str, simbol, type);
+let detail = fnGetQuestionDetail(str, simbol, type);
 
-// detail.forEach((item) => {
-//   console.log(item);
-// });
+detail.forEach((item) => {
+  console.log(item);
+});
