@@ -64,6 +64,8 @@ let fnGetQuestion = (str, eNum, etc) => {
         arrContents.push({ type: item_current_type, simbol: item_current_editSimbol, str: `${item_current_simbol}\n${temp}` });
       }
     }
+    // console.log('arrContents');
+    // console.log(arrContents);
     return arrContents;
   };
 

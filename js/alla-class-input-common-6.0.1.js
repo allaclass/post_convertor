@@ -524,11 +524,13 @@ let fnCallGetQuestion = (enter) => {
   enter == undefined ? (enter = '') : (enter = '\n');
 
   let arrContents = fnGetQuestion(str, eNum, enter);
+  // console.log(arrContents);
   return arrContents;
 };
 
 let fnCallGetQuestionDetail = (questions) => {
   let detail = [];
+  // console.log(questions);
   questions.forEach((item) => {
     let type = item.type;
     let simbol = item.simbol;
@@ -587,7 +589,7 @@ let fnPrintInputDataBox = (arrQuestionDetail, not) => {
     // arrQuestionDetail에 key:solve가 없을 경우 /해설\n\n만 추가한다.
     let foundSolve = false;
     arrQuestionDetail[j].forEach((item) => {
-      item.type === 'simbol' && item.content === '※.' && (foundSolve = true);
+      item.type === 'simbol' && item.content === '※' && (foundSolve = true);
       item.type === 'solve' && (foundSolve = true);
     });
     !foundSolve && (txt_inputData.value += `/해설\n\n`);
@@ -753,6 +755,7 @@ let btn_sort = (enter, not) => {
 
   // 문제 구분하는 함수 실행
   let arrQuestions = fnCallGetQuestion(enter);
+  // console.log(arrQuestions);
 
   // 문항수 구하기
   let count = 0;
@@ -765,6 +768,7 @@ let btn_sort = (enter, not) => {
 
   // 문제 한개씩 상세내용 구분하는 함수 실행
   let arrQuestionDetail = fnCallGetQuestionDetail(arrQuestions);
+  // console.log(arrQuestionDetail);
 
   // txt_inputData 텍스트박스에 정리된 내용 출력
   fnPrintInputDataBox(arrQuestionDetail, not);
