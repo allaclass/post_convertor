@@ -89,7 +89,7 @@ div#btnList_command button {
 .txt_inputData {
   width: 100%;
   /* height: calc(100% - 372px - 30px); */
-  height: calc(100% - var(--infoHeight) - 220px);
+  height: calc(100% - var(--infoHeight) - 255px);
   float: left;
   background-color: #252525;
   margin: 0;
