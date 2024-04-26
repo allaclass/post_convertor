@@ -678,7 +678,7 @@ let fnPrintOutputHtmlBox = (arrQuestionDetail) => {
           arrExample_txt.push(`${item.content}`);
           break;
         case 'example_img':
-          item.content = fnReplace_gihoChange(item.content);
+          // item.content = fnReplace_gihoChange(item.content);
           arrExample_img.push(`${item.content}`);
           break;
         case 'select_1':
