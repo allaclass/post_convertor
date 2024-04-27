@@ -185,8 +185,7 @@ let fnToHTML_commandChange = (text) => {
 
 // 모바일 티스토리 접근 방지
 let fnToHTML_tistoryMobileNoEntry = () => {
-  return `
-<!-- 수정: 모바일 방지 -->
+  return `<!-- 수정: 모바일 방지 -->
 <div>
 \t<script>
 \t\tif (window.location.pathname.split("/")[1] === "m" && navigator.userAgent.indexOf("Tistory") === -1 && navigator.userAgent.indexOf("Android") === -1) {
@@ -202,8 +201,7 @@ let fnToHTML_tistoryMobileNoEntry = () => {
 
 // [toHTML] 썸네일
 let fnToHTML_thumbnail = () => {
-  return `
-<!-- 썸네일 영역 -->
+  return `<!-- 썸네일 영역 -->
 <div class="alla6ThumbDiv">
 \t${infoData_thumb}
 </div>
@@ -215,8 +213,7 @@ let fnToHTML_thumbnail = () => {
 
 // [toHTML] 공지사항 Header
 let fnToHTML_noticeTop = () => {
-  return `
-<!-- 공지사항 Header 영역 -->
+  return `<!-- 공지사항 Header 영역 -->
 <div class="alla6NoticeHeaderDiv">
 </div>
 <!-- ------------------------------------------------------------------------------------ -->
@@ -226,8 +223,7 @@ let fnToHTML_noticeTop = () => {
 
 // [toHTML] 가이드(Img)
 let fnToHTML_guide = () => {
-  return `
-<!-- 가이드 영역 -->
+  return `<!-- 가이드 영역 -->
 <div class="alla6GuideDiv">
 </div>
 <!-- ------------------------------------------------------------------------------------ -->
@@ -237,8 +233,7 @@ let fnToHTML_guide = () => {
 
 // [toHTML] 타이틀
 let fnToHTML_title = () => {
-  return `
-<!-- 타이틀 영역 -->
+  return `<!-- 타이틀 영역 -->
 <div class="alla6TitleDiv">
 \t<table class="alla6TitleTbl">
 \t\t<tbody>
@@ -261,8 +256,7 @@ let fnToHTML_title = () => {
 // [toHTML] 그룹 문제 (시작)
 let fnToHTML_groupQuestionTop = (question) => {
   question = fnToHTML_commandChange(question);
-  return `
-<!-- 그룹 문제 -->
+  return `<!-- 그룹 문제 -->
 <div class="alla6BasicDiv">
 \t<form>
 \t\t<table class="alla6BasicTbl">
@@ -279,8 +273,7 @@ let fnToHTML_groupQuestionTop = (question) => {
 
 // [toHTML] 그룹 문제 (종료)
 let fnToHTML_groupQuestionBottom = () => {
-  return `
-\t\t\t</tbody>
+  return `\t\t\t</tbody>
 \t\t</table>
 \t</form>
 </div>
@@ -295,8 +288,7 @@ let fnToHTML_normalQuestionQuiz = (questionNo, question) => {
   let number;
   Number(questionNo) < 10 ? (number = '0' + questionNo) : (number = questionNo);
   question = fnToHTML_commandChange(question);
-  return `
-<!-- 문제 : ${number} -->
+  return `<!-- 문제 : ${number} -->
 <div class="alla6BasicDiv">
 \t<form>
 \t\t<table class="alla6BasicTbl" id="alla6BasicTbl${number}">
@@ -314,8 +306,7 @@ let fnToHTML_normalQuestionQuiz = (questionNo, question) => {
 // [toHTML] 보기문
 let fnToHTML_exampleTxt = (example) => {
   example = fnToHTML_commandChange(example);
-  return `
-\t\t\t\t<!-- 보기문 -->
+  return `\t\t\t\t<!-- 보기문 -->
 \t\t\t\t<tr class="alla6ExampleTr_Txt">
 \t\t\t\t\t<td>
 \t\t\t\t\t\t${example}
@@ -332,8 +323,7 @@ let fnToHTML_exampleTxt = (example) => {
 // [toHTML] 보기그림
 let fnToHTML_exampleImg = (example) => {
   example = fnToHTML_commandChange(example);
-  return `
-\t\t\t\t<!-- 보기그림 -->
+  return `\t\t\t\t<!-- 보기그림 -->
 \t\t\t\t<tr class="alla6ExampleTr_Img">
 \t\t\t\t\t<td>
 \t\t\t\t\t\t${example}
@@ -357,8 +347,7 @@ let fnToHTML_normalQuestionSelect = (questionNo, answer_1, answer_2, answer_3, a
   answer_4 == undefined ? (answer_4 = '') : (answer_4 = fnToHTML_commandChange(answer_4));
   solve == undefined ? (solve = '') : (solve = fnToHTML_commandChange(solve));
 
-  return `
-\t\t\t\t<!-- 객관식 1번 -->
+  return `\t\t\t\t<!-- 객관식 1번 -->
 \t\t\t\t<tr class="alla6AnswerTr">
 \t\t\t\t\t<td class="alla6AnswerTd">
 \t\t\t\t\t\t<label for="radio-${number}-1">
@@ -417,8 +406,7 @@ let fnToHTML_normalQuestionSelect = (questionNo, answer_1, answer_2, answer_3, a
 
 // [toHTML] 채점 / 다시풀기 버튼
 let fnToHTML_checkButton = () => {
-  return `
-<!-- 채점 버튼 영역 -->
+  return `<!-- 채점 버튼 영역 -->
 <div class="alla6CheckDiv">
 \t<form>
 \t\t<table class="alla6CheckTbl">
@@ -443,8 +431,7 @@ let fnToHTML_checkButton = () => {
 
 // [toHTML] 채점 영역
 let fnToHTML_gradingExams = () => {
-  return `
-<!-- 채점 영역 -->
+  return `<!-- 채점 영역 -->
 <div class="alla6GradingDiv">
 </div>
 <!-- ------------------------------------------------------------------------------------ -->
@@ -454,8 +441,7 @@ let fnToHTML_gradingExams = () => {
 
 // [toHTML] 초기화 영역
 let fnToHTML_resetExams = () => {
-  return `
-<!-- 초기화 영역 -->
+  return `<!-- 초기화 영역 -->
 <div class="alla6ResetDiv">
 </div>
 <!-- ------------------------------------------------------------------------------------ -->
@@ -465,8 +451,7 @@ let fnToHTML_resetExams = () => {
 
 // [toHTML] 정답지
 let fnToHTML_answerTable = (answer) => {
-  return `
-<!-- 정답지 영역 -->
+  return `<!-- 정답지 영역 -->
 <div class="alla6AnswerTableDiv">
 \t<table>
 \t\t<tbody>
@@ -481,8 +466,7 @@ let fnToHTML_answerTable = (answer) => {
 
 // [toHTML] 타년도 문제 바로가기
 let fnToHTML_otherExams = () => {
-  return `
-<!-- 타년도 문제 바로가기 영역 -->
+  return `<!-- 타년도 문제 바로가기 영역 -->
 <div class="alla6OtherExamDiv">
 </div>
 <!-- // 타년도 문제 바로가기 영역 -->
@@ -493,8 +477,7 @@ let fnToHTML_otherExams = () => {
 
 // [toHTML] 문제 다운로드 바로가기
 let fnToHTML_downloadExams = () => {
-  return `
-<!-- 문제 다운로드 바로가기 영역 -->
+  return `<!-- 문제 다운로드 바로가기 영역 -->
 <div class="alla6DownloadExamDiv">
 </div>
 <!-- // 문제 다운로드 바로가기 영역 -->
@@ -505,8 +488,7 @@ let fnToHTML_downloadExams = () => {
 
 // [toHTML] 공지사항 Footer
 let fnToHTML_noticeBottom = () => {
-  return `
-<!-- 공지사항 Footer 영역 -->
+  return `<!-- 공지사항 Footer 영역 -->
 <div class="alla6NoticeFooterDiv">
 </div>
 <!-- ------------------------------------------------------------------------------------ -->
