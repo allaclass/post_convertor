@@ -145,6 +145,21 @@ function convertor_basic() {
   pushData_result();
 }
 
+// 앞뒤공백 지우는 기능
+function convertor_trim() {
+  inputData(); // #txt_example 데이터 가져오기
+  let arrDataExample = data_example.split('\n');
+  clearData();
+  for (let i = 1; i <= arrDataExample.length; i++) {
+    let editItem = arrDataExample[i - 1].trim();
+    if (i == arrDataExample.length) {
+      url_example.value += `${editItem}`;
+    } else {
+      url_example.value += `${editItem}\n`;
+    }
+  }
+}
+
 // 앞에 공백2개씩 넣는 기능
 function convertor_frontSpace() {
   inputData(); // #txt_example 데이터 가져오기
@@ -207,23 +222,12 @@ function convertor_commandDoubleSpace(type) {
   txt_example.value = txt_example.value.substring(0, startTextIndex) + replacement + txt_example.value.substring(endTextIndex);
 }
 
-// 앞뒤공백 지우는 기능
-function convertor_trim() {
-  inputData(); // #txt_example 데이터 가져오기
-  let arrDataExample = data_example.split('\n');
-  clearData();
-  for (let i = 1; i <= arrDataExample.length; i++) {
-    let editItem = arrDataExample[i - 1].trim();
-    if (i == arrDataExample.length) {
-      url_example.value += `${editItem}`;
-    } else {
-      url_example.value += `${editItem}\n`;
-    }
-  }
-}
-
 // /한글 - 가. 나.
 function convertor_Kor() {
+  // 각 줄마다 앞뒤 공백 지우고, 맨앞 2칸 추가하기
+  convertor_trim();
+  convertor_frontSpace();
+
   // 보기문 : 가.나.다. 변환 함수
   inputData(); // #txt_example 데이터 가져오기
   clearData(); // #txt_example 비우기
@@ -272,6 +276,10 @@ function convertor_Kor() {
 
 // /한글 - ㄱ. ㄴ.
 function convertor_KorJa() {
+  // 각 줄마다 앞뒤 공백 지우고, 맨앞 2칸 추가하기
+  convertor_trim();
+  convertor_frontSpace();
+
   // 보기문 : 가.나.다. 변환 함수
   inputData(); // #txt_example 데이터 가져오기
   clearData(); // #txt_example 비우기
@@ -320,6 +328,10 @@ function convertor_KorJa() {
 
 // /영소 - a. b. c.
 function convertor_EngSmall() {
+  // 각 줄마다 앞뒤 공백 지우고, 맨앞 2칸 추가하기
+  convertor_trim();
+  convertor_frontSpace();
+
   // 보기문 : a.b.c. 변환 함수
   inputData(); // #txt_example 데이터 가져오기
   clearData(); // #txt_example 비우기
@@ -369,6 +381,10 @@ function convertor_EngSmall() {
 
 // /영소 - A. B. C (/영대)
 function convertor_EngBig() {
+  // 각 줄마다 앞뒤 공백 지우고, 맨앞 2칸 추가하기
+  convertor_trim();
+  convertor_frontSpace();
+
   // 보기문 : a.b.c. 변환 함수
   inputData(); // #txt_example 데이터 가져오기
   clearData(); // #txt_example 비우기
@@ -418,6 +434,10 @@ function convertor_EngBig() {
 
 // /바 -
 function convertor_Bar() {
+  // 각 줄마다 앞뒤 공백 지우고, 맨앞 2칸 추가하기
+  convertor_trim();
+  convertor_frontSpace();
+
   inputData();
   clearData();
 
@@ -472,6 +492,10 @@ function convertor_Bar() {
 
 // /서클 - ㉮ ㉯
 function convertor_CircleKor() {
+  // 각 줄마다 앞뒤 공백 지우고, 맨앞 2칸 추가하기
+  convertor_trim();
+  convertor_frontSpace();
+
   // 보기문 : a.b.c. 변환 함수
   inputData(); // #txt_example 데이터 가져오기
   clearData(); // #txt_example 비우기
@@ -520,6 +544,10 @@ function convertor_CircleKor() {
 
 // /서클 - ㉠ ㉡
 function convertor_CircleKorJa() {
+  // 각 줄마다 앞뒤 공백 지우고, 맨앞 2칸 추가하기
+  convertor_trim();
+  convertor_frontSpace();
+
   // 보기문 : a.b.c. 변환 함수
   inputData(); // #txt_example 데이터 가져오기
   clearData(); // #txt_example 비우기
@@ -568,6 +596,10 @@ function convertor_CircleKorJa() {
 
 // /서클 - ⓐ, ⓑ
 function convertor_CircleEngSmall() {
+  // 각 줄마다 앞뒤 공백 지우고, 맨앞 2칸 추가하기
+  convertor_trim();
+  convertor_frontSpace();
+
   // 보기문 : a.b.c. 변환 함수
   inputData(); // #txt_example 데이터 가져오기
   clearData(); // #txt_example 비우기
@@ -616,6 +648,10 @@ function convertor_CircleEngSmall() {
 
 // /서클 - Ⓐ Ⓑ Ⓒ Ⓓ
 function convertor_CircleEngBig() {
+  // 각 줄마다 앞뒤 공백 지우고, 맨앞 2칸 추가하기
+  convertor_trim();
+  convertor_frontSpace();
+
   inputData(); // #txt_example 데이터 가져오기
   clearData(); // #txt_example 비우기
 
@@ -675,6 +711,10 @@ function convertor_Jul() {
 
 // /괄호한글 - (가) (나)
 function convertor_WrapKor() {
+  // 각 줄마다 앞뒤 공백 지우고, 맨앞 2칸 추가하기
+  convertor_trim();
+  convertor_frontSpace();
+
   inputData(); // #txt_example 데이터 가져오기
   clearData(); // #txt_example 비우기
 
@@ -722,6 +762,10 @@ function convertor_WrapKor() {
 
 // /괄호한글(자음) - (ㄱ) (ㄴ)
 function convertor_WrapKorJa() {
+  // 각 줄마다 앞뒤 공백 지우고, 맨앞 2칸 추가하기
+  convertor_trim();
+  convertor_frontSpace();
+
   inputData(); // #txt_example 데이터 가져오기
   clearData(); // #txt_example 비우기
 
@@ -769,6 +813,10 @@ function convertor_WrapKorJa() {
 
 // /괄호영소 - (a) (b)
 function convertor_WrapEngSmall() {
+  // 각 줄마다 앞뒤 공백 지우고, 맨앞 2칸 추가하기
+  convertor_trim();
+  convertor_frontSpace();
+
   inputData(); // #txt_example 데이터 가져오기
   clearData(); // #txt_example 비우기
 
@@ -816,6 +864,10 @@ function convertor_WrapEngSmall() {
 
 // /괄호영대 - (A) (B)
 function convertor_WrapEngBig() {
+  // 각 줄마다 앞뒤 공백 지우고, 맨앞 2칸 추가하기
+  convertor_trim();
+  convertor_frontSpace();
+
   inputData();
   clearData();
 
@@ -857,6 +909,10 @@ function convertor_WrapEngBig() {
 
 // /괄호숫자 - (1) (2) (/괄호영소 동일)
 function convertor_WrapNumber() {
+  // 각 줄마다 앞뒤 공백 지우고, 맨앞 2칸 추가하기
+  convertor_trim();
+  convertor_frontSpace();
+
   inputData();
   clearData();
 
@@ -899,6 +955,10 @@ function convertor_WrapNumber() {
 
 // /괄호한글(기호) → /괄호한글 변환 (예시. ㈎ → (가))
 function convertor_GihoWrapKor() {
+  // 각 줄마다 앞뒤 공백 지우고, 맨앞 2칸 추가하기
+  convertor_trim();
+  convertor_frontSpace();
+
   inputData();
   clearData();
 
@@ -941,6 +1001,10 @@ function convertor_GihoWrapKor() {
 
 // /괄호한글자음(기호) → /괄호한글자음 변환 (예시. ㈀ → (ㄱ))
 function convertor_GihoWrapKorJa() {
+  // 각 줄마다 앞뒤 공백 지우고, 맨앞 2칸 추가하기
+  convertor_trim();
+  convertor_frontSpace();
+
   inputData();
   clearData();
 
@@ -983,6 +1047,10 @@ function convertor_GihoWrapKorJa() {
 
 // /괄호영소(기호) → /괄호영소 변환 (예시. ⒜ → (a))
 function convertor_GihoWrapEngSmall() {
+  // 각 줄마다 앞뒤 공백 지우고, 맨앞 2칸 추가하기
+  convertor_trim();
+  convertor_frontSpace();
+
   inputData();
   clearData();
 
@@ -1025,6 +1093,10 @@ function convertor_GihoWrapEngSmall() {
 
 // /괄호숫자(기호) → /괄호숫자 변환 (예시. ⑴ → (1))
 function convertor_GihoWrapNumber() {
+  // 각 줄마다 앞뒤 공백 지우고, 맨앞 2칸 추가하기
+  convertor_trim();
+  convertor_frontSpace();
+
   inputData();
   clearData();
 
@@ -1068,6 +1140,10 @@ function convertor_GihoWrapNumber() {
 
 // /괄호숫자(원형기호) → /괄호숫자 변환 (예시. ① → (1))
 function convertor_GihoNumber() {
+  // 각 줄마다 앞뒤 공백 지우고, 맨앞 2칸 추가하기
+  convertor_trim();
+  convertor_frontSpace();
+
   inputData();
   clearData();
 

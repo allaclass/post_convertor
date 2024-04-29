@@ -29,9 +29,9 @@
         </div>
         <div class="btnList">
           <!-- button -->
-          <button onclick="btn_sort()" id="btn_sort" accesskey="1">정렬/일반 (1)</button><br />
+          <button onclick="btn_sort()" id="btn_sort">정렬/일반</button><br />
           <button onclick="btn_sort('\n')" id="btn_sort_n" accesskey="2">정렬/엔터 (2)</button><br />
-          <button onclick="btn_sort('\n', 'not')" id="btn_sort_cmd" accesskey="3">정렬/부정 (3)</button><br />
+          <button onclick="btn_sort('\n', 'not')" id="btn_sort_cmd">정렬/부정</button><br />
           <button onclick="btn_oldConvertor()" id="btn_oldConvertor" accesskey="w">구 → 신 (W)</button><br />
           <hr />
           <button onclick="btn_togglePopup('ExamplePopupWrapper')" id="btn_exConvertor" accesskey="q">보기문 (Q)</button>
@@ -40,20 +40,20 @@
           <button onclick="btn_open()" id="btn_open" accesskey="o">열기(.txt) (O)</button>
           <button onclick="btn_changeThumb()" id="btn_changeThumb" accesskey="v">썸 교체 (V)</button>
           <hr />
-          <button onclick="btn_togglePopup('CommandPopupWrapper')" id="btn_cmdGuide" accesskey="g">가이드 (G)</button>
+          <button onclick="btn_togglePopup('CommandPopupWrapper')" id="btn_cmdGuide">가이드</button>
           <hr />
           <button onclick="btn_save(['txt_info', 'txt_inputData'])" id="btn_save" accesskey="s">저장(.txt) (S)</button>
         </div>
         <textarea class="txt_outputHtml" id="txt_outputHtml" placeholder="2. output html"></textarea>
         <div class="btnList_command" id="btnList_command">
-          <button onclick="btn_cmd('double', '부정')">부정</button>
+          <button onclick="btn_cmd('double', '부정')" accesskey="b">부정(B)</button>
           <button onclick="btn_cmd('double', '굵게')">굵게</button>
           <button onclick="btn_cmd('double', '기움')">기움</button>|
-          <button onclick="btn_cmd('single', '줄')">줄</button>
+          <button onclick="btn_cmd('single', '줄')" accesskey="y">줄(y)</button>
           <button onclick="btn_cmd('double', '밑줄')">밑줄</button>
           <button onclick="btn_cmd('double', '윗줄')">윗줄</button><br />
-          <button onclick="btn_cmd('single', '보기문')">보기문</button>
-          <button onclick="btn_cmd('single', '보기그림')">보기그림</button> |
+          <button onclick="btn_cmd('single', '보기문')" accesskey="r">보기문(R)</button>
+          <button onclick="btn_cmd('single', '보기그림')" accesskey="t">보기그림(T)</button> |
           <button onclick="btn_cmd('doubleSpace', '단락')">단락</button>
           <button onclick="btn_cmd('doubleSpace', '좌들')">좌들</button>
           <button onclick="btn_cmd('doubleSpace', '중앙')">중앙</button>
@@ -63,7 +63,7 @@
           <button onclick="btn_cmd('single', '롱빈칸')">롱빈칸</button><br />
           <button onclick="btn_cmd('double', '윗첨자')" accesskey="z">윗첨자(Z)</button>
           <button onclick="btn_cmd('double', '아랫첨자')" accesskey="x">아랫첨자(X)</button>|
-          <button onclick="btn_cmd('double', '미지수')">미지수</button>
+          <button onclick="btn_cmd('double', '미지수')" accesskey="c">미지수(C)</button>
           <button onclick="btn_cmd('double', '이미지')">이미지</button>
         </div>
         <textarea class="txt_inputData" id="txt_inputData" placeholder="1. input data" onkeyup="btn_toHtml()" onclick="btn_toHtml()"></textarea>
@@ -90,20 +90,20 @@
           </tr>
         </table>
         <div class="menuWrap">
-          <button onclick="convertor_basic()" id="convertor_basic">보기문/단락</button>
+          <button onclick="convertor_basic()" id="convertor_basic" accesskey="a">보기문/단락(A)</button>
           <button onclick="convertor_example('보기문')">보기문</button>
           <button onclick="convertor_example('보기그림')">보기그림</button>
           <button onclick="convertor_commandDoubleSpace('단락')">단락</button>
           <button onclick="convertor_commandDoubleSpace('좌들')">좌들</button>
           <button onclick="convertor_commandDoubleSpace('중앙')">중앙</button>
           <button onclick="convertor_commandDoubleSpace('우측')">우측</button>
-          <button onclick="btn_togglePopup('ExamplePopupWrapper', 'save')" accesskey="a">저장&닫기 (A)</button>
+          <button onclick="btn_togglePopup('ExamplePopupWrapper', 'save')" accesskey="s">저장&닫기 (S)</button>
         </div>
         <textarea class="txt_example" id="txt_example" placeholder=""></textarea>
         <div class="menuWrap">
           <button onclick="convertor_trim()">앞뒤공백X</button>
           <button onclick="convertor_frontSpace()">앞2빈칸</button>
-          <button onclick="btn_togglePopup('ExamplePopupWrapper', 'save')" id="btn_save_n_exit" accesskey="a">저장 및 닫기 (A)</button>
+          <button onclick="btn_togglePopup('ExamplePopupWrapper', 'save')" id="btn_save_n_exit" accesskey="s">저장 및 닫기 (S)</button>
           <hr />
           <button onclick="convertor_Kor()">가.</button>
           <button onclick="convertor_KorJa()">ㄱ.</button>
