@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>C 업로드</title>
+    <!-- style import -->
+    <link rel="stylesheet" href="./css/alla-class-post-fonts.css" />
+    <link rel="stylesheet" href="./css/alla-class-input-common-6.0.1.css" />
+    <link rel="stylesheet" href="./css/alla-class-input-example-1.0.2.css" />
+    <link rel="stylesheet" href="./css/alla-topik-post-common-6.0.1.css" />
+    <!-- style edit -->
+    <style>
+      .alla6AnswerRadio {
+        margin-top: 10px;
+      }
+    </style>
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="https://raw.githubusercontent.com/knouclass/inputpost/master/icon_admin.png"> -->
+    <link rel="shortcut icon" type="image/x-icon" href="./img/icon_admin.png" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <div class="menu">
+          <!-- textarea -->
+          <textarea id="txt_info" name="txt_info" placeholder="한번에 입력" onkeyup="fnGetInfoData()"></textarea>
+          <textarea id="txt_title" name="txt_title" placeholder="타이틀" readonly></textarea>
+          <textarea id="txt_tag" name="txt_tag" placeholder="태그" readonly></textarea>
+          <textarea id="txt_newThumb" name="txt_newThumb" placeholder="새 썸네일"></textarea>
+        </div>
+        <div class="btnList">
+          <!-- button -->
+          <button onclick="btn_sort()" id="btn_sort">정렬/일반</button><br />
+          <button onclick="btn_sort('\n')" id="btn_sort_n" accesskey="2">정렬/엔터 (2)</button><br />
+          <button onclick="btn_sort('\n', 'not')" id="btn_sort_cmd">정렬/부정</button><br />
+          <button onclick="btn_oldConvertor()" id="btn_oldConvertor" accesskey="w">구 → 신 (W)</button><br />
+          <hr />
+          <button onclick="btn_togglePopup('ExamplePopupWrapper')" id="btn_exConvertor" accesskey="q">보기문 (Q)</button>
+          <!-- <button onclick="btn_toHtml()" id="btn_toHtml" accesskey="4">HTML소스 (4)</button> -->
+          <hr />
+          <button onclick="btn_open()" id="btn_open" accesskey="o">열기(.txt) (O)</button>
+          <button onclick="btn_changeThumb()" id="btn_changeThumb" accesskey="v">썸 교체 (V)</button>
+          <hr />
+          <button onclick="btn_togglePopup('CommandPopupWrapper')" id="btn_cmdGuide">가이드</button>
+          <hr />
+          <button onclick="btn_save(['txt_info', 'txt_inputData'])" id="btn_save" accesskey="s">저장(.txt) (S)</button>
+        </div>
+        <textarea class="txt_outputHtml" id="txt_outputHtml" placeholder="2. output html"></textarea>
+        <div class="btnList_command" id="btnList_command">
+          <button onclick="btn_cmd('double', '부정')" accesskey="b">부정(B)</button>
+          <button onclick="btn_cmd('double', '굵게')">굵게</button>
+          <button onclick="btn_cmd('double', '기움')">기움</button>|
+          <button onclick="btn_cmd('single', '줄')" accesskey="y">줄(y)</button>
+          <button onclick="btn_cmd('double', '밑줄')">밑줄</button>
+          <button onclick="btn_cmd('double', '윗줄')">윗줄</button><br />
+          <button onclick="btn_cmd('single', '보기문')" accesskey="r">보기문(R)</button>
+          <button onclick="btn_cmd('single', '보기그림')" accesskey="t">보기그림(T)</button> |
+          <button onclick="btn_cmd('doubleSpace', '단락')">단락</button>
+          <button onclick="btn_cmd('doubleSpace', '좌들')">좌들</button>
+          <button onclick="btn_cmd('doubleSpace', '중앙')">중앙</button>
+          <button onclick="btn_cmd('doubleSpace', '우측')">우측</button>|
+          <button onclick="btn_cmd('single', '빈칸')">빈칸</button>
+          <button onclick="btn_cmd('single', '숏빈칸')">숏빈칸</button>
+          <button onclick="btn_cmd('single', '롱빈칸')">롱빈칸</button><br />
+          <button onclick="btn_cmd('double', '윗첨자')" accesskey="z">윗첨자(Z)</button>
+          <button onclick="btn_cmd('double', '아랫첨자')" accesskey="x">아랫첨자(X)</button>|
+          <button onclick="btn_cmd('double', '미지수')" accesskey="c">미지수(C)</button>
+          <button onclick="btn_cmd('double', '이미지')">이미지</button>
+        </div>
+        <textarea class="txt_inputData" id="txt_inputData" placeholder="1. input data" onkeyup="btn_toHtml()" onclick="btn_toHtml()"></textarea>
+        <!-- <div id="postView" class="postView"></div> -->
+      </div>
+      <div class="wrapper">
+        <div id="postView" class="postView"></div>
+      </div>
+    </div>
+
+    <!-- 보기문 팝업을 감싸는 div -->
+    <div id="ExamplePopupWrapper" class="popup-wrapper">
+      <!-- 팝업 내용을 담는 div -->
+      <div class="popup-content">
+        <table class="popup-example-table">
+          <tr>
+            <td>
+              <h2>보기문 변환기</h2>
+            </td>
+            <td>
+              <!-- 팝업 닫기 버튼 -->
+              <button onclick="btn_togglePopup('ExamplePopupWrapper')">취소 (Q)</button>
+            </td>
+          </tr>
+        </table>
+        <div class="menuWrap">
+          <button onclick="convertor_basic()" id="convertor_basic" accesskey="a">보기문/단락(A)</button>
+          <button onclick="convertor_example('보기문')">보기문</button>
+          <button onclick="convertor_example('보기그림')">보기그림</button>
+          <button onclick="convertor_commandDoubleSpace('단락')">단락</button>
+          <button onclick="convertor_commandDoubleSpace('좌들')">좌들</button>
+          <button onclick="convertor_commandDoubleSpace('중앙')">중앙</button>
+          <button onclick="convertor_commandDoubleSpace('우측')">우측</button>
+          <button onclick="btn_togglePopup('ExamplePopupWrapper', 'save')" accesskey="s">저장&닫기 (S)</button>
+        </div>
+        <textarea class="txt_example" id="txt_example" placeholder=""></textarea>
+        <div class="menuWrap">
+          <button onclick="convertor_trim()">앞뒤공백X</button>
+          <button onclick="convertor_frontSpace()">앞2빈칸</button>
+          <button onclick="btn_togglePopup('ExamplePopupWrapper', 'save')" id="btn_save_n_exit" accesskey="s">저장 및 닫기 (S)</button>
+          <hr />
+          <button onclick="convertor_Kor()">가.</button>
+          <button onclick="convertor_KorJa()">ㄱ.</button>
+          <button onclick="convertor_EngSmall()">a.</button>
+          <button onclick="convertor_EngBig()">A.</button>
+          <button onclick="convertor_Bar()">-</button>
+
+          <button onclick="convertor_CircleKor()">㉮</button>
+          <button onclick="convertor_CircleKorJa()">㉠</button>
+          <button onclick="convertor_CircleEngSmall()">ⓐ</button>
+          <button onclick="convertor_CircleEngBig()">Ⓐ</button>
+          <button onclick="convertor_Jul()">/줄 X</button>
+
+          <button onclick="convertor_WrapKor()">( 가 )</button>
+          <button onclick="convertor_WrapKorJa()">( ㄱ )</button>
+          <button onclick="convertor_WrapEngSmall()">( a )</button>
+          <button onclick="convertor_WrapEngBig()">( A )</button>
+          <button onclick="convertor_WrapNumber()">( 1 )</button>
+
+          <button onclick="convertor_GihoWrapKor()">㈎→(가)</button>
+          <button onclick="convertor_GihoWrapKorJa()">㈀→(ㄱ)</button>
+          <button onclick="convertor_GihoWrapEngSmall()">⒜→(a)</button>
+          <button onclick="convertor_GihoWrapNumber()">⑴→(1)</button>
+          <button onclick="convertor_GihoNumber()">①→➀</button>
+          <hr />
+          <button onclick="pushData_Kor()">"가."</button>
+          <button onclick="pushData_KorJa()">"ㄱ."</button>
+          <button onclick="pushData_EngSmall()">"a."</button>
+          <button onclick="pushData_EngBig()">"A."</button>
+          <button onclick="pushData_Bar()">"-"</button>
+
+          <button onclick="pushData_CircleKor()">"㉮"</button>
+          <button onclick="pushData_CircleKorJa()">"㉠"</button>
+          <button onclick="pushData_CircleEngSmall()">"ⓐ"</button>
+          <button onclick="pushData_CircleEngBig()">"Ⓐ"</button>
+          <button onclick="pushData_Jul()">"/줄"</button>
+
+          <button onclick="pushData_WrapKor()">"( 가 )"</button>
+          <button onclick="pushData_WrapKorJa()">"( ㄱ )"</button>
+          <button onclick="pushData_WrapEngSmall()">"( a )"</button>
+          <button onclick="pushData_WrapEngBig()">"( A )"</button>
+          <button onclick="pushData_WrapNumber()">"( 1 )"</button>
+
+          <button onclick="pushData_GihoWrapKor()">"㈎"</button>
+          <button onclick="pushData_GihoWrapKorJa()">"㈀"</button>
+          <button onclick="pushData_GihoWrapEngSmall()">"⒜"</button>
+          <button onclick="pushData_GihoWrapNumber()">"⑴"</button>
+          <button onclick="pushData_GihoNumber()">"①"</button>
+          <hr />
+        </div>
+      </div>
+    </div>
+
+    <!-- 명령어 가이드 팝업을 감싸는 div -->
+    <div id="CommandPopupWrapper" class="popup-wrapper">
+      <!-- 팝업 내용을 담는 div -->
+      <div class="popup-content">
+        <h2>명령어 가이드</h2>
+        <table>
+          <tr>
+            글자 효과
+          </tr>
+          <tr>
+            <td>
+              <ul>
+                <li>/부정~/.부정</li>
+                <li>/밑줄~/.밑줄</li>
+                <li>/윗줄~/.윗줄</li>
+                <li>/굵게~/.굵게</li>
+                <li>/기움~/.기움</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li>/미지수~/.미지수 (수학기호)</li>
+                <li>/윗첨자~/.윗첨자</li>
+                <li>/아랫첨자~/.아랫첨자</li>
+                <li>/줄, /빈칸, /숏빈칸, /롱빈칸</li>
+                <li>/이미지~/.이미지</li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+
+        <table>
+          <tr>
+            단락 효과
+          </tr>
+          <tr>
+            <td>
+              <ul>
+                <li>/단락_~/.단락</li>
+                <li>/좌들_~/.좌들</li>
+                <li>/바_~/.바</li>
+                <li>/영소_~/.영소</li>
+                <li>/괄호영대_~/.괄호영대</li>
+                <li>/괄호영소_~/.괄호영소</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li>/한글_~/.한글</li>
+                <li>/괄호한글_~/.괄호한글</li>
+                <li>/괄호자음_~/.괄호자음</li>
+                <li>/서클_~/.서클</li>
+                <li>/중앙_~/.중앙</li>
+                <li>/우측_~/.우측</li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+
+        <table>
+          <tr>
+            부정문 자동 변환 (~■~ → /부정■/.부정)
+          </tr>
+          <tr>
+            <td>
+              <ul>
+                <li>~먼~</li>
+                <li>~않은~</li>
+                <li>~않는~</li>
+                <li>~아닌~</li>
+                <li>~어려운~</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li>~틀린~</li>
+                <li>~부적절한~</li>
+                <li>~부적합한~</li>
+                <li>~못한~</li>
+                <li>~잘못~</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li>~잘못된~</li>
+                <li>~없는~</li>
+                <li>~다른~</li>
+                <li>~적은~</li>
+                <li>~힘든~</li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+
+        <table>
+          <tr>
+            기호 자동 변환
+          </tr>
+          <tr>
+            <td>
+              <ul>
+                <li>～ → ~</li>
+                <li>․ → ㆍ</li>
+                <li>· → ㆍ</li>
+                <li>⋅ → ㆍ</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li>‘ → '</li>
+                <li>’ → '</li>
+                <li>< → &#60;</li>
+                <li>> → &#62;</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li>󰡔 → 『</li>
+                <li>󰡕 → 』</li>
+                <li>ꡔ → 『</li>
+                <li>ꡕ → 』</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li>｢ → 「</li>
+                <li>｣ → 」</li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+
+        <!-- 팝업 닫기 버튼 -->
+        <button onclick="btn_togglePopup('CommandPopupWrapper')">닫기</button>
+      </div>
+    </div>
+
+    <!-- script import -->
+    <script type="text/javascript" src="./js/alla-class-fnGetQuestion.js"></script>
+    <script type="text/javascript" src="./js/alla-class-fnGetQuestionDetail.js"></script>
+    <script type="text/javascript" src="./js/alla-class-input-example-1.0.2.js"></script>
+    <script type="text/javascript" src="./js/alla-topik-input-common-6.0.1.js"></script>
+  </body>
+</html>
