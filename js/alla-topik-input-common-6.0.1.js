@@ -67,7 +67,7 @@ let fnGetInfoData = () => {
 
   // 포스팅 시, 편의를 위한 포스팅 태그 생성 : 텍스트박스(txt_tag)에 뿌려주기
   let txt_tag = document.getElementById('txt_tag');
-  txt_tag.value = `${infoData_object} ${infoData_kind}시험`;
+  txt_tag.value = `${infoData_object} ${infoData_kind}문제`;
 };
 
 // 함수 : inputData에서 처리한 문제내용 삭제
@@ -901,7 +901,7 @@ let btn_save = (arrTextarea) => {
     alert('과목정보가 없습니다.');
   } else {
     // console.log(infoData_object);
-    let fileName = `${infoData_object}-${infoData_kind}-${infoData_year}-${infoData_seme}-${infoData_grade}.txt`; // 저장할 file 이름
+    let fileName = `${infoData_object}-${infoData_kind}문제-20${infoData_year}년-${infoData_round}회.txt`; // 저장할 file 이름
     let blob = new Blob([textToSave], { type: 'text/plain' });
     let a = document.createElement('a');
     a.download = fileName;
