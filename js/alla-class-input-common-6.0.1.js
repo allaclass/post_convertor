@@ -795,6 +795,10 @@ let btn_togglePopup = (elementById, how) => {
 
       // 기존 문제입력창 텍스트에서 선택한 블록부분을 새로 편집한 내용으로 교체
       inputData.value = inputData.value.substring(0, startIndex) + exampleData + inputData.value.substring(endIndex);
+
+      // 포커스이동
+      inputData.focus();
+      inputData.setSelectionRange(startIndex, endIndex); // 선택한 텍스트의 끝으로 포커스 이동
     } else {
       // 팝업 열기 또는 닫기
       popup.style.display = popup.style.display === 'none' ? 'flex' : 'none';
@@ -884,8 +888,12 @@ let btn_cmd = (type, kind) => {
   inputData.value = inputData.value.substring(0, startIndex) + replacement + inputData.value.substring(endIndex);
 
   // 커서 위치 재조정
-  let newPosition = startIndex + `/${kind}`.length;
+  // let newPosition = startIndex + `/${kind}`.length;
+  let newPosition = startIndex + replacement.length;
   inputData.setSelectionRange(newPosition, newPosition);
+
+  // 포커스를 txt_inputData에 둠
+  inputData.focus();
 };
 
 // inputData.value를 .txt 파일로 저장하는 함수 호출
