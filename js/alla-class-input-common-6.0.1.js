@@ -780,6 +780,7 @@ let btn_oldConvertor = () => {
 let btn_togglePopup = (elementById, how) => {
   // 팝업 div 가져오기
   let popup = document.getElementById(elementById);
+  let txt_example = document.getElementById('txt_example');
 
   // 보기문 편집기 팝업이 열려있다면 닫을 때 textarea#txt_example.value(보기문 편집기 텍스트박스)를 복사해라
   if (elementById == 'ExamplePopupWrapper' && how == 'save') {
@@ -793,12 +794,23 @@ let btn_togglePopup = (elementById, how) => {
       let txt_example = document.getElementById('txt_example');
       let exampleData = txt_example.value;
 
+      let txt_example_length_origin = endIndex - startIndex;
+      let txt_example_length_result = exampleData.length;
+      let txt_example_length_plus = txt_example_length_result - txt_example_length_origin + endIndex;
+
       // 기존 문제입력창 텍스트에서 선택한 블록부분을 새로 편집한 내용으로 교체
       inputData.value = inputData.value.substring(0, startIndex) + exampleData + inputData.value.substring(endIndex);
 
       // 포커스이동
       inputData.focus();
-      inputData.setSelectionRange(startIndex, endIndex); // 선택한 텍스트의 끝으로 포커스 이동
+      inputData.setSelectionRange(startIndex, txt_example_length_plus); // 선택한 텍스트의 끝으로 포커스 이동
+
+      // 시작 지점이 속한 줄의 위치 찾기
+      let lineCount = inputData.value.substring(0, startIndex).split('\n').length;
+
+      // 시작 지점이 속한 줄로 스크롤 이동
+      let lineHeight = parseInt(window.getComputedStyle(inputData).lineHeight); // 텍스트의 줄 높이
+      inputData.scrollTop = (lineCount - 1) * lineHeight; // 시작 지점이 속한 줄의 높이로 스크롤 이동
     } else {
       // 팝업 열기 또는 닫기
       popup.style.display = popup.style.display === 'none' ? 'flex' : 'none';
@@ -890,7 +902,7 @@ let btn_cmd = (type, kind) => {
   // 커서 위치 재조정
   // let newPosition = startIndex + `/${kind}`.length;
   let newPosition = startIndex + replacement.length;
-  inputData.setSelectionRange(newPosition, newPosition);
+  inputData.setSelectionRange(startIndex, newPosition);
 
   // 포커스를 txt_inputData에 둠
   inputData.focus();
