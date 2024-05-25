@@ -180,6 +180,9 @@ let fnToHTML_commandChange = (text) => {
   text = text.replaceAll('/.중앙', '</div>');
   text = text.replaceAll('/우측 ', '<div class="allaExampleAlign_right">');
   text = text.replaceAll('/.우측', '</div>');
+  // LaTeX
+  text = text.replaceAll('/라텍', '\\(');
+  text = text.replaceAll('/.라텍', '\\)');
   return text;
 };
 
