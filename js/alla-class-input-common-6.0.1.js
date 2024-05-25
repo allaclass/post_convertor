@@ -699,6 +699,31 @@ let fnPrintOutputHtmlBox = (arrQuestionDetail) => {
   // [미리보기] 포스트뷰
   div_postView.innerHTML = '';
   div_postView.innerHTML = txt_outputHtml.value;
+  // [MathJax Script]
+  if (!window.MathJax) {
+    // Create a new script element to load MathJax
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+    script.id = 'MathJax-script';
+    script.async = true;
+    document.head.appendChild(script);
+
+    script.onload = function () {
+      // console.log('MathJax script loaded successfully.');
+      // Perform initial typeset
+      MathJax.typeset();
+    };
+
+    script.onerror = function () {
+      // console.log('Failed to load MathJax script.');
+    };
+  } else {
+    // console.log('MathJax script is already loaded. Reinitializing...');
+    // Reinitialize MathJax
+    MathJax.startup.defaultPageReady();
+    MathJax.typeset();
+  }
+  // /. [MathJax Script]
 };
 
 // HTML 만드는 함수 호출
