@@ -830,15 +830,8 @@ let btn_togglePopup = (elementById, how) => {
       inputData.value = inputData.value.substring(0, startIndex) + exampleData + inputData.value.substring(endIndex);
 
       // 포커스이동
-      inputData.focus();
       inputData.setSelectionRange(startIndex, txt_example_length_plus); // 선택한 텍스트의 끝으로 포커스 이동
-
-      // 시작 지점이 속한 줄의 위치 찾기
-      let lineCount = inputData.value.substring(0, startIndex).split('\n').length;
-
-      // 시작 지점이 속한 줄로 스크롤 이동
-      let lineHeight = parseInt(window.getComputedStyle(inputData).lineHeight); // 텍스트의 줄 높이
-      inputData.scrollTop = (lineCount - 1) * lineHeight; // 시작 지점이 속한 줄의 높이로 스크롤 이동
+      inputData.focus();
     } else {
       // 팝업 열기 또는 닫기
       popup.style.display = popup.style.display === 'none' ? 'flex' : 'none';
