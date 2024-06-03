@@ -63,7 +63,7 @@ let fnGetInfoData = () => {
 
   // 포스팅 시, 편의를 위한 포스팅 제목 생성 : 텍스트박스(txt_title)에 뿌려주기
   let txt_title = document.getElementById('txt_title');
-  txt_title.value = `방송대 방통대 ${infoData_object} ${infoData_kind}시험 20${infoData_year}년도 ${infoData_seme}학기 ${infoData_grade}학년 / 올에이클래스 기출문제 모의고사`;
+  txt_title.value = `방송대 방통대 ${infoData_object} ${infoData_kind}시험 기출문제 20${infoData_year}년도 ${infoData_seme}학기 ${infoData_grade}학년 / 올에이클래스 모의고사`;
 
   // 포스팅 시, 편의를 위한 포스팅 태그 생성 : 텍스트박스(txt_tag)에 뿌려주기
   let txt_tag = document.getElementById('txt_tag');
