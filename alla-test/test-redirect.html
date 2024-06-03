@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    hi
+    <script>
+      // if (window.location.href === 'http://127.0.0.1:5500/alla-test/test-redirect.html') {
+      //   // Redirect to the new URL
+      //   window.location.href = 'http://127.0.0.1:5500/alla-test/test-popup.html';
+      // }
+
+      // Define the list of redirects
+      let redirectList = {
+        'http://127.0.0.1:5500/alla-test/test-redirect.html': 'http://127.0.0.1:5500/alla-test/test-popup.html',
+        'https://allaclass.tistory.com/1073': 'https://allaclass.com',
+        // Add more URL pairs here as needed
+      };
+
+      // Get the current URL
+      let currentURL = window.location.href;
+
+      // Check if the current URL is in the redirect list
+      if (redirectList[currentURL]) {
+        // Show a confirmation popup
+        // let userConfirmed = confirm('2024년 7월 1일부로 하기와 같이 도메인이 변경됩니다.\n 변경 전: https://allaclass.tistory.com도메인 변경으로 인하여 리뉴얼된 사이트로 이동합니다.\n동의하십니까?');
+        let userConfirmed = confirm('2024년 7월 1일부로 하기와 같이 도메인 변경 및 사이트 이전이 실행됩니다.\n- 변경 전: https://allaclass.tistory.com/\n- 변경 후: https://allaclass.com/\n변경 된 도메인으로의 이동에 승낙하시겠습니까?');
+
+        // If the user clicks "OK", perform the redirect
+        if (userConfirmed) {
+          window.location.href = redirectList[currentURL];
+        } else {
+          // window.location.href = 'https://allaclass.com';
+          window.history.back();
+        }
+      }
+    </script>
+  </body>
+</html>
