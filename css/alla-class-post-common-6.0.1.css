@@ -234,16 +234,25 @@ table.alla6BasicTbl tr.alla6ExampleTr_Txt td div.allaExampleAlign_center {
   text-align: center;
 }
 /* 보기그림 라인 */
-table.alla6BasicTbl tr.alla6ExampleTr_Img td:last-of-type {
+table.alla6BasicTbl tr.alla6ExampleTr_Img td {
   padding: 0px 16px;
   border-radius: 15px;
-  background-color: rgba(220, 220, 220, 0);
+  /* background-color: rgba(220, 220, 220, 0); */
+  height: 100px;
+  background-color: rgba(40, 200, 220, 0.7);
   text-align: center;
   line-height: 0px;
 }
 /* 보기그림 내 그림 */
-table.alla6BasicTbl tr.alla6ExampleTr_Img td:last-of-type img {
+table.alla6BasicTbl tr.alla6ExampleTr_Img td img {
   width: 100%;
+}
+
+/* 보기소스 라인 */
+table.alla6BasicTbl tr.alla6ExampleTr_Src td {
+  padding: 15px 15px 15px 20px;
+  border-radius: 15px;
+  background-color: rgba(200, 220, 40, 0.7);
 }
 
 /* 객관식 영역 */
@@ -516,9 +525,4 @@ body {
   font-size: 1em;
   line-height: 1.25;
   color: #555;
-}
-
-tr.alla6ExampleTr_Img {
-  height: 100px;
-  background-color: rgba(40, 200, 220, 0.7);
 }
