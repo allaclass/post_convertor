@@ -19,6 +19,7 @@ let infoData_object;
 let infoData_kind;
 let infoData_year;
 let infoData_round;
+let infoData_type;
 let infoData_sNum;
 let infoData_eNum;
 let infoData_countNum;
@@ -26,7 +27,7 @@ let infoData_thumb;
 let infoData_answer;
 
 // 실행문 : 문제정보 입력 텍스트박스(txt_info)에 기초정보 제공
-txt_info.value = '[자격증명(국문)] 한국어능력시험\n[자격증명(영문)] The Test of Proficiency in Korean\n[출  처] 국립국제교육원 (NIIED)\n[과목명] \n[종  류] 기출\n[연  도] \n[회  차] \n[시작넘] 1\n[종료넘] 101\n[썸네일] \n[정  답] ';
+txt_info.value = '[자격증명(국문)] 한국어능력시험\n[자격증명(영문)] The Test of Proficiency in Korean\n[출  처] 국립국제교육원 (NIIED)\n[과목명] \n[종  류] 기출\n[연  도] \n[회  차] \n[구  분] \n[시작넘] 1\n[종료넘] 101\n[썸네일] \n[정  답] ';
 
 // --------------------------------------------------------------------------------------
 // --------------------------------- INFO INPUT FUNCTION --------------------------------
@@ -42,6 +43,7 @@ let fnGetInfoData = () => {
   let infoIndex_kind = infoData_all.indexOf('[종  류]');
   let infoIndex_year = infoData_all.indexOf('[연  도]');
   let infoIndex_round = infoData_all.indexOf('[회  차]');
+  let infoIndex_type = infoData_all.indexOf('[구  분]');
   let infoIndex_sNum = infoData_all.indexOf('[시작넘]');
   let infoIndex_eNum = infoData_all.indexOf('[종료넘]');
   let infoIndex_thumb = infoData_all.indexOf('[썸네일]');
@@ -54,7 +56,8 @@ let fnGetInfoData = () => {
   infoData_object = infoData_all.substring(infoIndex_object + 5, infoIndex_kind).trim();
   infoData_kind = infoData_all.substring(infoIndex_kind + 6, infoIndex_year).trim();
   infoData_year = infoData_all.substring(infoIndex_year + 6, infoIndex_round).trim();
-  infoData_round = infoData_all.substring(infoIndex_round + 6, infoIndex_sNum).trim();
+  infoData_round = infoData_all.substring(infoIndex_round + 6, infoIndex_type).trim();
+  infoData_type = infoData_all.substring(infoIndex_type + 6, infoIndex_sNum).trim();
   infoData_sNum = infoData_all.substring(infoIndex_sNum + 5, infoIndex_eNum).trim();
   infoData_eNum = infoData_all.substring(infoIndex_eNum + 5, infoIndex_thumb).trim();
   infoData_countNum = Number(infoData_eNum) - Number(infoData_sNum) + 1;
@@ -63,7 +66,7 @@ let fnGetInfoData = () => {
 
   // 포스팅 시, 편의를 위한 포스팅 제목 생성 : 텍스트박스(txt_title)에 뿌려주기
   let txt_title = document.getElementById('txt_title');
-  txt_title.value = `${infoData_certificate_kor} (${infoData_certificate_eng}) ${infoData_object} ${infoData_kind}문제 20${infoData_year}년도 제${infoData_round}회 / 올에이토픽 기출문제 모의고사`;
+  txt_title.value = `${infoData_certificate_kor} (${infoData_certificate_eng}) ${infoData_object} ${infoData_kind}문제 20${infoData_year}년도 제${infoData_round}회 ${infoData_type}형 / 올에이토픽 기출문제 모의고사`;
 
   // 포스팅 시, 편의를 위한 포스팅 태그 생성 : 텍스트박스(txt_tag)에 뿌려주기
   let txt_tag = document.getElementById('txt_tag');
@@ -242,7 +245,7 @@ let fnToHTML_title = () => {
 \t<table class="alla6TitleTbl">
 \t\t<tbody>
 \t\t\t<colgroup><col width="100px"><col></colgroup>
-\t\t\t<tr><td colspan="3"><span class="ibold">20${infoData_year}</span>&nbsp;년도&nbsp;&nbsp;<span class="ibold">${infoData_round}</span>&nbsp;회차&nbsp;&nbsp;<span class="ibold">${infoData_countNum}</span>&nbsp;문항</td></tr>
+\t\t\t<tr><td colspan="3"><span class="ibold">20${infoData_year}</span>&nbsp;년도&nbsp;&nbsp;<span class="ibold">${infoData_round}</span>&nbsp;회차&nbsp;&nbsp;<span class="ibold">${infoData_type}</span>&nbsp;형&nbsp;&nbsp;<span class="ibold">${infoData_countNum}</span>&nbsp;문항</td></tr>
 \t\t\t<tr><td colspan="3">${infoData_object}</td></tr>
 \t\t\t<tr><td>시험종류&nbsp;&nbsp;&nbsp;:</td><td>${infoData_kind}문제</td></tr>
 \t\t\t<tr><td>자료출처&nbsp;&nbsp;&nbsp;:</td><td>${infoData_certificate_from}</td></tr>
@@ -913,7 +916,7 @@ let btn_save = (arrTextarea) => {
     alert('과목정보가 없습니다.');
   } else {
     // console.log(infoData_object);
-    let fileName = `${infoData_object}-${infoData_kind}문제-20${infoData_year}년-${infoData_round}회.txt`; // 저장할 file 이름
+    let fileName = `${infoData_object}-${infoData_kind}문제-20${infoData_year}년-${infoData_round}회-${infoData_type}형.txt`; // 저장할 file 이름
     let blob = new Blob([textToSave], { type: 'text/plain' });
     let a = document.createElement('a');
     a.download = fileName;
