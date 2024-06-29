@@ -308,6 +308,23 @@ let fnToHTML_normalQuestionQuiz = (questionNo, question) => {
 `;
 };
 
+// [toHTML] 추가 지문
+let fnToHTML_normalQuestionQuizAdd = (question) => {
+  question = fnToHTML_commandChange(question);
+  return `\t\t\t\t<!-- 추가 질의 -->
+\t\t\t\t<tr class="alla6QuestionTr">
+\t\t\t\t\t<td>
+\t\t\t\t\t\t${question}
+\t\t\t\t\t</td>
+\t\t\t\t</tr>
+\t\t\t\t<!-- 빈줄 -->
+\t\t\t\t<tr class="alla6BlankTr">
+\t\t\t\t\t<td></td>
+\t\t\t\t</tr>
+
+`;
+};
+
 // [toHTML] 보기문
 let fnToHTML_exampleTxt = (example) => {
   example = fnToHTML_commandChange(example);
@@ -327,9 +344,24 @@ let fnToHTML_exampleTxt = (example) => {
 
 // [toHTML] 보기그림
 let fnToHTML_exampleImg = (example) => {
-  example = fnToHTML_commandChange(example);
   return `\t\t\t\t<!-- 보기그림 -->
 \t\t\t\t<tr class="alla6ExampleTr_Img">
+\t\t\t\t\t<td>
+\t\t\t\t\t\t${example}
+\t\t\t\t\t</td>
+\t\t\t\t</tr>
+\t\t\t\t<!-- 빈줄 -->
+\t\t\t\t<tr class="alla6BlankTr">
+\t\t\t\t\t<td></td>
+\t\t\t\t</tr>
+
+`;
+};
+
+// [toHTML] 보기소스
+let fnToHTML_exampleSrc = (example) => {
+  return `\t\t\t\t<!-- 보기소스 -->
+\t\t\t\t<tr class="alla6ExampleTr_Src">
 \t\t\t\t\t<td>
 \t\t\t\t\t\t${example}
 \t\t\t\t\t</td>
@@ -511,19 +543,19 @@ let fnCallGetQuestion = (enter) => {
   enter == undefined ? (enter = '') : (enter = '\n');
 
   let arrContents = fnGetQuestion(str, eNum, enter);
-  // console.log(arrContents);
+  // console.log('arrContents', arrContents);
   return arrContents;
 };
 
 let fnCallGetQuestionDetail = (questions) => {
   let detail = [];
-  // console.log(questions);
   questions.forEach((item) => {
     let type = item.type;
     let simbol = item.simbol;
     let str = item.str;
     detail.push(fnGetQuestionDetail(str, simbol, type));
   });
+  // console.log('detail', detail);
   return detail;
 };
 
@@ -534,7 +566,7 @@ let fnPrintInputDataBox = (arrQuestionDetail, not) => {
     arrQuestionDetail[j].forEach((item) => {
       switch (item.type) {
         case 'simbol':
-          let editSimbol = item.content.replace('\\.', '.');
+          let editSimbol = item.content;
           txt_inputData.value += `\n${editSimbol}\n`;
           break;
         case 'question':
@@ -547,8 +579,14 @@ let fnPrintInputDataBox = (arrQuestionDetail, not) => {
           txt_inputData.value += `/보기문\n${item.content}\n`;
           break;
         case 'example_img':
-          // item.content = fnReplace_gihoChange(item.content);
           txt_inputData.value += `/보기그림\n${item.content}\n`;
+          break;
+        case 'example_src':
+          txt_inputData.value += `/보기소스\n${item.content}\n`;
+          break;
+        case 'question_add':
+          item.content = fnReplace_gihoChange(item.content);
+          txt_inputData.value += `/추가지문\n${item.content}\n`;
           break;
         case 'select_1':
           item.content = fnReplace_gihoChange(item.content);
@@ -585,58 +623,107 @@ let fnPrintInputDataBox = (arrQuestionDetail, not) => {
 
 let fnPrintOutputHtmlBox = (arrQuestionDetail) => {
   // 문제 내용에 따른 html 생성함수 호출하는 함수
-  let fnCalltoHtml = (objDetail) => {
+  let fnCalltoHtml = (arrDetail) => {
+    // arrDetail 담겨있는 예시 값
+    // [
+    //   {simbol: 1},
+    //   {question: '지문내용'},
+    //   {example_img: '[보기그림 주소]'},
+    //   {example_txt: '보기문 내용'},
+    //   {example_img: '[보기그림2 주소]'},
+    //   {question_add: '추가지문 내용'},
+    //   {select_1: 'ⓐ'},
+    //   {select_2: 'ⓑ'},
+    //   {select_3: 'ⓒ'},
+    //   {select_4: 'ⓓ'},
+    //   {solve: ''}
+    // ]
+
     // - 변수 할당
-    let simbol = objDetail.simbol;
-    let question = objDetail.question;
-    let arrExample_txt = objDetail.arrExample_txt; // 조건문 : length
-    let arrExample_img = objDetail.arrExample_img; // 조건문 : length
-    let select_1 = objDetail.select_1;
-    let select_2 = objDetail.select_2;
-    let select_3 = objDetail.select_3;
-    let select_4 = objDetail.select_4;
-    let solve = objDetail.solve; // 조건문 : undefined
     let srcHtml;
-    // - 그룹문제 / 일반문제 구분
-    if (simbol == '※') {
-      // 그룹문제
-      // - 그룹문제 시작부
-      srcHtml = fnToHTML_groupQuestionTop(question);
-      // - 보기문
-      if (arrExample_txt.length !== 0) {
-        arrExample_txt.forEach((example) => {
-          srcHtml += fnToHTML_exampleTxt(example);
-        });
+    let simbol = arrDetail[0].simbol;
+    let select_1, select_2, select_3, select_4, solve;
+
+    if (simbol === '※') {
+      // console.log('그룹문제');
+      for (let i = 1; i < arrDetail.length; i++) {
+        let key = Object.keys(arrDetail[i])[0];
+        switch (key) {
+          case 'question':
+            let question = arrDetail[i].question;
+            srcHtml = fnToHTML_normalQuestionQuiz(simbol, question);
+            break;
+          case 'example_txt':
+            let example_txt = arrDetail[i].example_txt;
+            srcHtml += fnToHTML_exampleTxt(example_txt);
+            break;
+          case 'example_img':
+            let example_img = arrDetail[i].example_img;
+            srcHtml += fnToHTML_exampleImg(example_img);
+            break;
+          case 'example_src':
+            let example_src = arrDetail[i].example_src;
+            srcHtml += fnToHTML_exampleSrc(example_src);
+            break;
+          case 'question_add':
+            let question_add = arrDetail[i].question_add;
+            srcHtml += fnToHTML_normalQuestionQuizAdd(question_add);
+            break;
+          default:
+        }
       }
-      // - 보기그림
-      if (arrExample_img.length !== 0) {
-        arrExample_img.forEach((example) => {
-          srcHtml += fnToHTML_exampleImg(example);
-        });
-      }
-      // - 그룹문제 종료부
-      srcHtml += fnToHTML_groupQuestionBottom();
     } else {
-      // 일반문제
-      // - 일반문제 시작
-      srcHtml = fnToHTML_normalQuestionQuiz(simbol, question);
-      // - 보기문
-      if (arrExample_txt.length !== 0) {
-        arrExample_txt.forEach((example) => {
-          srcHtml += fnToHTML_exampleTxt(example);
-        });
+      // console.log('일반문제');
+      for (let i = 1; i < arrDetail.length; i++) {
+        let key = Object.keys(arrDetail[i])[0];
+        switch (key) {
+          case 'question':
+            let question = arrDetail[i].question;
+            srcHtml = fnToHTML_normalQuestionQuiz(simbol, question);
+            break;
+          case 'example_txt':
+            let example_txt = arrDetail[i].example_txt;
+            srcHtml += fnToHTML_exampleTxt(example_txt);
+            break;
+          case 'example_img':
+            let example_img = arrDetail[i].example_img;
+            srcHtml += fnToHTML_exampleImg(example_img);
+            break;
+          case 'example_src':
+            let example_src = arrDetail[i].example_src;
+            srcHtml += fnToHTML_exampleSrc(example_src);
+            break;
+          case 'question_add':
+            let question_add = arrDetail[i].question_add;
+            srcHtml += fnToHTML_normalQuestionQuizAdd(question_add);
+            break;
+          case 'select_1':
+            select_1 = arrDetail[i].select_1;
+            break;
+          case 'select_2':
+            select_2 = arrDetail[i].select_2;
+            break;
+          case 'select_3':
+            select_3 = arrDetail[i].select_3;
+            break;
+          case 'select_4':
+            select_4 = arrDetail[i].select_4;
+            if (i + 1 == arrDetail.length) {
+              solve = '';
+              srcHtml += fnToHTML_normalQuestionSelect(simbol, select_1, select_2, select_3, select_4, solve);
+            }
+            break;
+          case 'solve':
+            solve = arrDetail[i].solve;
+            srcHtml += fnToHTML_normalQuestionSelect(simbol, select_1, select_2, select_3, select_4, solve);
+            break;
+          default:
+        }
       }
-      // - 보기그림
-      if (arrExample_img.length !== 0) {
-        arrExample_img.forEach((example) => {
-          srcHtml += fnToHTML_exampleImg(example);
-        });
-      }
-      // - 객관식
-      srcHtml += fnToHTML_normalQuestionSelect(simbol, select_1, select_2, select_3, select_4, solve);
     }
     return srcHtml;
   };
+
   // txt_outputHtml 텍스트박스 초기화
   txt_outputHtml.value = '';
   // 포스팅 윗쪽 기본 HTML 출력
@@ -647,52 +734,71 @@ let fnPrintOutputHtmlBox = (arrQuestionDetail) => {
   txt_outputHtml.value += fnToHTML_title(); // 문제타이틀 html코드
   // 문제 상세내용 변수로 할당
   arrQuestionDetail.forEach((arrItem) => {
-    let simbol, question, select_1, select_2, select_3, select_4, solve;
-    let arrExample_txt = [];
-    let arrExample_img = [];
+    let simbol, question, question_add, example_txt, example_img, example_src, select_1, select_2, select_3, select_4, solve;
+    let arrDetail = [];
     arrItem.forEach((item) => {
       switch (item.type) {
         case 'simbol':
-          let numberSimbol = Number(item.content.replace('\\.', ''));
+          let numberSimbol = Number(item.content.replace('.', ''));
           isNaN(numberSimbol) ? (simbol = '※') : (simbol = numberSimbol);
+          arrDetail.push({ simbol });
           break;
         case 'question':
           item.content = fnReplace_gihoChange(item.content);
           question = `${item.content}`;
+          arrDetail.push({ question });
           break;
         case 'example_txt':
           item.content = fnReplace_gihoChange(item.content);
-          arrExample_txt.push(`${item.content}`);
+          example_txt = `${item.content}`;
+          arrDetail.push({ example_txt });
           break;
         case 'example_img':
-          // item.content = fnReplace_gihoChange(item.content);
-          arrExample_img.push(`${item.content}`);
+          example_img = `${item.content}`;
+          arrDetail.push({ example_img });
+          break;
+        case 'example_src':
+          example_src = `${item.content}`;
+          arrDetail.push({ example_src });
+          break;
+        case 'question_add':
+          item.content = fnReplace_gihoChange(item.content);
+          question_add = `${item.content}`;
+          arrDetail.push({ question_add });
           break;
         case 'select_1':
           item.content = fnReplace_gihoChange(item.content);
           select_1 = `${item.content}`;
+          arrDetail.push({ select_1 });
           break;
         case 'select_2':
           item.content = fnReplace_gihoChange(item.content);
           select_2 = `${item.content}`;
+          arrDetail.push({ select_2 });
           break;
         case 'select_3':
           item.content = fnReplace_gihoChange(item.content);
           select_3 = `${item.content}`;
+          arrDetail.push({ select_3 });
           break;
         case 'select_4':
           item.content = fnReplace_gihoChange(item.content);
           select_4 = `${item.content}`;
+          arrDetail.push({ select_4 });
           break;
         case 'solve':
           item.content = fnReplace_gihoChange(item.content);
           solve = `${item.content}`;
+          arrDetail.push({ solve });
           break;
         default:
       }
     });
-    let objDetail = { simbol, question, arrExample_txt, arrExample_img, select_1, select_2, select_3, select_4, solve };
-    txt_outputHtml.value += fnCalltoHtml(objDetail);
+    // arrDetail을 index값을 기준으로 오름차순 정렬
+    arrDetail.sort((a, b) => a.index - b.index);
+    // console.log('arrDetail :', arrDetail);
+
+    txt_outputHtml.value += fnCalltoHtml(arrDetail);
   });
   // 포스팅 아랫쪽 기본 HTML 출력
   txt_outputHtml.value += fnToHTML_gradingExams(); // 채점 영역 html코드
@@ -791,15 +897,20 @@ let btn_sort = (enter, not) => {
 
 // 예전 문제정리본 최신정리본으로 변환하는 함수 호출 (ex. 그룹문제: /1/ -> ※)
 let btn_oldConvertor = () => {
+  // txt_inputData값 text 변수에 담기
   let text = txt_inputData.value;
+  // 패턴담을 배열 선언
   let arrPattern = [];
+  // 예전 그룹문제의 패턴("/1/" ~ "/100/")을 생성하여 arrPattern 배열에 담기
   for (let i = 1; i <= 100; i++) {
     arrPattern.push(`/${i}/\n`);
   }
+  // arrPattern 순회하며 해당되는 패턴이 text에 있을 경우, ※으로 변경
   arrPattern.forEach((pattern) => {
     // text = text.replace(pattern, `※.\n`);
     text = text.replace(pattern, `※\n`);
   });
+  // txt_inputData 값을 text로 변경
   txt_inputData.value = text;
 
   // 정렬(엔터)버전 실행

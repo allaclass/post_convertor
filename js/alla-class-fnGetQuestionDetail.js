@@ -7,18 +7,18 @@ let fnGetQuestionDetail = (str, simbol, type) => {
   let setPatterns = (type, simbol) => {
     let arrPatterns = [];
     if (type == 'group') {
-      arrPatterns = [`/보기문`, `/추가보기문`, `/보기그림`, `/추가보기그림`];
+      arrPatterns = [`/보기문`, `/추가보기문`, `/보기그림`, `/추가보기그림`, `/보기소스`, `/추가지문`];
       arrPatterns.unshift(simbol);
     } else {
       // type == 'normal'
-      arrPatterns = [`/보기문`, `/추가보기문`, `/보기그림`, `/추가보기그림`, `①`, `②`, `③`, `④`, `/해설`];
+      arrPatterns = [`/보기문`, `/추가보기문`, `/보기그림`, `/추가보기그림`, `/보기소스`, `/추가지문`, `①`, `②`, `③`, `④`, `/해설`];
       arrPatterns.unshift(simbol);
     }
     return arrPatterns;
   };
 
   // 패턴들의 모든 인덱스를 가져오는 함수
-  let findAllIndices = (str, patterns) => {
+  let getAllIndices = (str, patterns) => {
     let indices = [];
     patterns.forEach((pattern) => {
       const regex = new RegExp(`${pattern}`, 'g');
@@ -36,6 +36,12 @@ let fnGetQuestionDetail = (str, simbol, type) => {
             break;
           case '/추가보기그림':
             indices.push({ type: 'example_img', content: pattern, index: match.index });
+            break;
+          case '/보기소스':
+            indices.push({ type: 'example_src', content: pattern, index: match.index });
+            break;
+          case '/추가지문':
+            indices.push({ type: 'question_add', content: pattern, index: match.index });
             break;
           case '①':
             indices.push({ type: 'select_1', content: pattern, index: match.index });
@@ -58,6 +64,7 @@ let fnGetQuestionDetail = (str, simbol, type) => {
       }
     });
     indices.sort((a, b) => a.index - b.index);
+    // console.log('indices : ', indices);
     return indices;
     // 예시)
     // [
@@ -73,7 +80,8 @@ let fnGetQuestionDetail = (str, simbol, type) => {
     // ]
   };
 
-  let findAllContents = (indices) => {
+  // 컨텐츠 불러오는 함수
+  let getAllContents = (indices) => {
     let arrContents = [];
 
     for (let i = 1; i <= indices.length; i++) {
@@ -102,16 +110,14 @@ let fnGetQuestionDetail = (str, simbol, type) => {
       }
 
       if (item_current_type == 'simbol') {
-        let editSimbol = item_current_content.replace('\\.', '.');
+        let simbol = item_current_content;
         if (item_current_index == 0) {
-          arrContents.push({ type: item_current_type, content: editSimbol });
-          arrContents.push({ type: 'question', content: temp.replace(`${editSimbol}\n`, '') });
+          arrContents.push({ type: item_current_type, content: simbol });
+          arrContents.push({ type: 'question', content: temp.replace(`${simbol}\n`, '') });
         }
       } else {
         arrContents.push({ type: item_current_type, content: temp });
       }
-
-      // arrContents.push({ type: item_current_type, content: temp });
     }
     return arrContents;
     // 예시)
@@ -135,12 +141,12 @@ let fnGetQuestionDetail = (str, simbol, type) => {
   let patterns = setPatterns(type, simbol);
 
   // str을 패턴으로 index 구분하는 함수 호출
-  const indices = findAllIndices(str, patterns);
+  const indices = getAllIndices(str, patterns);
   // console.log('indices');
   // console.log(indices);
 
   // 내용 가져오는 함수 호출
-  const contents = findAllContents(indices);
+  const contents = getAllContents(indices);
   return contents;
 };
 
@@ -162,15 +168,20 @@ let fnGetQuestionDetail = (str, simbol, type) => {
 //   { type: 'solve', content: '해설 내용입니다.' }
 // ]
 
+// ----- 그룹문제 테스트 ------------------------------------
+
 // let type = 'group';
-// let simbol = `※\\.`;
-// let str = `
-// ※.
+// let simbol = `※`;
+// let str = `※
 // 문제 질문 내용
 // /보기문
 // 첫번째 보기문
 // /보기그림
 // 첫번째 보기그림
+// /보기문
+// 첫번째 보기문
+// /추가지문
+// 문제 추가질문 내용
 // `;
 
 // let detail = fnGetQuestionDetail(str, simbol, type);
@@ -179,17 +190,24 @@ let fnGetQuestionDetail = (str, simbol, type) => {
 //   console.log(item);
 // });
 
+// ----- 일반문제 테스트 ------------------------------------
+
 // let type = 'normal';
-// let simbol = `1\\.`;
-// let str = `
-// 1.
+// let simbol = `1.`;
+// let str = `1.
 // 문제 질문 내용.
 // /보기문
-// 1.0첫번째 보기문
+// 첫번째 보기문
 // /보기그림
 // 첫번째 보기그림
 // /보기문
 // 두번째 보기문
+// /보기소스
+// if (i>0) {
+//   console.log('print');
+// }
+// /추가지문
+// 추가지문내용
 // ① ㉠
 // ② ㉡
 // ③ ㉢
