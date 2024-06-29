@@ -37,7 +37,7 @@ let fnGetQuestion = (str, eNum, enter) => {
       }
     });
     indices.sort((a, b) => a.index - b.index);
-    console.log('indices : ', indices);
+    // console.log('indices : ', indices);
     return indices;
 
     // 예시)
