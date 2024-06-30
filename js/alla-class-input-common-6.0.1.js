@@ -837,7 +837,7 @@ let fnPrintOutputHtmlBox = (arrQuestionDetail) => {
 // HTML 만드는 함수 호출
 let btn_toHtml = () => {
   // 문제 구분하는 함수 실행
-  let arrQuestions = fnCallGetQuestion('\n');
+  let arrQuestions = fnCallGetQuestion('');
 
   // 문제 한개씩 상세내용 구분하는 함수 실행
   let arrQuestionDetail = fnCallGetQuestionDetail(arrQuestions);
@@ -857,12 +857,12 @@ let btn_sort = (enter, not) => {
   temp = txt_inputData.value;
 
   // 텍스트박스 inputData 줄마다 양끝 공백 제거하기
-  let arrTemp = temp.split('\n');
-  temp = '';
-  arrTemp.forEach((item) => {
-    temp += item.trim();
-    temp += '\n';
-  });
+  // let arrTemp = temp.split('\n');
+  // temp = '';
+  // arrTemp.forEach((item) => {
+  //   temp += item.trim();
+  //   temp += '\n';
+  // });
 
   // txt_inputData.value 를 temp로 교체하기
   txt_inputData.value = '';
