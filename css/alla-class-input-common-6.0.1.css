@@ -241,23 +241,10 @@ div#postView {
 
 .btnList hr {
   border: 1px solid #525252;
+  margin: 5px 0px;
 }
 
 /* .btnList hr 위아래 버튼 마진 0 변경 */
-
-.btnList #btn_exConvertor,
-.btnList #btn_open,
-.btnList #btn_cmdGuide,
-.btnList #btn_save {
-  margin-top: 0;
-}
-
-.btnList #btn_exConvertor,
-.btnList #btn_oldConvertor,
-.btnList #btn_changeThumb,
-.btnList #btn_cmdGuide {
-  margin-bottom: 0;
-}
 
 .btnList #btn .btnList button:hover {
   background-color: #656565;
