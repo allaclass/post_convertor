@@ -540,7 +540,17 @@ let fnToHTML_noticeBottom = () => {
 let fnCallGetQuestion = (enter) => {
   let str = txt_inputData.value;
   let eNum = infoData_eNum;
-  enter == undefined ? (enter = '') : (enter = '\n');
+  switch (enter) {
+    case '\n':
+      enter = '\n';
+      break;
+    case '\u0020':
+      enter = '\u0020';
+      break;
+    default:
+      enter = '\n';
+  }
+  // enter == undefined ? (enter = '') : (enter = '\n');
 
   let arrContents = fnGetQuestion(str, eNum, enter);
   // console.log('arrContents', arrContents);

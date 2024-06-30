@@ -37,19 +37,7 @@ let fnGetQuestion = (str, eNum, enter) => {
       }
     });
     indices.sort((a, b) => a.index - b.index);
-    // console.log('indices : ', indices);
     return indices;
-
-    // 예시)
-    // [
-    //   { type: 'group', simbol: '※.', index: 1 },
-    //   { type: 'normal', simbol: '1.', index: 38 },
-    //   { type: 'normal', simbol: '2.', index: 67 },
-    //   { type: 'group', simbol: '※.', index: 107 },
-    //   { type: 'normal', simbol: '3.', index: 144 },
-    //   { type: 'normal', simbol: '4.', index: 173 },
-    //   { type: 'normal', simbol: '5.', index: 217 }
-    // ]
   };
 
   // index들을 토대로 내용 가져오기
@@ -70,8 +58,6 @@ let fnGetQuestion = (str, eNum, enter) => {
         arrContents.push({ type: item_current_type, simbol: item_current_editSimbol, str: `${item_current_simbol}\n${temp}` });
       }
     }
-    // console.log('arrContents');
-    // console.log(arrContents);
     return arrContents;
   };
 
@@ -99,82 +85,48 @@ let fnGetQuestion = (str, eNum, enter) => {
 // ---------------------------------------- TEST ----------------------------------------
 // --------------------------------------------------------------------------------------
 
-// 예시)
-// [
-//   {
-//     type: 'group',
-//     simbol: '※',
-//     str: '※\n(1~2) 그룹 문제 지문\n/보기문\n그룹 문제 보기문 내용'
-//   }
-//   {
-//     type: 'normal',
-//     simbol: '1.',
-//     str: '1.\n1번\n/보기문\n1.3 문제 지문\n① ⓐ\n② ⓑ\n③ ⓒ\n④ ⓓ'
-//   }
-// ]
+let str = `
+※
+(11~12) 그룹 문제 지문
+/보기문
+그룹 문제 보기문 내용
 
-// let str = `
-// ※
-// (1~2) 그룹 문제 지문
-// /보기문
-// 그룹 문제 보기문 내용
+1.
+1번
+/보기문
+문제 지문
+① ⓐ
+② ⓑ
+③ ⓒ
+④ ⓓ
 
-// 1.
-// 1번
-// /보기문
-// 1.3 문제 지문
-// ① ⓐ
-// ② ⓑ
-// ③ ⓒ
-// ④ ⓓ
+11.
+11번
+/보기문
+문제 지문
+① ⓐ
+② ⓑ
+③ ⓒ
+④ ⓓ
 
-// 2.
-// 2번 문제 지문
-// /보기그림
-// 그림
-// ① ⓐ
-// ② ⓑ
-// ③ ⓒ
-// ④ 3.1
+12.
+12번 문제 지문
+/보기그림
+그림
+① ⓐ
+② ⓑ
+③ ⓒ
+④ ⓓ
 
-// ※
-// (3~4) 그룹 문제 지문
-// /보기문
-// 그룹 문제 보기문 내용
 
-// 3.
-// 3번 문제 지문
-// ① ⓐ
-// ② ⓑ
-// ③ ⓒ
-// ④ ⓓ
+`;
 
-// 4.
-// 4번 문제 지문
-// /보기그림
-// 그림
-// ① ⓐ
-// ② ⓑ
-// ③ 3.1
-// ④ ⓓ
+let eNum = 100;
 
-// 5.
-// 5번 문제 지문
-// /보기그림
-// 그림
-// ① ⓐ
-// ② ⓑ
-// ③ ⓒ
-// ④ ⓓ
+let enter = '\n';
 
-// `;
+let contents = fnGetQuestion(str, eNum, enter);
 
-// let eNum = 100;
-
-// let enter = '\n';
-
-// let contents = fnGetQuestion(str, eNum, enter);
-
-// contents.forEach((item) => {
-//   console.log(item);
-// });
+contents.forEach((item) => {
+  console.log(item);
+});
