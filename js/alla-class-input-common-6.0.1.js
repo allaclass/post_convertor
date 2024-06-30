@@ -540,20 +540,7 @@ let fnToHTML_noticeBottom = () => {
 let fnCallGetQuestion = (enter) => {
   let str = txt_inputData.value;
   let eNum = infoData_eNum;
-  switch (enter) {
-    case '\n':
-      enter = '\n';
-      break;
-    case '\u0020':
-      enter = '\u0020';
-      break;
-    default:
-      enter = '\n';
-  }
-  // enter == undefined ? (enter = '') : (enter = '\n');
-
   let arrContents = fnGetQuestion(str, eNum, enter);
-  // console.log('arrContents', arrContents);
   return arrContents;
 };
 
@@ -924,7 +911,7 @@ let btn_oldConvertor = () => {
   txt_inputData.value = text;
 
   // 정렬(엔터)버전 실행
-  btn_sort('\n');
+  btn_sort('');
 };
 
 // 팝업 열고 닫는 함수

@@ -155,10 +155,9 @@ let fnGetQuestionDetail = (str, simbol, type) => {
 
 // let type = 'normal';
 // let simbol = `1.`;
-// let str = `1.
-// 지문내용
-// /보기소스
-// <div class='111'></div>
+// let str = `1. 1번
+// /보기문
+// 보기문내용
 // ① ⓐ
 // ② ⓑ
 // ③ ⓒ
