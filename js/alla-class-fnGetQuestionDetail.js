@@ -21,19 +21,15 @@ let fnGetQuestionDetail = (str, simbol, type) => {
   let getAllIndices = (str, patterns) => {
     let indices = [];
     patterns.forEach((pattern) => {
-      const regex = new RegExp(`${pattern}`, 'g');
+      const regex = new RegExp(`(${pattern === simbol ? '^' + simbol.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') : pattern})`, 'g');
       let match;
       while ((match = regex.exec(str)) !== null) {
         switch (pattern) {
           case '/보기문':
-            indices.push({ type: 'example_txt', content: pattern, index: match.index });
-            break;
           case '/추가보기문':
             indices.push({ type: 'example_txt', content: pattern, index: match.index });
             break;
           case '/보기그림':
-            indices.push({ type: 'example_img', content: pattern, index: match.index });
-            break;
           case '/추가보기그림':
             indices.push({ type: 'example_img', content: pattern, index: match.index });
             break;
@@ -64,20 +60,7 @@ let fnGetQuestionDetail = (str, simbol, type) => {
       }
     });
     indices.sort((a, b) => a.index - b.index);
-    // console.log('indices : ', indices);
     return indices;
-    // 예시)
-    // [
-    //   { type: 'simbol', content: '1\\.', index: 1 },
-    //   { type: 'example_txt', content: '/보기문', index: 13 },
-    //   { type: 'example_img', content: '/보기그림', index: 28 },
-    //   { type: 'example_txt', content: '/보기문', index: 43 },
-    //   { type: 'select_1', content: '①', index: 58 },
-    //   { type: 'select_2', content: '②', index: 62 },
-    //   { type: 'select_3', content: '③', index: 66 },
-    //   { type: 'select_4', content: '④', index: 70 },
-    //   { type: 'solve', content: '/해설', index: 74 }
-    // ]
   };
 
   // 컨텐츠 불러오는 함수
@@ -93,18 +76,9 @@ let fnGetQuestionDetail = (str, simbol, type) => {
 
       if (i !== indices.length) {
         let item_next_type = indices[i].type;
-        let item_next_content = indices[i].content;
         let item_next_index = indices[i].index;
-        let item_next_next_index;
-        if (i + 1 !== indices.length) {
-          item_next_next_index = indices[i + 1].index;
-        }
 
-        if (item_next_type !== 'simbol') {
-          temp = str.substring(item_current_index + item_current_content.length, item_next_index).trim();
-        } else {
-          temp = str.substring(item_current_index + item_current_content.length + item_next_content.length - item_next_content.length, item_next_next_index).trim();
-        }
+        temp = str.substring(item_current_index + item_current_content.length, item_next_index).trim();
       } else {
         temp = str.substring(item_current_index + item_current_content.length, str.length).trim();
       }
@@ -120,17 +94,6 @@ let fnGetQuestionDetail = (str, simbol, type) => {
       }
     }
     return arrContents;
-    // 예시)
-    // { type: 'simbol', content: '1.' }
-    // { type: 'question', content: '문제 질문 내용' }
-    // { type: 'example_txt', content: '첫번째 보기문' }
-    // { type: 'example_img', content: '첫번째 보기그림' }
-    // { type: 'example_txt', content: '두번째 보기문' }
-    // { type: 'select_1', content: '㉠' }
-    // { type: 'select_2', content: '㉡' }
-    // { type: 'select_3', content: '㉢' }
-    // { type: 'select_4', content: '㉣' }
-    // { type: 'solve', content: '해설 내용입니다.' }
   };
 
   // --------------------------------------------------------------------------------------
@@ -142,8 +105,6 @@ let fnGetQuestionDetail = (str, simbol, type) => {
 
   // str을 패턴으로 index 구분하는 함수 호출
   const indices = getAllIndices(str, patterns);
-  // console.log('indices');
-  // console.log(indices);
 
   // 내용 가져오는 함수 호출
   const contents = getAllContents(indices);
@@ -195,25 +156,13 @@ let fnGetQuestionDetail = (str, simbol, type) => {
 // let type = 'normal';
 // let simbol = `1.`;
 // let str = `1.
-// 문제 질문 내용.
-// /보기문
-// 첫번째 보기문
-// /보기그림
-// 첫번째 보기그림
-// /보기문
-// 두번째 보기문
+// 지문내용
 // /보기소스
-// if (i>0) {
-//   console.log('print');
-// }
-// /추가지문
-// 추가지문내용
-// ① ㉠
-// ② ㉡
-// ③ ㉢
-// ④ ㉣
-// /해설
-// 해설 내용입니다.
+// <div class='111'></div>
+// ① ⓐ
+// ② ⓑ
+// ③ ⓒ
+// ④ ⓓ
 // `;
 
 // let detail = fnGetQuestionDetail(str, simbol, type);
