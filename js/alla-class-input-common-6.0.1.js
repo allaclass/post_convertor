@@ -857,12 +857,50 @@ let btn_sort = (enter, not) => {
   temp = txt_inputData.value;
 
   // 텍스트박스 inputData 줄마다 양끝 공백 제거하기
-  // let arrTemp = temp.split('\n');
-  // temp = '';
-  // arrTemp.forEach((item) => {
-  //   temp += item.trim();
-  //   temp += '\n';
-  // });
+  let arrTemp = temp.split('\n');
+  temp = '';
+  arrTemp.forEach((item) => {
+    temp += item.trim();
+    temp += '\n';
+  });
+
+  // txt_inputData.value 를 temp로 교체하기
+  txt_inputData.value = '';
+  txt_inputData.value = temp;
+
+  // 문제 구분하는 함수 실행
+  let arrQuestions = fnCallGetQuestion(enter);
+  // console.log(arrQuestions);
+
+  // 문항수 구하기
+  let count = 0;
+  for (let obj of arrQuestions) {
+    if (obj.type === 'normal') {
+      count++;
+    }
+  }
+  infoData_countNum = count;
+
+  // 문제 한개씩 상세내용 구분하는 함수 실행
+  let arrQuestionDetail = fnCallGetQuestionDetail(arrQuestions);
+  // console.log(arrQuestionDetail);
+
+  // txt_inputData 텍스트박스에 정리된 내용 출력
+  fnPrintInputDataBox(arrQuestionDetail, not);
+
+  // HTML 생성
+  btn_toHtml();
+};
+
+// 문제 정렬시키는 함수 호출
+let btn_upload = (enter, not) => {
+  // 문제정보 수집
+  fnGetInfoData();
+
+  // 텍스트박스 inputData 공백 첫줄 추가하기
+  let temp = txt_inputData.value;
+  txt_inputData.value = '\n' + temp;
+  temp = txt_inputData.value;
 
   // txt_inputData.value 를 temp로 교체하기
   txt_inputData.value = '';
