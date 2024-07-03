@@ -272,7 +272,6 @@ let fnToHTML_groupQuestionTop = (question) => {
 \t\t\t\t\t\t<span class="alla6QuestionNo">※</span>${question}
 \t\t\t\t\t</td>
 \t\t\t\t</tr>
-
 `;
 };
 
@@ -648,7 +647,7 @@ let fnPrintOutputHtmlBox = (arrQuestionDetail) => {
         switch (key) {
           case 'question':
             let question = arrDetail[i].question;
-            srcHtml = fnToHTML_normalQuestionQuiz(simbol, question);
+            srcHtml = fnToHTML_groupQuestionTop(question);
             break;
           case 'example_txt':
             let example_txt = arrDetail[i].example_txt;
@@ -668,6 +667,7 @@ let fnPrintOutputHtmlBox = (arrQuestionDetail) => {
             break;
           default:
         }
+        srcHtml += fnToHTML_groupQuestionBottom();
       }
     } else {
       // console.log('일반문제');
