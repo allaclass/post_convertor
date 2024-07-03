@@ -667,8 +667,8 @@ let fnPrintOutputHtmlBox = (arrQuestionDetail) => {
             break;
           default:
         }
-        srcHtml += fnToHTML_groupQuestionBottom();
       }
+      srcHtml += fnToHTML_groupQuestionBottom();
     } else {
       // console.log('일반문제');
       for (let i = 1; i < arrDetail.length; i++) {
