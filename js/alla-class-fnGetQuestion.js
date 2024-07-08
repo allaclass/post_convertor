@@ -94,7 +94,7 @@ let fnGetQuestion = (str, eNum, enter) => {
         if (pattern === '※') {
           regex = new RegExp(`\\n${pattern}${currentEnter}`, 'g');
         } else {
-          regex = new RegExp(`\\n${pattern.replace(/\./g, '\\.')}${currentEnter}`, 'g');
+          regex = new RegExp(`\\n${pattern.replace(/\./g, '\\.')}${currentEnter}(?!\\d)`, 'g'); // (?!\\d)란, currentEnter 다음글자가 숫자로 변환되는 지 체크하는 정규식
         }
 
         while ((match = regex.exec(str)) !== null) {
@@ -121,7 +121,7 @@ let fnGetQuestion = (str, eNum, enter) => {
     });
 
     indices.sort((a, b) => a.index - b.index);
-    // console.log(indices);
+    console.log(indices);
     return indices;
   };
 
