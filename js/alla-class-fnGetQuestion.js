@@ -121,7 +121,7 @@ let fnGetQuestion = (str, eNum, enter) => {
     });
 
     indices.sort((a, b) => a.index - b.index);
-    console.log(indices);
+    // console.log(indices);
     return indices;
   };
 
