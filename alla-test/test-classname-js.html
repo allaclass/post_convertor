@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .divExample {
+        background-color: rgba(0, 0, 0, 0.2);
+        width: 350px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="divExample allaExampleList_pleft_20px">オジホ：それじゃ、僕もそれに(　20px　)。それから、何か一緒に食べるものも頼みましょうか。</div>
+    <div class="divExample allaExampleList_pleft_40px">オジホ：それじゃ、僕もそれに(　40px　)。それから、何か一緒に食べるものも頼みましょうか。</div>
+    <div class="divExample allaExampleList_pleft_60px">オジホ：それじゃ、僕もそれに(　60px　)。それから、何か一緒に食べるものも頼みましょうか。</div>
+
+    <script>
+      // 모든 해당 클래스를 가진 div 요소 선택
+      const divElements = document.querySelectorAll('div.divExample[class*="allaExampleList_pleft_"]');
+      console.log(divElements);
+
+      // 각 div 요소에 대해 처리
+      divElements.forEach((div) => {
+        // 클래스명에서 픽셀 값 추출
+        const pixelValue = parseInt(div.className.split('_')[2]);
+
+        // CSS 속성 적용
+        div.style.paddingLeft = `${pixelValue}px`;
+        div.style.textIndent = `-${pixelValue}px`;
+      });
+    </script>
+
+    <script>
+      // [함수 정의] 좌들+숫자+' ' 스타일적용 코드
+      // 모든 해당 클래스를 가진 div 요소 선택
+      // const divElements = document.querySelectorAll('div[class*="allaExampleList_pleft_"]');
+      // console.log(divElements);
+      // console.log('test');
+
+      // // 각 div 요소에 대해 처리
+      // divElements.forEach((div) => {
+      //   // 클래스명에서 픽셀 값 추출
+      //   const pixelValue = parseInt(div.className.split('_')[2]);
+
+      //   // CSS 속성 적용
+      //   div.style.paddingLeft = `${pixelValue}px`;
+      //   div.style.textIndent = `-${pixelValue}px`;
+      // });
+    </script>
+  </body>
+</html>
