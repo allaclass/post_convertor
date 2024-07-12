@@ -68,6 +68,10 @@ let fnGetInfoData = () => {
   // 포스팅 시, 편의를 위한 포스팅 태그 생성 : 텍스트박스(txt_tag)에 뿌려주기
   let txt_tag = document.getElementById('txt_tag');
   txt_tag.value = `${infoData_object} ${infoData_kind}시험`;
+
+  // 포스팅 시, 편의를 위한 포스팅 태그2 생성 : 텍스트박스(txt_tag2)에 뿌려주기
+  let txt_tag2 = document.getElementById('txt_tag2');
+  txt_tag2.value = `${infoData_object}`;
 };
 
 // 함수 : inputData에서 처리한 문제내용 삭제

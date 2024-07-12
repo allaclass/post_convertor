@@ -202,6 +202,15 @@ div#postView {
   font-family: 'KoPubWorld Dotum Light';
 }
 
+.menu textarea#txt_tag {
+  width: 155px;
+  margin-right: 5px;
+}
+
+.menu textarea#txt_tag2 {
+  width: 155px;
+}
+
 .menu textarea#txt_info {
   height: 181px;
   line-height: 1.2em;
