@@ -163,6 +163,9 @@ let fnToHTML_commandChange = (text) => {
   text = text.replaceAll('/.단락', '</div>');
   text = text.replaceAll('/좌들 ', '<div class="allaExampleList_pleft">');
   text = text.replaceAll('/.좌들', '</div>');
+  text = text.replace(/\/좌들(\d+) /g, (match, p1) => `<div class="allaExampleList_pleft_${p1}px">`);
+  text = text.replace(/\/좌백(\d+) /g, (match, p1) => `<div class="allaExampleList_bleft_${p1}px">`);
+  text = text.replaceAll('/.좌백', '</div>');
   text = text.replaceAll('/바 ', '<div class="allaExampleList_bar">');
   text = text.replaceAll('/.바', '</div>');
   text = text.replaceAll('/영소 ', '<div class="allaExampleList_eng">');
@@ -706,6 +709,37 @@ let fnPrintOutputHtmlBox = (arrQuestionDetail) => {
   div_postView.innerHTML = txt_outputHtml.value;
 };
 
+// 좌들 + 숫자 함수
+let fnExampleList_pleft_numpx = () => {
+  // 모든 해당 클래스를 가진 div 요소 선택
+  const divElements = document.querySelectorAll('div[class*="allaExampleList_pleft_"]');
+
+  // 각 div 요소에 대해 처리
+  divElements.forEach((div) => {
+    // 클래스명에서 픽셀 값 추출
+    const pixelValue = parseInt(div.className.split('_')[2]);
+
+    // CSS 속성 적용
+    div.style.paddingLeft = `${pixelValue}px`;
+    div.style.textIndent = `-${pixelValue}px`;
+  });
+};
+
+// 좌백 + 숫자 함수
+let fnExampleList_bleft_numpx = () => {
+  // 모든 해당 클래스를 가진 div 요소 선택
+  const divElements = document.querySelectorAll('div[class*="allaExampleList_bleft_"]');
+
+  // 각 div 요소에 대해 처리
+  divElements.forEach((div) => {
+    // 클래스명에서 픽셀 값 추출
+    const pixelValue = parseInt(div.className.split('_')[2]);
+
+    // CSS 속성 적용
+    div.style.paddingLeft = `${pixelValue}px`;
+  });
+};
+
 // HTML 만드는 함수 호출
 let btn_toHtml = () => {
   // 문제 구분하는 함수 실행
@@ -716,6 +750,12 @@ let btn_toHtml = () => {
 
   // 문제 상세내용 변수로 분할하여, 정리하는 함수 실행
   fnPrintOutputHtmlBox(arrQuestionDetail);
+
+  // 좌들 + 숫자 함수 호출
+  fnExampleList_pleft_numpx();
+
+  // 좌백 + 숫자 함수 호출
+  fnExampleList_bleft_numpx();
 };
 
 // 문제 정렬시키는 함수 호출
