@@ -19,7 +19,7 @@
   </head>
   <body>
     <div class="container">
-      <div class="wrapper">
+      <div class="wrapper wrapLeft">
         <div class="menu">
           <!-- textarea -->
           <textarea id="txt_info" name="txt_info" placeholder="한번에 입력" onkeyup="fnGetInfoData()"></textarea>
@@ -74,7 +74,7 @@
         <textarea class="txt_inputData" id="txt_inputData" placeholder="1. input data" onkeyup="btn_toHtml()" onclick="btn_toHtml()"></textarea>
         <!-- <div id="postView" class="postView"></div> -->
       </div>
-      <div class="wrapper">
+      <div class="wrapper wrapRight">
         <div id="postView" class="postView"></div>
       </div>
     </div>
@@ -305,5 +305,20 @@
     <script type="text/javascript" src="./js/alla-class-input-example-1.0.2.js"></script>
     <script type="text/javascript" src="./js/alla-class-input-common-6.0.1.js"></script>
     <!-- <script type="text/javascript" src="./js/alla-class-post-common-6.0.1.js"></script> -->
+    <script>
+      const wrapLeft = document.querySelector('.wrapLeft');
+      const wrapRight = document.querySelector('.wrapRight');
+
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+            const wrapLeftWidth = wrapLeft.offsetWidth;
+            wrapRight.style.width = `calc(100% - ${wrapLeftWidth}px)`;
+          }
+        });
+      });
+
+      observer.observe(wrapLeft, { attributes: true, attributeFilter: ['style'] });
+    </script>
   </body>
 </html>
