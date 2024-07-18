@@ -70,10 +70,16 @@
           <textarea id="txt_tag2" name="txt_tag2" placeholder="태그2" readonly></textarea>
           <textarea id="txt_newThumb" name="txt_newThumb" placeholder="새 썸네일"></textarea>
         </div>
+        <!-- wrapInput -->
+        <div class="wrapInput">
+          <textarea class="txt_inputData" id="txt_inputData" placeholder="1. input data" onkeyup="btn_toHtml()" onclick="btn_toHtml()"></textarea>
+        </div>
         <div class="resize-handler"></div>
       </div>
       <!-- wrapRight -->
-      <div class="wrapper wrapRight"></div>
+      <div class="wrapper wrapRight">
+        <div id="wrapPostView" class="wrapPostView"></div>
+      </div>
     </div>
 
     <script type="text/javascript" src="./css-js/fn_wrapLeftAndRightMove.js"></script>
