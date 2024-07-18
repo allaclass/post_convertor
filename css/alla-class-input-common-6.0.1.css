@@ -37,7 +37,7 @@ body {
 
 .container {
   height: 100vh;
-  font-family: 'KoPubDotumMedium';
+  font-family: 'KoPubWorld Dotum Medium';
   width: 100%;
   display: flex; /* flexbox를 사용하여 내부 아이템을 정렬합니다. */
   justify-content: space-between;
@@ -249,7 +249,7 @@ div.postView {
   border-right: 1px solid #525252;
   /* overflow: scroll; */
   font-size: 12px;
-  font-family: 'KoPubDotumLight';
+  font-family: 'KoPubWorld Dotum Light';
 }
 
 .btnList button {
@@ -263,7 +263,7 @@ div.postView {
   font-size: 12px;
   cursor: pointer;
   margin: 3px 0;
-  font-family: 'KoPubDotumLight';
+  font-family: 'KoPubWorld Dotum Light';
 }
 
 .btnList hr {

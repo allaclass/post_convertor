@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+.wrapInfo {
+  width: 100%;
+  height: calc(100% - 45px);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 15px 15px;
+  font-family: 'KoPubWorld Dotum Light';
+}
+
+.wrapInfo textarea {
+  width: calc(100% - 15px);
+  height: 27px;
+  color: #aaa;
+  background-color: #353535;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  margin-bottom: 6px;
+  padding: 5px;
+  resize: none;
+  font-family: 'KoPubWorld Dotum Light';
+}
+
+.wrapInfo textarea#txt_info {
+  height: 330px;
+  line-height: 1.5em;
+  overflow-x: auto; /* 가로 스크롤 생성 */
+  white-space: nowrap; /* 텍스트가 가로로 넘칠 때 자동 줄바꿈 방지 */
+  font-family: 'KoPubWorld Dotum Light';
+}
+
+.wrapInfo textarea#txt_tag {
+  /* width: calc((100% - 40px) / 2); */
+  width: calc((100% + 100px) / 2);
+  margin-right: 5px;
+}
+
+.wrapInfo textarea#txt_tag2 {
+  /* width: calc((100% - 33px) / 2); */
+  width: calc((100% - 173px) / 2);
+}

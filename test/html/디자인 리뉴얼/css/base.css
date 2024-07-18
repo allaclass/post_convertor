@@ -1,0 +1,112 @@
+@charset "UTF-8";
+
+/* Web Font Load */
+@import url('https://fonts.googleapis.com/css?family=Nanum+Myeongjo:800&subset=korean');
+@import url('//fonts.googleapis.com/earlyaccess/notosanskr.css');
+
+/* KaTex_Math Font Load */
+@font-face {
+  font-family: 'KaTex_Math_Italic';
+  src: url('https://tistory4.daumcdn.net/tistory/4700529/skin/images/KaTeX_Math-Italic.ttf');
+}
+
+/* KoPub Font Load */
+
+@font-face {
+  font-family: 'KoPubWorld Batang Light';
+  src: url('../fonts/KoPubWorld\ Batang_Pro\ Light.otf');
+}
+
+@font-face {
+  font-family: 'KoPubWorld Dotum Light';
+  src: url('../fonts/KoPubWorld\ Dotum_Pro\ Light.otf');
+}
+
+@font-face {
+  font-family: 'KoPubWorld Dotum Medium';
+  src: url('../fonts/KoPubWorld\ Dotum_Pro\ Medium.otf');
+}
+
+/* 스크롤바 */
+::-webkit-scrollbar {
+  width: 15px;
+  height: 15px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0);
+}
+::-webkit-scrollbar-thumb {
+  width: 3px;
+  border-radius: 15px;
+  background-color: #525252;
+  border: 5px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0);
+}
+::-webkit-scrollbar-button {
+  width: 5;
+  height: 5;
+  display: none;
+}
+::-webkit-scrollbar-corner {
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px none;
+}
+::-webkit-resizer {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar-track:hover {
+  cursor: pointer;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* 기본틀 */
+
+div.container {
+  width: 100%;
+  height: 100vh;
+  background-color: #252525;
+  overflow: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+div.container div.wrapper {
+  height: 100%;
+  background-color: #252525;
+  overflow: auto;
+}
+
+div.container div.wrapLeft {
+  width: 60%;
+  position: relative;
+}
+
+div.container div.wrapLeft div.resize-handler {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  cursor: e-resize;
+  background-color: #353535;
+}
+
+div.container div.wrapLeft div.resize-handler:hover {
+  width: 6px;
+  background-color: #0987b6;
+}
+
+div.container div.wrapRight {
+  width: 40%;
+}
