@@ -31,13 +31,27 @@
   font-family: 'KoPubWorld Dotum Light';
 }
 
+.wrapInfo textarea#txt_title {
+  height: calc(27px * 2);
+}
+
 .wrapInfo textarea#txt_tag {
-  /* width: calc((100% - 40px) / 2); */
-  width: calc((100% + 100px) / 2);
-  margin-right: 5px;
+  /* width: calc((100% + 100px) / 2); */
+  /* margin-right: 5px; */
 }
 
 .wrapInfo textarea#txt_tag2 {
-  /* width: calc((100% - 33px) / 2); */
-  width: calc((100% - 173px) / 2);
+  /* width: calc((100% - 173px) / 2); */
+}
+
+.wrapInfo textarea#txt_title,
+.wrapInfo textarea#txt_tag,
+.wrapInfo textarea#txt_tag2 {
+  width: calc(100% - 19px);
+  background-color: #282828;
+  border: solid 2px #353535;
+}
+
+.wrapInfo textarea#txt_newThumb {
+  height: calc(27px * 4);
 }

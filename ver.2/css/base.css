@@ -71,8 +71,7 @@ body {
 }
 
 /* 기본틀 */
-
-div.container {
+.container {
   width: 100%;
   height: 100vh;
   background-color: #252525;
@@ -81,18 +80,27 @@ div.container {
   justify-content: space-between;
 }
 
-div.container div.wrapper {
+.navBar {
+  width: 110px;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 15px;
+  background-color: #252525;
+  border-right: solid 2px #353535;
+}
+
+.wrapper {
   height: 100%;
   background-color: #252525;
   overflow: auto;
 }
 
-div.container div.wrapLeft {
-  width: 60%;
+.wrapLeft {
+  width: calc((100% - 110px) * 0.6);
   position: relative;
 }
 
-div.container div.wrapLeft div.resize-handler {
+.wrapLeft div.resize-handler {
   position: absolute;
   top: 0;
   right: 0;
@@ -102,11 +110,11 @@ div.container div.wrapLeft div.resize-handler {
   background-color: #353535;
 }
 
-div.container div.wrapLeft div.resize-handler:hover {
+.wrapLeft div.resize-handler:hover {
   width: 6px;
   background-color: #0987b6;
 }
 
-div.container div.wrapRight {
-  width: 40%;
+.wrapRight {
+  width: calc((100% - 110px) * 0.4);
 }
