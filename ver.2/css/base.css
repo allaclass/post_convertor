@@ -6,15 +6,15 @@
 
 /* KoPub Font Load */
 @font-face {
-  font-family: 'KoPubWorld Batang Light';
+  font-family: 'KoPub_World_Batang_Light';
   src: url('../../ver.1/fonts/KoPubWorld\ Batang_Pro\ Light.otf');
 }
 @font-face {
-  font-family: 'KoPubWorld Dotum Light';
+  font-family: 'KoPub_World_Dotum_Light';
   src: url('../../ver.1/fonts/KoPubWorld\ Dotum_Pro\ Light.otf');
 }
 @font-face {
-  font-family: 'KoPubWorld Dotum Medium';
+  font-family: 'KoPub_World_Dotum_Medium';
   src: url('../../ver.1/fonts/KoPubWorld\ Dotum_Pro\ Medium.otf');
 }
 /* KaTex_Math Font Load */

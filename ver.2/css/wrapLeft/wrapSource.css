@@ -7,7 +7,7 @@
   margin: 0;
   padding: 15px 15px;
   font-size: 20px;
-  font-family: 'KoPubWorld Dotum Light';
+  font-family: 'KoPub_World_Dotum_Light';
   display: none;
 }
 
@@ -19,6 +19,6 @@
   border: none;
   font-size: 16px;
   resize: none;
-  font-family: 'KoPubWorld Dotum Light';
+  font-family: 'KoPub_World_Dotum_Light';
   white-space: nowrap; /* 줄바꿈 비활성화 */
 }
