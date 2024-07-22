@@ -1122,12 +1122,11 @@ let btn_cmd = (type, kind) => {
 };
 
 // inputData.value를 .txt 파일로 저장하는 함수 호출
-let btn_save = (arrTextarea) => {
+let btn_save = () => {
   let textToSave = '';
-  arrTextarea.forEach((textarea) => {
-    textToSave += document.getElementById(textarea).value; // 저장할 text 내용
-    textToSave += '\n\n\n';
-  });
+  textToSave += document.getElementById('txt_info').value; // 저장할 text 내용
+  textToSave += '\n\n\n';
+  textToSave += document.getElementById('txt_inputData').value; // 저장할 text 내용
   if (infoData_object === undefined || infoData_object == '') {
     alert('과목정보가 없습니다.');
   } else {
@@ -1157,8 +1156,10 @@ let btn_open = () => {
       let inputContent = '';
 
       for (let i = 0; i < lines.length; i++) {
-        if (i < 11) {
+        if (i <= 9) {
           infoContent += lines[i] + '\n';
+        } else if (i == 10) {
+          infoContent += lines[i];
         } else {
           inputContent += lines[i] + '\n';
         }
