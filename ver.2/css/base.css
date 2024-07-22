@@ -113,4 +113,6 @@ body {
 
 .wrapRight {
   width: calc((100% - 110px) * 0.4);
+  height: 100vh;
+  background-color: white;
 }

@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.wrapInput {
+.wrapSource {
   width: 100%;
   height: calc(100% - 65px);
   box-sizing: border-box;
@@ -11,13 +11,14 @@
   display: none;
 }
 
-.txt_inputData {
+.txt_outputHtml {
   width: 100%;
   height: 100%;
   color: #aaa;
   background-color: #252525;
   border: none;
-  font-size: 20px;
+  font-size: 16px;
   resize: none;
   font-family: 'KoPubWorld Dotum Light';
+  white-space: nowrap; /* 줄바꿈 비활성화 */
 }

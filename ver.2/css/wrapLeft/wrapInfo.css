@@ -2,12 +2,13 @@
 
 .wrapInfo {
   width: 100%;
-  height: calc(100% - 45px);
+  height: calc(100% - 65px);
   box-sizing: border-box;
   margin: 0;
   padding: 15px 15px;
+  font-size: 20px;
   font-family: 'KoPubWorld Dotum Light';
-  display: none;
+  /* display: none; */
 }
 
 .wrapInfo textarea {
