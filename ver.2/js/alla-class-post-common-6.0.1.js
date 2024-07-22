@@ -473,7 +473,7 @@ let fnSelectedAnswers = (item, objSelectedAnswers) => {
   return objSelectedAnswers;
 };
 
-document.addEventListener('DOMContentLoaded', function () {
+const fnPostViewSrc = () => {
   // 포커스 이동
   // alla6GuideDiv 요소의 위치 정보 가져오기
   // let alla6GuideDiv = document.querySelector('.alla6GuideDiv');
@@ -567,6 +567,10 @@ document.addEventListener('DOMContentLoaded', function () {
       // solveElement.style.display = 'block';
     });
   });
+};
+
+document.addEventListener('DOMContentLoaded', function () {
+  fnPostViewSrc();
 });
 
 // 티스토리 카테고리 파라미터 삭제 코드

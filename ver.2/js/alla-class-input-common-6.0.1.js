@@ -813,7 +813,10 @@ let fnPrintOutputHtmlBox = (arrQuestionDetail) => {
   txt_outputHtml.value += fnToHTML_noticeBottom(); // 공지사항(하단) html코드
   // [미리보기] 포스트뷰
   div_postView.innerHTML = '';
-  div_postView.innerHTML = txt_outputHtml.value;
+  let postViewHtmlSrc = txt_outputHtml.value;
+  div_postView.innerHTML = fn_ToTistoryImageSource_FromTistoryImageCommand(postViewHtmlSrc);
+  fn_thumbnail_width100();
+  // div_postView.innerHTML = postViewHtmlSrc;
   // [MathJax Script]
   if (!window.MathJax) {
     // Create a new script element to load MathJax
@@ -888,6 +891,9 @@ let btn_toHtml = () => {
 
   // 좌백 + 숫자 함수 호출
   fnExampleList_bleft_numpx();
+
+  // alla-class-post-common-6.0.1.js 호출
+  fnPostViewSrc();
 };
 
 // 문제 정렬시키는 함수 호출
