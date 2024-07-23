@@ -801,9 +801,9 @@ let fnPrintOutputHtmlBox = (arrQuestionDetail) => {
     // arrDetail을 index값을 기준으로 오름차순 정렬
     arrDetail.sort((a, b) => a.index - b.index);
     // console.log('arrDetail :', arrDetail);
-
     txt_outputHtml.value += fnCalltoHtml(arrDetail);
   });
+
   // 포스팅 아랫쪽 기본 HTML 출력
   txt_outputHtml.value += fnToHTML_gradingExams(); // 채점 영역 html코드
   txt_outputHtml.value += fnToHTML_resetExams(); // 초기화 영역 html코드
@@ -811,12 +811,12 @@ let fnPrintOutputHtmlBox = (arrQuestionDetail) => {
   txt_outputHtml.value += fnToHTML_otherExams(); // 타년도 문제 바로가기 html코드
   txt_outputHtml.value += fnToHTML_downloadExams(); // 문제 다운로드 바로가기 html코드
   txt_outputHtml.value += fnToHTML_noticeBottom(); // 공지사항(하단) html코드
+
   // [미리보기] 포스트뷰
   div_postView.innerHTML = '';
   let postViewHtmlSrc = txt_outputHtml.value;
   div_postView.innerHTML = fn_ToTistoryImageSource_FromTistoryImageCommand(postViewHtmlSrc);
-  fn_thumbnail_width100();
-  // div_postView.innerHTML = postViewHtmlSrc;
+
   // [MathJax Script]
   if (!window.MathJax) {
     // Create a new script element to load MathJax

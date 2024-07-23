@@ -9,12 +9,12 @@
 // [##_Image|kage@H1GaR/btsICUC7VSl/DpOqYZFKlnuEDkFrT0bRk0/img.png|CDM|1.3|{"originWidth":600,"originHeight":600,"style":"alignCenter","alt":"0-썸네일-일본어문장연습-기말-18-1-2","caption":"0-썸네일-일본어문장연습-기말-18-1-2","filename":"0-썸네일-일본어문장연습-기말-18-1-2.png"}_##]
 
 let fn_ToTistoryImageSource_FromTistoryImageCommand = (postViewHtmlSrc) => {
-  let newPostViewHtmlSrc = postViewHtmlSrc.replaceAll('[##_Image|kage@', '<img src="https://blog.kakaocdn.net/dn/');
-  newPostViewHtmlSrc = newPostViewHtmlSrc.replaceAll(/\|CDM\|.*?_##\]/, '">');
-  return newPostViewHtmlSrc;
-};
-
-let fn_thumbnail_width100 = () => {
-  const divThumbImage = document.querySelector('.alla6ThumbDiv img');
-  divThumbImage.style.width = '100%';
+  let hasPostViewHtmlSrc = postViewHtmlSrc.indexOf('[##_Image|kage@');
+  if (typeof hasPostViewHtmlSrc === 'undefined') {
+    return postViewHtmlSrc;
+  } else {
+    let newPostViewHtmlSrc = postViewHtmlSrc.replaceAll('[##_Image|kage@', '<img src="https://blog.kakaocdn.net/dn/');
+    newPostViewHtmlSrc = newPostViewHtmlSrc.replaceAll(/\|CDM\|.*?_##\]/, '">');
+    return newPostViewHtmlSrc;
+  }
 };
