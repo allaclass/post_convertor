@@ -1095,7 +1095,7 @@ let btn_cmd = (type, kind) => {
   } else if (type == 'doubleSpace') {
     // 좌들, 좌백, 중앙, 우측
     // 명령어 뒤에 빈칸 하나 더 붙는 유형
-    if (kind == '좌백') {
+    if (kind == '좌백' || kind == '좌들') {
       if (new RegExp(`^/${kind}\\d+ `).test(selectedTextTrim) && selectedTextTrim.endsWith(`/.${kind}`)) {
         // 이미 kind 표식이 되어있는 경우, 삭제하기 - replaceAll로 한번에 하기 (추가)
         replacement = selectedText.replaceAll(new RegExp(`/${kind}\\d+\\s`), ``);
