@@ -1097,18 +1097,30 @@ let btn_cmd = (type, kind) => {
     // 명령어 뒤에 빈칸 하나 더 붙는 유형
     if (kind == '좌백') {
       if (new RegExp(`^/${kind}\\d+ `).test(selectedTextTrim) && selectedTextTrim.endsWith(`/.${kind}`)) {
-        // 이미 kind 표식이 되어있는 경우, 삭제하기
-        replacement = selectedText.replace(new RegExp(`/${kind}\\d+\\s`), ``);
-        replacement = replacement.replace(`/.${kind}`, ``);
+        // 이미 kind 표식이 되어있는 경우, 삭제하기 - replaceAll로 한번에 하기 (추가)
+        replacement = selectedText.replaceAll(new RegExp(`/${kind}\\d+\\s`), ``);
+        replacement = replacement.replaceAll(`/.${kind}`, ``);
       } else {
         // 추가할 kind 표시 및 블록 앞뒤로 빈 칸 여부 확인하여 기존과 동일하게 추가하기
-        replacement = `/${kind}0 ` + selectedText.trim() + `/.${kind}`;
-        if (selectedText.endsWith(' ')) {
-          replacement += ' ';
-        }
-        if (selectedText.startsWith(' ')) {
-          replacement = ' ' + replacement;
-        }
+        // replacement = `/${kind}0 ` + selectedText.trim() + `/.${kind}`;
+        // if (selectedText.endsWith(' ')) {
+        //   replacement += ' ';
+        // }
+        // if (selectedText.startsWith(' ')) {
+        //   replacement = ' ' + replacement;
+        // }
+
+        // 한번에 하기 (추가)
+        let arrTemp = selectedText.split('\n');
+        let temp = '';
+        arrTemp.forEach((item, index) => {
+          if (index === arrTemp.length - 1) {
+            temp += `/${kind}0 ` + item + `/.${kind}`;
+          } else {
+            temp += `/${kind}0 ` + item + `/.${kind}\n`;
+          }
+        });
+        replacement = temp;
       }
     } else {
       if (selectedTextTrim.startsWith(`/${kind} `) && selectedTextTrim.endsWith(`/.${kind}`)) {
