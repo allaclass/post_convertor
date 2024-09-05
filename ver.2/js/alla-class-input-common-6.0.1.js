@@ -107,6 +107,11 @@ let fnReplace_gihoChange = (text) => {
   text = text.replaceAll('>', '&#62;');
   text = text.replaceAll('．', '.'); // ver.5.0.1까지는 문제번호와 겹치는 소수점이 있을 경우를 대비해서 사용했던 기호
   text = text.replaceAll(/\s*:\s*/g, '：');
+  return text;
+};
+
+// 빈칸 replace
+let fnReplace_blankChange = (text) => {
   text = text.replaceAll(/\(\s*\)/g, '(/빈칸)'); // 연속된 괄호들을 /빈칸)으로 대체합니다.
   return text;
 };
@@ -562,7 +567,7 @@ let fnCallGetQuestionDetail = (questions) => {
   return detail;
 };
 
-let fnPrintInputDataBox = (arrQuestionDetail, not) => {
+let fnPrintInputDataBox = (arrQuestionDetail, type) => {
   txt_inputData.value = '';
   for (let i = 1; i <= arrQuestionDetail.length; i++) {
     let j = i - 1;
@@ -574,11 +579,13 @@ let fnPrintInputDataBox = (arrQuestionDetail, not) => {
           break;
         case 'question':
           item.content = fnReplace_gihoChange(item.content);
-          not == 'not' && (item.content = fnReplace_notChange(item.content));
+          type == 'not' && (item.content = fnReplace_notChange(item.content));
+          type == 'blank' && (item.content = fnReplace_blankChange(item.content));
           txt_inputData.value += `${item.content}\n`;
           break;
         case 'example_txt':
           item.content = fnReplace_gihoChange(item.content);
+          type == 'blank' && (item.content = fnReplace_blankChange(item.content));
           txt_inputData.value += `/보기문\n${item.content}\n`;
           break;
         case 'example_img':
@@ -589,26 +596,32 @@ let fnPrintInputDataBox = (arrQuestionDetail, not) => {
           break;
         case 'question_add':
           item.content = fnReplace_gihoChange(item.content);
+          type == 'blank' && (item.content = fnReplace_blankChange(item.content));
           txt_inputData.value += `/추가지문\n${item.content}\n`;
           break;
         case 'select_1':
           item.content = fnReplace_gihoChange(item.content);
+          type == 'blank' && (item.content = fnReplace_blankChange(item.content));
           txt_inputData.value += `① ${item.content}\n`;
           break;
         case 'select_2':
           item.content = fnReplace_gihoChange(item.content);
+          type == 'blank' && (item.content = fnReplace_blankChange(item.content));
           txt_inputData.value += `② ${item.content}\n`;
           break;
         case 'select_3':
           item.content = fnReplace_gihoChange(item.content);
+          type == 'blank' && (item.content = fnReplace_blankChange(item.content));
           txt_inputData.value += `③ ${item.content}\n`;
           break;
         case 'select_4':
           item.content = fnReplace_gihoChange(item.content);
+          type == 'blank' && (item.content = fnReplace_blankChange(item.content));
           txt_inputData.value += `④ ${item.content}\n`;
           break;
         case 'solve':
           item.content = fnReplace_gihoChange(item.content);
+          type == 'blank' && (item.content = fnReplace_blankChange(item.content));
           txt_inputData.value += `/해설\n${item.content}\n`;
           break;
         default:
@@ -897,7 +910,7 @@ let btn_toHtml = () => {
 };
 
 // 문제 정렬시키는 함수 호출
-let btn_sort = (enter, not) => {
+let btn_sort = (enter, type) => {
   // 문제정보 수집
   fnGetInfoData();
 
@@ -936,14 +949,14 @@ let btn_sort = (enter, not) => {
   // console.log(arrQuestionDetail);
 
   // txt_inputData 텍스트박스에 정리된 내용 출력
-  fnPrintInputDataBox(arrQuestionDetail, not);
+  fnPrintInputDataBox(arrQuestionDetail, type);
 
   // HTML 생성
   btn_toHtml();
 };
 
 // 문제 정렬시키는 함수 호출
-let btn_upload = (enter, not) => {
+let btn_upload = (enter, type) => {
   // 문제정보 수집
   fnGetInfoData();
 
@@ -974,7 +987,7 @@ let btn_upload = (enter, not) => {
   // console.log(arrQuestionDetail);
 
   // txt_inputData 텍스트박스에 정리된 내용 출력
-  fnPrintInputDataBox(arrQuestionDetail, not);
+  fnPrintInputDataBox(arrQuestionDetail, type);
 
   // HTML 생성
   btn_toHtml();
