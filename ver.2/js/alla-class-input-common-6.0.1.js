@@ -1093,20 +1093,53 @@ let btn_cmd = (type, kind) => {
       }
     }
   } else if (type == 'doubleSpace') {
-    // 좌들, 중앙, 우측
+    // 좌들, 좌백, 중앙, 우측
     // 명령어 뒤에 빈칸 하나 더 붙는 유형
-    if (selectedTextTrim.startsWith(`/${kind} `) && selectedTextTrim.endsWith(`/.${kind}`)) {
-      // 이미 kind 표식이 되어있는 경우, 삭제하기
-      replacement = selectedText.replace(`/${kind} `, ``);
-      replacement = replacement.replace(`/.${kind}`, ``);
-    } else {
-      // 추가할 kind 표시 및 블록 앞뒤로 빈 칸 여부 확인하여 기존과 동일하게 추가하기
-      replacement = `/${kind} ` + selectedText.trim() + `/.${kind}`;
-      if (selectedText.endsWith(' ')) {
-        replacement += ' ';
+    if (kind == '좌백') {
+      // if (selectedTextTrim.startsWith(`/${kind}0 `) && selectedTextTrim.endsWith(`/.${kind}`)) {
+      //   // 이미 kind 표식이 되어있는 경우, 삭제하기
+      //   // replacement = selectedText.replace(/\/좌백\d+\s/, ``);
+      //   replacement = selectedText.replace(`/좌백0 `, ``);
+      //   replacement = replacement.replace(`/.좌백`, ``);
+      // } else {
+      //   // 추가할 kind 표시 및 블록 앞뒤로 빈 칸 여부 확인하여 기존과 동일하게 추가하기
+      //   replacement = `/${kind}0 ` + selectedText.trim() + `/.${kind}`;
+      //   if (selectedText.endsWith(' ')) {
+      //     replacement += ' ';
+      //   }
+      //   if (selectedText.startsWith(' ')) {
+      //     replacement = ' ' + replacement;
+      //   }
+      // }
+
+      if (new RegExp(`^/${kind}\\d+ `).test(selectedTextTrim) && selectedTextTrim.endsWith(`/.${kind}`)) {
+        // 이미 kind 표식이 되어있는 경우, 삭제하기
+        replacement = selectedText.replace(new RegExp(`/${kind}\\d+\\s`), ``);
+        replacement = replacement.replace(`/.${kind}`, ``);
+      } else {
+        // 추가할 kind 표시 및 블록 앞뒤로 빈 칸 여부 확인하여 기존과 동일하게 추가하기
+        replacement = `/${kind}0 ` + selectedText.trim() + `/.${kind}`;
+        if (selectedText.endsWith(' ')) {
+          replacement += ' ';
+        }
+        if (selectedText.startsWith(' ')) {
+          replacement = ' ' + replacement;
+        }
       }
-      if (selectedText.startsWith(' ')) {
-        replacement = ' ' + replacement;
+    } else {
+      if (selectedTextTrim.startsWith(`/${kind} `) && selectedTextTrim.endsWith(`/.${kind}`)) {
+        // 이미 kind 표식이 되어있는 경우, 삭제하기
+        replacement = selectedText.replace(`/${kind} `, ``);
+        replacement = replacement.replace(`/.${kind}`, ``);
+      } else {
+        // 추가할 kind 표시 및 블록 앞뒤로 빈 칸 여부 확인하여 기존과 동일하게 추가하기
+        replacement = `/${kind} ` + selectedText.trim() + `/.${kind}`;
+        if (selectedText.endsWith(' ')) {
+          replacement += ' ';
+        }
+        if (selectedText.startsWith(' ')) {
+          replacement = ' ' + replacement;
+        }
       }
     }
   } else if (type == 'single') {
