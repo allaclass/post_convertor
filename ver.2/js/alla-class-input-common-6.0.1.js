@@ -637,7 +637,7 @@ let fnPrintInputDataBox = (arrQuestionDetail, type) => {
   }
 };
 
-let fnPrintOutputHtmlBox = (arrQuestionDetail) => {
+let fnPrintOutputHtmlBox = (arrQuestionDetail, MathJaxType) => {
   // 문제 내용에 따른 html 생성함수 호출하는 함수
   let fnCalltoHtml = (arrDetail) => {
     // arrDetail 담겨있는 예시 값
@@ -831,28 +831,30 @@ let fnPrintOutputHtmlBox = (arrQuestionDetail) => {
   div_postView.innerHTML = fn_ToTistoryImageSource_FromTistoryImageCommand(postViewHtmlSrc);
 
   // [MathJax Script]
-  if (!window.MathJax) {
-    // Create a new script element to load MathJax
-    var script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-    script.id = 'MathJax-script';
-    script.async = true;
-    document.head.appendChild(script);
+  if (MathJaxType == 'MathJax') {
+    if (!window.MathJax) {
+      // Create a new script element to load MathJax
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.id = 'MathJax-script';
+      script.async = true;
+      document.head.appendChild(script);
 
-    script.onload = function () {
-      // console.log('MathJax script loaded successfully.');
-      // Perform initial typeset
+      script.onload = function () {
+        // console.log('MathJax script loaded successfully.');
+        // Perform initial typeset
+        MathJax.typeset();
+      };
+
+      script.onerror = function () {
+        // console.log('Failed to load MathJax script.');
+      };
+    } else {
+      // console.log('MathJax script is already loaded. Reinitializing...');
+      // Reinitialize MathJax
+      MathJax.startup.defaultPageReady();
       MathJax.typeset();
-    };
-
-    script.onerror = function () {
-      // console.log('Failed to load MathJax script.');
-    };
-  } else {
-    // console.log('MathJax script is already loaded. Reinitializing...');
-    // Reinitialize MathJax
-    MathJax.startup.defaultPageReady();
-    MathJax.typeset();
+    }
   }
   // /. [MathJax Script]
 };
@@ -889,7 +891,7 @@ let fnExampleList_bleft_numpx = () => {
 };
 
 // HTML 만드는 함수 호출
-let btn_toHtml = () => {
+let btn_toHtml = (MathJaxType) => {
   // 문제 구분하는 함수 실행
   let arrQuestions = fnCallGetQuestion('');
 
@@ -897,7 +899,11 @@ let btn_toHtml = () => {
   let arrQuestionDetail = fnCallGetQuestionDetail(arrQuestions);
 
   // 문제 상세내용 변수로 분할하여, 정리하는 함수 실행
-  fnPrintOutputHtmlBox(arrQuestionDetail);
+  if (MathJaxType == 'MathJax') {
+    fnPrintOutputHtmlBox(arrQuestionDetail, 'MathJax');
+  } else {
+    fnPrintOutputHtmlBox(arrQuestionDetail);
+  }
 
   // 좌들 + 숫자 함수 호출
   fnExampleList_pleft_numpx();
@@ -990,7 +996,7 @@ let btn_upload = (enter, type) => {
   fnPrintInputDataBox(arrQuestionDetail, type);
 
   // HTML 생성
-  btn_toHtml();
+  btn_toHtml('MathJax');
 };
 
 // 예전 문제정리본 최신정리본으로 변환하는 함수 호출 (ex. 그룹문제: /1/ -> ※)
